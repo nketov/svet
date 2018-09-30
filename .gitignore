@@ -37,4 +37,17 @@ phpunit.phar
 frontend/web/assets/
 backend/web/assets/
 
+
+/common/config/main-local.php
+/common/config/params-local.php
+/frontend/runtime
+/backend/runtime
+/console/runtime
+/frontend/config/main-local.php
+/frontend/config/params-local.php
+/backend/config/main-local.php
+/backend/config/params-local.php
+/frontend/web/uploads
+
+
 /temp
