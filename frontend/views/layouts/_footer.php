@@ -1,15 +1,15 @@
 <?php
+
 use yii\helpers\Html;
+
 ?>
 
 
 <footer class="footer">
 
-        <div class="container">
-            <p class="pull-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
+    <div>&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></div>
 
-            <p class="pull-right"><?= Yii::powered() ?></p>
-        </div>
+    <div><?= Yii::powered() ?></div>
 
 </footer>
 

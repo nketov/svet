@@ -24,7 +24,9 @@ AppAsset::register($this);
 
     <!--    --><? //= $this->render('_header.php',compact('headerContent')) ?>
     <?= $this->render('_header.php') ?>
+<aside class="z-right">
 
+</aside>
 
     <main class="main-content">
         <?= Alert::widget() ?>
