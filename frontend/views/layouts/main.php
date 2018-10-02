@@ -19,21 +19,18 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="wrap">
 <?php $this->beginBody() ?>
 
-<div class="wrap">
     <!--    --><? //= $this->render('_header.php',compact('headerContent')) ?>
     <?= $this->render('_header.php') ?>
 
-    <aside class="left">Фильтр</aside>
-    <main class="content">
+
+    <main class="main-content">
         <?= Alert::widget() ?>
         <?= $content ?>
     </main>
     <?= $this->render('_footer.php') ?>
-</div>
-
 <?php $this->endBody() ?>
 </body>
 </html>
