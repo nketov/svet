@@ -1,3 +1,6 @@
+<div class="header-img">
+
+</div>
 <header class="header">
     <div class="logo"><img src="images/logo.png" alt=""> Светлоград</div>
     <nav class="nav1">
