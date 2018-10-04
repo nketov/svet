@@ -7,9 +7,9 @@ use yii\helpers\Html;
 
 <footer class="footer">
 
-    <div>&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></div>
+    <span>&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></span>
 
-    <div><?= Yii::powered() ?></div>
+    <span><?= Yii::powered() ?></span>
 
 </footer>
 

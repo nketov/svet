@@ -24,7 +24,20 @@ AppAsset::register($this);
 
     <!--    --><? //= $this->render('_header.php',compact('headerContent')) ?>
     <?= $this->render('_header.php') ?>
-<aside class="z-right">
+<aside class="top-catalog">
+
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+
+
 
 </aside>
 
