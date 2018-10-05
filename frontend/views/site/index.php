@@ -1,31 +1,64 @@
+<div class="content-header">Большие люстры</div>
 <aside class="left">
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
-    <p>Фильтр</p>
+
+    <div>
+    <label>Фильтр</label>
+    <input type="text">
+    </div>
+
+
+    <div>
+        <label>Фильтр</label>
+        <input type="text">
+    </div>
+
+    <div>
+        <label>Фильтр</label>
+        <input type="text">
+    </div>
+
+
+    <div>
+        <label>Фильтр</label>
+        <input type="text">
+    </div>
+
+
 </aside>
 <container>
-    <h2>Заголовок</h2>
     <article class="article">
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
-        <div class="div">Содержание Содержание Содержание Содержание Содержание Содержание</div>
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
+        </div>
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
+        </div>
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
+        </div>
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
+        </div>
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
+        </div>
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
+        </div>
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
+        </div>
+        <div class="card">
+            <div class="card-img"></div>
+            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
+        </div>
+
     </article>
 </container>

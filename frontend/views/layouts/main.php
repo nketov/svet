@@ -22,30 +22,16 @@ AppAsset::register($this);
 <body class="wrap">
 <?php $this->beginBody() ?>
 
-    <!--    --><? //= $this->render('_header.php',compact('headerContent')) ?>
-    <?= $this->render('_header.php') ?>
-<aside class="top-catalog">
-
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
-    <div ><img src="images/logo.png" alt=""><span><a href="/">Светлоград</a></span></div>
+<!--    --><? //= $this->render('_header.php',compact('headerContent')) ?>
+<?= $this->render('_header.php') ?>
+<?= $this->render('_top_catalog.php') ?>
 
 
-
-</aside>
-
-    <main class="main-content">
-        <?= Alert::widget() ?>
-        <?= $content ?>
-    </main>
-    <?= $this->render('_footer.php') ?>
+<main class="main-content">
+    <?= Alert::widget() ?>
+    <?= $content ?>
+</main>
+<?= $this->render('_footer.php') ?>
 <?php $this->endBody() ?>
 </body>
 </html>
