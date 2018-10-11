@@ -9,7 +9,8 @@
             <a href="/">Помощь</a>
             <a href="/">Контакты</a>
             <a href="/">Статьи</a>
-            <a href="/">Вход</a>
+<!--            <a href="/"><i class="fa fa-user"></i> Вход</a>-->
+            <a href="/"> Вход</a>
         </nav>
     </header>
     <div class="header-text">Продаём светильники <br> европейского качества</div>
