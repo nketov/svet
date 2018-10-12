@@ -283,41 +283,17 @@ html, body {
 }
 
 
-.left {
+
+.left form {
     background: rgba(255, 225, 150, .15);
     border-radius: 10px;
-    padding: 1rem .3rem;
-    margin: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 250px);
-    grid-gap: 10px;
+    padding: 2rem ;
+    margin: 35px auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    justify-content: center;
-    align-content: start;
+    text-align: left;
+
 }
 
-.left input{
-    height: 225px;
-    width: 95%;
-    background:
-            linear-gradient(
-                    rgba(255, 225, 150, .05),
-                    transparent
-            ),
-            linear-gradient(
-                    90deg,
-                    rgba(200, 200, 200, .5),
-                    transparent
-            ),
-            linear-gradient(
-                    -90deg,
-                    rgba(100, 100, 100, .3),
-
-                    transparent
-            );
-
-    background-blend-mode: screen;
-}
 
 .article {
     /*background: yellow;*/
@@ -361,7 +337,7 @@ html, body {
 
 
 #footer {
-    background-color: #151525;
+    background-color: #070712;
     color: white;
     padding-top: 20px;
 }
@@ -378,7 +354,7 @@ html, body {
 }
 
 #footer .footer-copyright {
-    background-color: #112;
+    background-color: #050511;
     padding-top: 3px;
     padding-bottom: 3px;
     text-align: center;
@@ -414,7 +390,7 @@ html, body {
 #footer a:hover,
 #footer a:focus {
     text-decoration: none;
-    color: white;
+    color: yellow;
 }
 
 #footer .social-networks {
@@ -428,7 +404,7 @@ html, body {
     margin-right: 15px;
     margin-left: 20px;
     background-color: white;
-    color: #182c39;
+    color: #000;
     border-radius: 51%;
     padding: 10px;
     height: 50px;
@@ -436,15 +412,20 @@ html, body {
     text-align: center;
     line-height: 31px;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.3s,transform 0.3s;
 }
 
-#footer .fa-facebook:hover {
-    color: #2b55ff;
+#footer .fa:hover,
+#footer .fa:focus{
+    transform: scale(1.1);
 }
 
-#footer .fa-facebook:focus {
-    color: #2b55ff;
+#footer .fa-facebook:hover {    color: #2b55ff;
+
+}
+
+#footer .fa-facebook:focus {    color: #2b55ff;
+
 }
 
 #footer .fa-google-plus:hover {
@@ -463,6 +444,15 @@ html, body {
     color: #00aced;
 }
 
+.footer-contacts img{
+    position: absolute;
+    left: -25px;
+    top: -3px;
+    transform: scale(.7);
+
+}
+
+
 @media screen and (max-width: 767px) {
     #footer {
         text-align: center;
@@ -470,12 +460,23 @@ html, body {
     #footer .row {
         margin: 0;
     }
+
+    .footer-contacts img{
+        position: relative;
+        left: 10px;
+    }
 }
 
 
 #footer{
     flex: 0 0 auto;
 }
+
+#product-material br{
+    height: 1px;
+}
+
+
 
 
 

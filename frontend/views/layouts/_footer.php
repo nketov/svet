@@ -8,43 +8,35 @@ use yii\helpers\Html;
 <footer id="footer">
     <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <h5>Get started</h5>
+            <div class="col-sm-4">
+                <h5>Старт</h5>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Sign up</a></li>
-                    <li><a href="#">Downloads</a></li>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">Каталог</a></li>
+                    <li><a href="#">Вход</a></li>
                 </ul>
             </div>
-            <div class="col-sm-3">
-                <h5>About us</h5>
+            <div class="col-sm-4">
+                <h5>О нас</h5>
                 <ul>
-                    <li><a href="#">Company Information</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Reviews</a></li>
+                    <li><a href="#">О компании</a></li>
+                    <li><a href="#">Статьи</a></li>
+                    <li><a href="#">Помощь</a></li>
                 </ul>
             </div>
-            <div class="col-sm-3">
-                <h5>Support</h5>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Help desk</a></li>
-                    <li><a href="#">Forums</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-3">
-                <h5>Legal</h5>
-                <ul>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Terms of Use</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+            <div class="col-sm-4">
+                <h5>Контакты</h5>
+                <ul class="footer-contacts">
+                    <li><img src="/images/icons/voodafone.png" alt="">&nbsp&nbsp+38 (050) 505 05 05</li>
+                    <li><img src="/images/icons/email.png" alt="">&nbsp&nbspsvetlograd.in.ua@gmail.com</li>
+                    <li><img src="/images/icons/icq.png" alt="">&nbsp&nbsp123456789</li>
                 </ul>
             </div>
         </div>
         <!-- Here we use the Google Embed API to show Google Maps. -->
         <!-- In order for this to work in your project you will need to generate a unique API key.  -->
         <iframe id="map-container" frameborder="0" style="border:0"
-                src="https://www.google.com/maps?q=48.72557, 37.6000&z=17&output=embed" >
+                src="https://www.google.com/maps?q=48.72559, 37.6001&z=17&output=embed" >
         </iframe>
     </div>
     <div class="social-networks">
