@@ -18,11 +18,12 @@ $model = new Product();
     ]) ?>
 
     <h3 style="font-weight: bold">Подбор по параметрам:</h3>
+    <br><br>
     <label>Цена</label><br>
     <?php
     echo Slider::widget([
             'id' => 'price',
-            'name' => 'price',
+            'name' => 'Product[price]',
             'value' => '2500,10000',
             'sliderColor' => Slider::TYPE_PRIMARY,
             'pluginOptions' => [
@@ -41,46 +42,24 @@ $model = new Product();
     <label>Материал</label><br>
     <?=
     $form->field($model, 'material')->label(false)->checkboxList(
-        ['Металл', 'Стекло', 'Дерево', 'Пластик'])
+        ['Металл'=> 'Металл', 'Стекло'=> 'Стекло', 'Дерево'=> 'Дерево', 'Пластик'=> 'Пластик'])
     ?>
-
 
     <?php ActiveForm::end() ?>
 </aside>
 <container>
     <article class="article">
+        <?php for($i=0; $i<12; $i++ ){ ?>
         <div class="card">
+            <div class="card-contur"></div>
             <div class="card-img"></div>
             <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
+            <div class="info_hover">
+                <button class="btn btn-primary">Добавить в корзину</button>
+                <p style="font-size: .7rem">Артикул: 40807-cl6-pla000-cp000</p>
+            </div>
         </div>
-        <div class="card">
-            <div class="card-img"></div>
-            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
-        </div>
-        <div class="card">
-            <div class="card-img"></div>
-            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
-        </div>
-        <div class="card">
-            <div class="card-img"></div>
-            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
-        </div>
-        <div class="card">
-            <div class="card-img"></div>
-            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
-        </div>
-        <div class="card">
-            <div class="card-img"></div>
-            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
-        </div>
-        <div class="card">
-            <div class="card-img"></div>
-            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
-        </div>
-        <div class="card">
-            <div class="card-img"></div>
-            <div class="card-text">Люстры 19605 серии <br> "Босфор Crystal"</div>
-        </div>
+  <?php } ?>
 
     </article>
 </container>

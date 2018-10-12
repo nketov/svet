@@ -222,18 +222,6 @@ html, body {
     text-shadow: 5px 2px 2px rgba(0, 0, 0, .2);
 }
 
-@media screen and (max-width: 640px) {
-    .main-content, .header {
-        grid-template-columns: 1fr;
-        margin: 1px;
-    }
-
-    .content-header {
-        grid-area: span 1;
-        padding-top: 25px;
-    }
-}
-
 .top-catalog {
     z-index: 0;
     background: #171918;
@@ -282,7 +270,9 @@ html, body {
     text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #ffe0c2, 0 0 5px #ffe0c2;
 }
 
-
+.left{
+    margin-left: 15px;
+}
 
 .left form {
     background: rgba(255, 225, 150, .15);
@@ -299,33 +289,64 @@ html, body {
     /*background: yellow;*/
     border-radius: 10px;
     margin: .5rem;
+    margin-bottom: 3.5rem;
     padding: 1rem .3rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 10px;
+    grid-gap: 15px;
 }
 
 .card {
+    z-index: 1;
     width: 325px;
     height: 350px;
     text-align: center;
-    border-radius: 1em;
-    padding: 1rem;
-    /*background: yellow;*/
-    transition: transform 0.25s, background-color 2s;
+    border-radius: 2px;
+    padding: 10px;
     justify-self: center;
     font-family: "Segoe UI";
     font-weight: bold;
+}
 
+.card .info_hover{
+    opacity: 0;
+    background: white;
+    padding: .7em;
+    margin: 0 1em;
+}
+
+.card:hover .info_hover{
+    opacity: 1;
+    z-index: 5;
+}
+
+.card:hover .card-img{
+    opacity: .85;
 }
 
 .card:hover {
-    /*transform: scaley(1.1);*/
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    background-color: rgba(75%, 85%, 75%, 0.1);
+    z-index: 5;
+}
+
+.card-contur{
+    position:absolute;
+    background: white;
+    width: 305px;
+    top:-5px;
+    height: 425px;
+    /*opacity: 0;*/
+}
+
+
+.card:hover .card-contur{
+    opacity: 1;
+    z-index: 3;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .card-img {
+    z-index: 5;
     width: 275px;
     margin: 0 auto;
     height: 275px;
@@ -333,6 +354,9 @@ html, body {
     background-image: url("/images/lamps/lamp001.jpg");
     background-repeat: round;
     border-radius: 5px;
+}
+.card-text{
+    z-index: 5;
 }
 
 
@@ -453,6 +477,15 @@ html, body {
 }
 
 
+
+#footer{
+    flex: 0 0 auto;
+}
+
+#product-material br{
+    height: 1px;
+}
+
 @media screen and (max-width: 767px) {
     #footer {
         text-align: center;
@@ -467,18 +500,20 @@ html, body {
     }
 }
 
+@media screen and (max-width: 640px) {
+    .main-content, .header {
+        grid-template-columns: 1fr;
+        margin: 1px;
+    }
 
-#footer{
-    flex: 0 0 auto;
+    .content-header {
+        grid-area: span 1;
+        padding-top: 25px;
+    }
+
+    .left{
+        margin-left: 2px;
+    }
 }
-
-#product-material br{
-    height: 1px;
-}
-
-
-
-
-
 
 
