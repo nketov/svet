@@ -37,14 +37,11 @@ $model = new Product();
 
     <br>
     <br>
-
-
     <label>Материал</label><br>
     <?=
     $form->field($model, 'material')->label(false)->checkboxList(
         ['Металл'=> 'Металл', 'Стекло'=> 'Стекло', 'Дерево'=> 'Дерево', 'Пластик'=> 'Пластик'])
     ?>
-
     <?php ActiveForm::end() ?>
 </aside>
 <container>
