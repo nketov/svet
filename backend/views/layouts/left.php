@@ -5,7 +5,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="images/favicon-32x32.png" class="img-circle" alt="User Image"/>
+                <img src="/admin/images/favicon-32x32.png" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 <p>Светлоград</p>
