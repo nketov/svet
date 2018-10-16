@@ -10,6 +10,7 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
+    'defaultRoute' => 'site/content',
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
@@ -42,8 +43,14 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-//                '<action:(content|login|upload|currency|image-upload)>' => 'site/<action>'
-                '<action:(login)>' => 'site/<action>'
+                '<action:(content|login|upload|currency|image-upload|actions-content)>' => 'site/<action>'
+            ],
+        ],
+        'assetManager' => [
+            'bundles' => [
+                'dmstr\web\AdminLteAsset' => [
+                    'skin' => 'skin-purple',
+                ],
             ],
         ],
     ],
