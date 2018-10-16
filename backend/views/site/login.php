@@ -50,6 +50,9 @@ $fieldOptions2 = [
             <!-- /.col -->
         </div>
 
+
+        <?php ActiveForm::end(); ?>
+
     </div>
     <!-- /.login-box-body -->
 </div><!-- /.login-box -->
