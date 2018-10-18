@@ -634,6 +634,11 @@ html, body {
         width: calc(99vw);
     }
 
+    .image_block{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
     .header-phone img {
        transform: scale(.8);
     }
