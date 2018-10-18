@@ -4,27 +4,42 @@ use yii\bootstrap\ActiveForm;
 
 $model = new Product();
 ?>
-<div class="content-header">"Босфор Crystal"</div>
+<div class="content-header">"Валенсия NEW"</div>
+<div class="image_block">
+    <div class="image_container">
+        <img class="image" id="image" src="/images/lamps/lamp007.jpg"/>
+    </div>
 
-<div class="image_container">
-    <img class="image" id="image" src="/images/lamps/lamp001.jpg"/>
+    <div class="image_icons">
+        <img class="image_icon"  src="/images/lamps/lamp007.jpg"/>
+        <img class="image_icon"  src="/images/lamps/lamp007.jpg"/>
+        <img class="image_icon"  src="/images/lamps/lamp007.jpg"/>
+        <img class="image_icon"  src="/images/lamps/lamp007.jpg"/>
+        <img class="image_icon"  src="/images/lamps/lamp007.jpg"/>
+    </div>
+
 </div>
 
 <container>
-    <div class="cards-block">
-        <?php for($i=0; $i<12; $i++ ){ ?>
-            <div class="card">
-                <div class="card-contur"></div>
-                <div class="card-img"></div>
-                <div class="card-text">
-                    <span class="card-text-text">Люстры 19605 серии <br> "Босфор Crystal"</span><span class="card-price"><?= round(25000/($i+1),2) ?> грн</span></p>
-                </div>
-                <div class="info_hover">
-                    <button class="btn btn-primary">ДОБАВИТЬ В КОРЗИНУ</button>
-                    <p style="font-size: .7rem; font-weight: lighter">Артикул: 40807-cl6-pla000-cp000</p>
-                </div>
+    <div class="view-info">
+        <div class="view-buttons">
+            <h2 >Описание</h2>
+            <div style="text-align: justify; margin: 10px">
+                Большая люстра серии Валенсия NEW бренда "N&amp;Blight" рассчитана на 24 лампы. Цветовая гамма – мягкий серый + коричневый антик. Стиль исполнения «классика». Основные материалы металл и текстиль. Металлический каркас проходит через порошковое напыление краски и запекание в печи при высокой температуре. Премиум-ткань абажуров привезена из Голландии, обработана специальным составом, отталкивающим влагу и пыль. Такая ткань не выцветает и не выгорает. Комплектующие люстры Валенсия NEW – совместное производство Украины, Италии и Германии. Каждый светильник проходит многоуровневую проверку на всех этапах в соответствии с европейскими стандартами, что гарантирует его высокое качество и долгий срок службы. Для большой люстры Валенсия NEW необходимо просторное помещение.
             </div>
-        <?php } ?>
 
+        </div>
+
+
+        <div class="view-buttons">
+            <div style="text-align: justify;margin: 10px">
+                Большая люстра серии Валенсия NEW бренда "N&amp;Blight" рассчитана на 24 лампы. Цветовая гамма – мягкий серый + коричневый антик. Стиль исполнения «классика». Основные материалы металл и текстиль. Металлический каркас проходит через порошковое напыление краски и запекание в печи при высокой температуре. Премиум-ткань абажуров привезена из Голландии, обработана специальным составом, отталкивающим влагу и пыль. Такая ткань не выцветает и не выгорает. Комплектующие люстры Валенсия NEW – совместное производство Украины, Италии и Германии. Каждый светильник проходит многоуровневую проверку на всех этапах в соответствии с европейскими стандартами, что гарантирует его высокое качество и долгий срок службы. Для большой люстры Валенсия NEW необходимо просторное помещение.
+            </div>
+        </div>
+
+        <div class="view-buttons">
+            <div class="view-price">29580 грн</div>
+            <button class="btn btn-primary btn-lg">ДОБАВИТЬ В КОРЗИНУ</button>
+        </div>
     </div>
 </container>

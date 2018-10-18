@@ -344,7 +344,7 @@ html, body {
     margin: 0 auto;
     height: 275px;
     overflow: hidden;
-    background-image: url("/images/lamps/lamp001.jpg");
+
     background-repeat: round;
     border-radius: 5px;
 }
@@ -368,11 +368,16 @@ html, body {
 
 
 /*   VIEW   */
+.image_block{
+    display: flex;
+    margin: 2.5rem 1rem 2rem 3.6rem;
+}
+
+
 
 .image_container{
     align-self: start;
-    width: 640px;
-    margin: 2.5rem 1rem 2rem 3.6rem;
+    width: 500px;
     border: 1px solid white;
     border-radius: 5px;
     outline: 2px solid white;
@@ -385,7 +390,38 @@ html, body {
     transition: transform .7s ease-out;
 }
 
+.image_icons{
+    display: flex;
+    flex-direction: column;
+    margin-left: .5rem;
+}
 
+.image_icon{
+    margin: .5rem;
+    width: 64px;
+    height: 64px;
+    border-radius: 2px;
+}
+
+.view-info {
+    margin: .5rem;
+    margin-bottom: 4.5rem;
+    padding: 1.5rem .3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+    grid-gap: 25px;
+    text-align: center;
+}
+
+.view-buttons{
+    text-align: center;;
+}
+
+.view-price{
+    font-size: 2.2rem;
+    color: #A12;
+}
 
 
 #footer {
@@ -534,7 +570,17 @@ html, body {
     .image_container{
         margin-left: 5px;
         margin-right: 2px;
-        width: calc(100vw - 332px);
+        width: calc(100vw - 350px);
+    }
+
+    .image_block{
+        flex-direction: column;
+        margin: 2.5rem 1rem 2rem .2rem;
+    }
+
+    .image_icons{
+        flex-direction: row;
+        margin-left: 0;
     }
 
 }
@@ -551,6 +597,18 @@ html, body {
     .footer-contacts img{
         position: relative;
         left: 10px;
+    }
+
+    .image_icon{
+        margin: .1rem;
+        width: 60px;
+        height: 60px;
+        border-radius: 2px;
+    }
+
+    .image_container{
+
+        width: calc(150px + 25vw);
     }
 
 }
@@ -580,6 +638,9 @@ html, body {
        transform: scale(.8);
     }
 
+    .view-info{
+        margin: 0;
+    }
 
 
 }
