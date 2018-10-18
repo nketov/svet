@@ -45,7 +45,7 @@ $model = new Product();
     <?php ActiveForm::end() ?>
 </aside>
 <container>
-    <article class="article">
+    <div class="cards-block">
         <?php for($i=0; $i<12; $i++ ){ ?>
         <div class="card">
             <div class="card-contur"></div>
@@ -60,5 +60,5 @@ $model = new Product();
         </div>
   <?php } ?>
 
-    </article>
+    </div>
 </container>

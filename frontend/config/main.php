@@ -49,7 +49,7 @@ return [
                     'suffix' => ''
                 ],
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '<action:(about|contact|login|signup)>' => 'site/<action>'
+                '<action:(about|contact|login|signup|view)>' => 'site/<action>'
             ],
         ],
     ],

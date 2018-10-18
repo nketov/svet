@@ -245,7 +245,7 @@
                                         L33,28.5H21z"></path>
                                   </svg>
         <span><a href="/">Люстры c хрусталём</a></span>
-    </div>рф
+    </div>
 </nav>
 
 
