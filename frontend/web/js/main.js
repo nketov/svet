@@ -31,6 +31,14 @@ $(document).ready(function () {
         }
     );
 
+    $('.image_icon').on('click', function () {
+            $('.image_icon').css('border','none');
+            $(this).css('border','#C3A solid 3px');
+            $('#image').attr('src', $(this).attr('src'));
+        }
+    );
+
+
     var image = document.getElementById('image');
     if (image) {
         image.addEventListener('mousemove', function (e) {

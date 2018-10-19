@@ -40,25 +40,25 @@ $model = new Product();
     <label>Материал</label><br>
     <?=
     $form->field($model, 'material')->label(false)->checkboxList(
-        ['Металл'=> 'Металл', 'Стекло'=> 'Стекло', 'Дерево'=> 'Дерево', 'Пластик'=> 'Пластик'])
+        ['Металл' => 'Металл', 'Стекло' => 'Стекло', 'Дерево' => 'Дерево', 'Пластик' => 'Пластик'])
     ?>
     <?php ActiveForm::end() ?>
 </aside>
-<container>
-    <div class="cards-block">
-        <?php for($i=0; $i<12; $i++ ){ ?>
+
+<div class="cards-block">
+    <?php for ($i = 0; $i < 12; $i++) { ?>
         <div class="card">
             <div class="card-contur"></div>
-            <img class="card-img"  src="/images/lamps/lamp007.jpg"/>
+            <img class="card-img" src="/images/lamps/lamp007.jpg"/>
             <div class="card-text">
-                <span class="card-text-text">Большие люстры 9606 <br> серии "Валенсия NEW"</span><span class="card-price"><?= round(25000/($i+1),2) ?> грн</span></p>
+                <span class="card-text-text">Большие люстры 9606 <br> серии "Валенсия NEW"</span><span
+                        class="card-price"><?= round(25000 / ($i + 1), 2) ?> грн</span></p>
             </div>
             <div class="info_hover">
                 <button class="btn btn-primary">ДОБАВИТЬ В КОРЗИНУ</button>
                 <p style="font-size: .7rem; font-weight: lighter">Артикул: 9606-cl112-aba26n-ct2807</p>
             </div>
         </div>
-  <?php } ?>
+    <?php } ?>
 
-    </div>
-</container>
+</div>

@@ -258,7 +258,7 @@ html, body {
     color: #163;
     padding-left: 10%;
     padding-top: 15px;
-    font-size: calc(1rem + 3vw);
+    font-size: calc(1rem + 2vw);
     font-weight: bold;
     text-shadow: 5px 2px 2px rgba(0, 0, 0, .1);
 }
@@ -403,22 +403,57 @@ html, body {
     border-radius: 2px;
 }
 
-.view-info {
-    margin: .5rem;
+.image_icon:first-child{
+    border: #CA3 solid 3px;
+}
+
+.view_info {
+    margin: .5rem auto;
     margin-bottom: 4.5rem;
     padding: 1.5rem .3rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-
-    grid-gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 5px;
     text-align: center;
 }
 
-.view-buttons{
-    text-align: center;;
+.view_buttons{
+    text-align: center;
+    padding: 0;
+    padding-top: 2rem;
 }
 
-.view-price{
+.view_description,.view_spec{
+    text-align: justify;
+    padding: 10px;
+    font-family: Tahoma;
+}
+
+.view_spec{
+    padding-top: 1rem;
+}
+
+.view_spec .string{
+    display: flex;
+    justify-content: space-between;
+    margin: .7rem auto;
+    font-family: "Segoe UI";
+}
+
+.spec_name{
+    justify-self: flex-start;
+    font-weight: bolder;
+    color: #999;
+}
+
+.spec_value{
+    justify-self: flex-end;
+    font-weight: bold;
+    text-align: right;
+}
+
+
+.view_price{
     font-size: 2.2rem;
     color: #A12;
 }
@@ -643,8 +678,10 @@ html, body {
        transform: scale(.8);
     }
 
-    .view-info{
+    .view_info{
         margin: 0;
+        padding: 0;
+        margin-bottom: 4.5rem;
     }
 
 
