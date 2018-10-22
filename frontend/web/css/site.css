@@ -96,7 +96,7 @@ html, body {
 
 .logo img {
     position: relative;
-    transition: transform 2s;
+    transition: transform 3s;
     transform-style: preserve-3d;
 
 }
