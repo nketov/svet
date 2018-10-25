@@ -404,7 +404,7 @@ html, body {
 }
 
 .image_icon:first-child{
-    border: #CA3 solid 3px;
+    border: rgb(204, 51, 170) solid 3px;
 }
 
 .view_info {
@@ -428,9 +428,19 @@ html, body {
     padding: 10px;
     font-family: Tahoma;
 }
+.view_description {
+    text-indent: 1rem;
+}
+
+.view_description div:first-letter {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font: bold;
+    /*color: #163;*/
+}
 
 .view_spec{
-    padding-top: 1rem;
+    padding-top: 2rem;
 }
 
 .view_spec .string{
