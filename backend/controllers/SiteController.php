@@ -1,6 +1,10 @@
 <?php
 namespace backend\controllers;
 
+use app\models\UploadForm;
+use backend\components\ShopUploader;
+use common\models\Product;
+use yii\web\UploadedFile;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -26,7 +30,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'content'],
+                        'actions' => ['logout', 'content','upload'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -95,6 +99,30 @@ class SiteController extends Controller
 
 
 
+    public function actionUpload()
+    {
+
+        $model = new UploadForm();
+
+        if (Yii::$app->request->isPost) {
+
+            $model->excelFile = UploadedFile::getInstance($model, 'excelFile');
+            $model->shop= $_POST['UploadForm']['shop'];
+
+            if ($model->upload()) {
+                $report = $this->excelUpload($model->shop);
+
+                return $this->render('upload', ['message' => $report,
+                    'title' => 'Отчёт о загрузке']);
+            }
+        }
+
+        return $this->render('upload', ['model' => $model]);
+    }
+
+
+
+
     /**
      * Logout action.
      *
@@ -105,5 +133,18 @@ class SiteController extends Controller
         Yii::$app->user->logout();
 
         return $this->goHome();
+    }
+
+    private function excelUpload($shop)
+    {
+        $report = '';
+        switch ($shop) {
+            case Product::SVET_SHOP:
+                return ShopUploader::uploadSvet();
+                break;
+
+        }
+
+      return $report;
     }
 }

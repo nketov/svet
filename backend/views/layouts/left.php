@@ -5,7 +5,7 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="/admin/images/favicon-32x32.png" class="img-circle" alt="User Image"/>
+                <img src="/admin/images/logo32x32.png" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 <p>Светлоград</p>
@@ -38,7 +38,7 @@
                     ['label' => 'Содержание сайта', 'icon' => 'tv', 'url' => ['/content'],],
 //                    ['label' => 'Содержание акций', 'icon' => 'gift', 'url' => ['/actions-content'],],
 //                    ['label' => 'Курсы валют', 'icon' => 'money', 'url' => ['/currency'],],
-//                    ['label' => 'Загрузка данных', 'icon' => 'upload', 'url' => ['/upload'],],
+                    ['label' => 'Загрузка данных', 'icon' => 'upload', 'url' => ['/upload'],],
 //                    ['label' => 'Загрузка изображений', 'icon' => 'upload', 'url' => ['/image-upload'],],
 //                    ['label' => 'Акции', 'icon' => 'gift', 'url' => ['/actions'],],
 //                    ['label' => 'Заказы', 'icon' => 'shopping-basket', 'url' => ['/order'],],

@@ -8,6 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
+    'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'defaultRoute' => 'site/content',
@@ -43,7 +44,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<action:(content|login|upload|currency|image-upload|actions-content)>' => 'site/<action>'
+                '<action:(content|login|upload)>' => 'site/<action>'
             ],
         ],
         'assetManager' => [
