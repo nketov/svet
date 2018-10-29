@@ -38,7 +38,9 @@ if (Yii::$app->controller->action->id === 'login') {
     </head>
     <body class=" <?= \dmstr\helpers\AdminLteHelper::skinClass() ?> hold-transition sidebar-mini">
     <?php $this->beginBody() ?>
+    <div id="upload-overlay"><img src="/admin/images/uploader2.gif" alt=""></div>
     <div class="wrapper">
+
 
         <?= $this->render(
             'header.php',

@@ -39,17 +39,17 @@ class Product extends \yii\db\ActiveRecord
     }
 
 
-    const SVET_SHOP  = '0';
-    const EGLO_SHOP  = '1';
-    const FREYA_SHOP  = '2';
-    const MAYTONY_SHOP  = '3';
+    const SVET_SHOP = '0';
+    const EGLO_SHOP = '1';
+    const FREYA_SHOP = '2';
+    const MAYTONY_SHOP = '3';
 
 
-     private static $_shopName = [
-        self::SVET_SHOP   => 'Светлоград',
+    private static $_shopName = [
+        self::SVET_SHOP => 'Светлоград',
         self::EGLO_SHOP => 'ЕГЛО',
-        self::FREYA_SHOP    => 'Freya',
-        self::MAYTONY_SHOP        => 'Maytoni',
+        self::FREYA_SHOP => 'Freya',
+        self::MAYTONY_SHOP => 'Maytoni',
     ];
 
     /**

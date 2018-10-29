@@ -20,6 +20,12 @@ html, body {
     background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
+.box{
+    margin: 25px auto;
+    box-shadow: 5px 5px 2px  rgba(0,0,0,0.5) !important;
+
+}
+
 .box-body {
     color: black;
 }
@@ -64,14 +70,57 @@ html, body {
     text-align: center;
 }
 
+ #upload-overlay {
+     /*display: grid;*/
+     animation-duration: 3s;
+     display: none;
+     align-content: center;
+     justify-content: center;
+     position: fixed;
+     width: 100%;
+     height: 100%;
+     animation-fill-mode: forwards, forwards;
+     background-color: black;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
+     cursor: none;
+ }
+
+
+
+.uploader-panel{
+    width: 300px;
+    margin: 25px auto;
+    text-align: center;
+}
+
+.uploader-panel .help-block{
+    top:-20px;
+}
+
+.uploader-panel select{
+    width: 300px;
+    margin: 5px auto 30px;
+    text-align: center;
+    font: bold 1rem Tahoma;
+    color: darkblue;
+    background-color: whitesmoke;
+    border-radius: 3px;
+
+}
+
+
 #uploadform-excelfile {
+    width: 300px;
+    margin: 5px auto 30px;
     border: 1px solid gray;
     color: darkblue;
-    background-color: white;
+    background-color: whitesmoke;
     padding: 6px 16px;
     border-radius: 3px;
-    font-size: 16px;
-    font-weight: bold;
 }
 
 .upload-report span {
@@ -81,7 +130,11 @@ html, body {
     margin: 0 3px;
 }
 
-@media screen and (max-width: 640px) {
+.upload-report>* {
+    left:25px;
+}
+
+@media screen and (max-width: 700px) {
     .content-wrapper {
         padding: 2px;
     }
@@ -90,4 +143,14 @@ html, body {
         padding: 2px !important;
     }
 
+}
+
+@keyframes show {
+    0%   {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes hide {
+    0%   {opacity: 1;}
+    100% {opacity: 0; visibility: hidden}
 }

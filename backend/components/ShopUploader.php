@@ -9,27 +9,21 @@ use yii\helpers\Url;
 class ShopUploader
 {
 
-    public static function uploadSvet()
-    {
+    private $shop;
+    private $sheetData;
 
+
+    public function __construct($shop)
+    {
+        $this->shop = $shop;
         ini_set('memory_limit', '256M');
         ini_set('max_execution_time', '300');
 
-        $inputFileName = Url::to('@backend/web/uploads/prices/') . Product::shopName(Product::SVET_SHOP) . '.xls';
+        $inputFileName = Url::to('@backend/web/uploads/prices/') . Product::shopName($shop) . '.xls';
         $reader = new Xls();
         $reader->setReadDataOnly(true);
+        $reader->setReadFilter($this->getFilter());
 
-
-// Freya
-//$reader->setReadFilter(new XlsFilter(6, ['A','B','C','D','E','I','J','K','L','M','N']));
-// Eglo
-//$reader->setReadFilter(new XlsFilter(2, ['A','B','C']));
-
-// Maytoni
-//$reader->setReadFilter(new XlsFilter(6, ['A','B','C','D','H','I','J','K','L','M']));
-
-// Svet
-        $reader->setReadFilter(new XlsFilter(9, ['A', 'E', 'H']));
 
         try {
             $spreadsheet = $reader->load($inputFileName);
@@ -38,21 +32,32 @@ class ShopUploader
             exit('Error loading file: ' . $e->getMessage());
         }
 
-        $sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
+        $this->sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
 
-//var_dump($sheetData);
+
+    }
+
+    public function upload()
+    {
+        switch ($this->shop) {
+            case Product::SVET_SHOP:
+                return $this->uploadSvet();
+                break;
+        }
+
+    }
+
+    private function uploadSvet()
+    {
 
         $rows = [];
-        foreach ($sheetData as $row) {
-
+        foreach ($this->sheetData as $row) {
             if (!empty($row['H']) && !empty($row['A'])) {
                 $rows[(string)trim($row['H'])] = [
                     'name' => (string)trim($row['A']),
                     'second_code' => (string)trim($row['E'])
                 ];
-
             }
-
         }
 
         $new_count = 0;
@@ -63,7 +68,6 @@ class ShopUploader
         $products = Product::find()->shop(Product::SVET_SHOP)->all();
 
         foreach ($products as $product) {
-
             if (array_key_exists($product->code, $rows)) {
                 if ($product->active) {
                     $updated_count++;
@@ -75,8 +79,6 @@ class ShopUploader
                 $product->name = $rows[$product->code]['name'];
                 $product->shop = Product::SVET_SHOP;
                 $product->second_code = $rows[$product->code]['second_code'];
-
-
             } else {
                 if ($product->active) {
                     $product->active = 0;
@@ -94,7 +96,6 @@ class ShopUploader
         }
 
         foreach ($rows as $code => $row) {
-
             $newProduct = new Product();
             $newProduct->code = (string)$code;
             $newProduct->name = (string)$row['name'];
@@ -108,19 +109,47 @@ class ShopUploader
                 var_dump($newProduct);
                 exit();
             }
-
         }
 
+        return $this->renderReport($updated_count, $new_count, $deactivated_count, $activated_count);
+    }
+
+    private function renderReport($updated_count, $new_count, $deactivated_count, $activated_count)
+    {
         $report = '<div class="upload-report">
-            <h3 style="color: green;"> Прайс магазина &laquo;<span>' . Product::shopName(Product::SVET_SHOP) . '</span>&raquo; успешно загружен : </h3>
-            <div>Обновлено <span >' . $updated_count . '</span> активных продуктов</div>
-            <div>Добавлено новых <span>' . $new_count . '</span> продуктов</div>
-            <div>Деактивировано <span >' . $deactivated_count . '</span> активных продуктов</div>
-            <div>Активировано и обновлено <span>' . $activated_count . '</span> неактивных продуктов</div>
+            <h3 style="color: green;"> Прайс магазина <span>' . Product::shopName(Product::SVET_SHOP) . '</span> успешно загружен : </h3>
+            <div> &nbsp;&nbsp;Обновлено <span >' . $updated_count . '</span> активных продуктов</div>
+            <div> &nbsp;&nbsp;Добавлено новых <span>' . $new_count . '</span> продуктов</div>
+            <div> &nbsp;&nbsp;Деактивировано <span >' . $deactivated_count . '</span> активных продуктов</div>
+            <div> &nbsp;&nbsp;Активировано и обновлено <span>' . $activated_count . '</span> неактивных продуктов</div>
             </div>';
 
+        return $report;
 
-        return $report;;
+    }
+
+    private function getFilter()
+
+    {
+        switch ($this->shop) {
+            case Product::SVET_SHOP:
+                return new XlsFilter(9, ['A', 'E', 'H']);
+                break;
+
+            case Product::EGLO_SHOP:
+                return new XlsFilter(2, ['A', 'B', 'C']);
+                break;
+
+            case Product::FREYA_SHOP:
+                return new XlsFilter(6, ['A', 'B', 'C', 'D', 'E', 'I', 'J', 'K', 'L', 'M', 'N']);
+                break;
+
+            case Product::MAYTONY_SHOP:
+                return new XlsFilter(6, ['A', 'B', 'C', 'D', 'H', 'I', 'J', 'K', 'L', 'M']);
+                break;
+        }
+
+
     }
 
 

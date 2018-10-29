@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     "use strict";
 
     $.uploadPreview({
@@ -11,14 +11,34 @@ $(document).ready(function() {
     });
 
 
-
-
     $('#excel-upload').on('beforeSubmit ', function () {
 
-         $(this).css('display','none');
+        $('#upload-overlay').css({"display": "grid", "animation-name": "show"});
 
+        var formData = new FormData($('#excel-upload')[0]);
+
+        $.ajax({
+            type: "POST",
+            url: '/admin/upload',
+            enctype: 'multipart/form-data',
+            data: formData,
+            processData: false,
+            contentType: false,
+
+            success: function (report) {
+
+                $('.uploader-panel').css({"width": "100%", "text-align": "left", "top": "-25px"});
+                $(".uploader-panel").html(report);
+                $(".content-header h1").html('Отчёт о загрузке');
+                $('#upload-overlay').css({"animation-name": "hide"});
+            }
+
+        });
+
+        return false;
 
     });
-    // $('#image-preview').css('background-image', 'url("/images/lamps/lamp007.jpg")')
 
+
+    // $('#image-preview').css('background-image', 'url("/images/lamps/lamp007.jpg")')
 });

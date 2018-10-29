@@ -3,7 +3,7 @@ namespace backend\controllers;
 
 use app\models\UploadForm;
 use backend\components\ShopUploader;
-use common\models\Product;
+use yii\web\Response;
 use yii\web\UploadedFile;
 use Yii;
 use yii\web\Controller;
@@ -102,6 +102,7 @@ class SiteController extends Controller
     public function actionUpload()
     {
 
+
         $model = new UploadForm();
 
         if (Yii::$app->request->isPost) {
@@ -110,10 +111,8 @@ class SiteController extends Controller
             $model->shop= $_POST['UploadForm']['shop'];
 
             if ($model->upload()) {
-                $report = $this->excelUpload($model->shop);
-
-                return $this->render('upload', ['message' => $report,
-                    'title' => 'Отчёт о загрузке']);
+                $uploader= new ShopUploader($model->shop);
+                return $uploader->upload();
             }
         }
 
@@ -135,16 +134,4 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    private function excelUpload($shop)
-    {
-        $report = '';
-        switch ($shop) {
-            case Product::SVET_SHOP:
-                return ShopUploader::uploadSvet();
-                break;
-
-        }
-
-      return $report;
-    }
 }
