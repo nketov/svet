@@ -114,19 +114,7 @@ class ShopUploader
         return $this->renderReport($updated_count, $new_count, $deactivated_count, $activated_count);
     }
 
-    private function renderReport($updated_count, $new_count, $deactivated_count, $activated_count)
-    {
-        $report = '<div class="upload-report">
-            <h3 style="color: green;"> Прайс магазина <span>' . Product::shopName(Product::SVET_SHOP) . '</span> успешно загружен : </h3>
-            <div> &nbsp;&nbsp;Обновлено <span >' . $updated_count . '</span> активных продуктов</div>
-            <div> &nbsp;&nbsp;Добавлено новых <span>' . $new_count . '</span> продуктов</div>
-            <div> &nbsp;&nbsp;Деактивировано <span >' . $deactivated_count . '</span> активных продуктов</div>
-            <div> &nbsp;&nbsp;Активировано и обновлено <span>' . $activated_count . '</span> неактивных продуктов</div>
-            </div>';
 
-        return $report;
-
-    }
 
     private function getFilter()
 
@@ -149,6 +137,19 @@ class ShopUploader
                 break;
         }
 
+    }
+
+    private function renderReport($updated_count, $new_count, $deactivated_count, $activated_count)
+    {
+        $report = '<div class="upload-report">
+            <h3 style="color: green;"> Прайс магазина &laquo;<span>' . Product::shopName(Product::SVET_SHOP) . '</span>&raquo; успешно загружен : </h3>
+            <div> &nbsp;&nbsp;Обновлено <span >' . $updated_count . '</span> активных продуктов</div>
+            <div> &nbsp;&nbsp;Добавлено новых <span>' . $new_count . '</span> продуктов</div>
+            <div> &nbsp;&nbsp;Деактивировано <span >' . $deactivated_count . '</span> активных продуктов</div>
+            <div> &nbsp;&nbsp;Активировано и обновлено <span>' . $activated_count . '</span> неактивных продуктов</div>
+            </div>';
+
+        return $report;
 
     }
 
