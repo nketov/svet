@@ -31,7 +31,16 @@ $(document).ready(function () {
                 $(".content-header h1").html('Отчёт о загрузке');
                 $('#upload-overlay').html('');
                 $('#upload-overlay').css({"animation-name": "hide"});
+            },
+            error: function (xhr) {
+                $('.uploader-panel').html(xhr.responseText).css({"width": "100%", "text-align": "left", "top": "-25px"});
+                $(".content-header h1").html('Отчёт о загрузке');
+                $('#upload-overlay').html('');
+                $('#upload-overlay').css({"animation-name": "hide"});
             }
+
+
+
 
         });
 

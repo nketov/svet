@@ -3,14 +3,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--<base href="https://light4home.com.ua/"/>-->
+<base href="http://svitlograd.in.ua/"/>
 
-<link rel="shortcut icon" href="images/favicons/favicon.ico" type="image/x-icon"/>
-<link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" href="images/favicons/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="images/favicons/favicon-16x16.png" sizes="16x16">
-<link rel="manifest" href="images/favicons/manifest.json">
-<link rel="mask-icon" href="images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+
+<link rel="icon" type="image/png" href="images/main/logo_32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="images/logo/main/_16.png" sizes="16x16">
 
 <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">

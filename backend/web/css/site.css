@@ -11,9 +11,13 @@ html, body {
     position: relative;
 }
 
+
 .content-wrapper {
     background-image: url('/admin/images/background.png') !important;
     padding: 16px;
+    display: grid;
+    align-content: start;
+    justify-content: center;
 }
 
 .skin-black .main-sidebar {
@@ -81,7 +85,7 @@ html, body {
        width: 100%;
        height: 100%;
        animation-fill-mode: forwards, forwards;
-       background-color: #242032;
+       background-color: #070409;
        top: 0;
        left: 0;
        right: 0;
@@ -137,6 +141,12 @@ html, body {
 
 .upload-report>* {
     left:25px;
+}
+
+
+.main-footer{
+    background-color: #222d32 !important;
+    border-top: 5px solid #605ca8 !important;
 }
 
 @media screen and (max-width: 700px) {
