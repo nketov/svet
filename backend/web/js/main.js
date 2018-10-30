@@ -27,9 +27,9 @@ $(document).ready(function () {
 
             success: function (report) {
 
-                $('.uploader-panel').css({"width": "100%", "text-align": "left", "top": "-25px"});
-                $(".uploader-panel").html(report);
+                $('.uploader-panel').html(report).css({"width": "100%", "text-align": "left", "top": "-25px"});
                 $(".content-header h1").html('Отчёт о загрузке');
+                $('#upload-overlay').html('');
                 $('#upload-overlay').css({"animation-name": "hide"});
             }
 

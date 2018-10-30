@@ -71,23 +71,28 @@ html, body {
 }
 
  #upload-overlay {
-     /*display: grid;*/
-     animation-duration: 3s;
-     display: none;
-     align-content: center;
-     justify-content: center;
-     position: fixed;
-     width: 100%;
-     height: 100%;
-     animation-fill-mode: forwards, forwards;
-     background-color: black;
-     top: 0;
-     left: 0;
-     right: 0;
-     bottom: 0;
-     z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
-     cursor: none;
- }
+       animation-duration: 3s;
+       display: none;
+       align-content: center;
+       justify-content: center;
+       text-align: center;
+       font: bold 2rem "Arial Black";
+       position: fixed;
+       width: 100%;
+       height: 100%;
+       animation-fill-mode: forwards, forwards;
+       background-color: #242032;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
+       cursor: none;
+   }
+
+#upload-overlay img{
+    margin: 0 auto;
+}
 
 
 

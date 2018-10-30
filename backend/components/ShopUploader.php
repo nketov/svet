@@ -4,22 +4,28 @@ namespace backend\components;
 
 use common\models\Product;
 use PhpOffice\PhpSpreadsheet\Reader\Xls;
+use yii\base\Widget;
 use yii\helpers\Url;
 
-class ShopUploader
+class ShopUploader extends Widget
 {
 
-    private $shop;
+    public $shop;
     private $sheetData;
 
+    private $new_count = 0;
+    private $updated_count = 0;
+    private $activated_count = 0;
+    private $deactivated_count = 0;
 
-    public function __construct($shop)
+
+    public function init()
     {
-        $this->shop = $shop;
+        parent::init();
         ini_set('memory_limit', '256M');
         ini_set('max_execution_time', '300');
 
-        $inputFileName = Url::to('@backend/web/uploads/prices/') . Product::shopName($shop) . '.xls';
+        $inputFileName = Url::to('@backend/web/uploads/prices/') . Product::shopName($this->shop) . '.xls';
         $reader = new Xls();
         $reader->setReadDataOnly(true);
         $reader->setReadFilter($this->getFilter());
@@ -37,13 +43,32 @@ class ShopUploader
 
     }
 
-    public function upload()
+    public function run()
     {
         switch ($this->shop) {
             case Product::SVET_SHOP:
-                return $this->uploadSvet();
+                $this->uploadSvet();
+                break;
+            case Product::EGLO_SHOP:
+                $this->uploadEglo();
+                break;
+            case Product::FREYA_SHOP:
+                $this->uploadFreya();
+                break;
+            case Product::MAYTONI_SHOP:
+                $this->uploadMaytoni();
                 break;
         }
+
+
+        return $this->render('upload-report.php',
+            [
+                'shopName' => Product::shopName($this->shop),
+                'updated_count' => $this->updated_count,
+                'new_count' => $this->new_count,
+                'deactivated_count' => $this->deactivated_count,
+                'activated_count' => $this->activated_count,
+            ]);
 
     }
 
@@ -60,29 +85,24 @@ class ShopUploader
             }
         }
 
-        $new_count = 0;
-        $updated_count = 0;
-        $activated_count = 0;
-        $deactivated_count = 0;
-
         $products = Product::find()->shop(Product::SVET_SHOP)->all();
 
         foreach ($products as $product) {
             if (array_key_exists($product->code, $rows)) {
                 if ($product->active) {
-                    $updated_count++;
+                    $this->updated_count++;
                 } else {
-                    $activated_count++;
+                    $this->activated_count++;
                     $product->active = 1;
                 }
 
-                $product->name = $rows[$product->code]['name'];
+                $product->name = (string)$rows[$product->code]['name'];
                 $product->shop = Product::SVET_SHOP;
-                $product->second_code = $rows[$product->code]['second_code'];
+                $product->second_code = (string)$rows[$product->code]['second_code'];
             } else {
                 if ($product->active) {
                     $product->active = 0;
-                    $deactivated_count++;
+                    $this->deactivated_count++;
                 }
             }
 
@@ -103,7 +123,223 @@ class ShopUploader
             $newProduct->second_code = (string)$row['second_code'];
 
             if ($newProduct->save()) {
-                $new_count++;
+                $this->new_count++;
+            } else {
+                var_dump($newProduct->errors);
+                var_dump($newProduct);
+                exit();
+            }
+        }
+    }
+
+    private function uploadEglo()
+    {
+
+        $rows = [];
+        foreach ($this->sheetData as $row) {
+            if (!empty($row['A']) && !empty($row['B'])) {
+                $rows[(string)trim($row['A'])] = [
+                    'name' => (string)trim($row['B']),
+                    'price' => (float)trim($row['C'])
+                ];
+            }
+        }
+
+        $products = Product::find()->shop(Product::EGLO_SHOP)->all();
+
+        foreach ($products as $product) {
+            if (array_key_exists($product->code, $rows)) {
+                if ($product->active) {
+                    $this->updated_count++;
+                } else {
+                    $this->activated_count++;
+                    $product->active = 1;
+                }
+
+                $product->name = (string)$rows[$product->code]['name'];
+                $product->shop = Product::EGLO_SHOP;
+                $product->price = (float)$rows[$product->code]['price'];
+            } else {
+                if ($product->active) {
+                    $product->active = 0;
+                    $this->deactivated_count++;
+                }
+            }
+
+            if ($product->save()) {
+                unset($rows[$product->code]);
+            } else {
+                var_dump($product->errors);
+                var_dump($product);
+                exit();
+            }
+        }
+
+        foreach ($rows as $code => $row) {
+            $newProduct = new Product();
+            $newProduct->code = (string)$code;
+            $newProduct->name = (string)$row['name'];
+            $newProduct->shop = Product::EGLO_SHOP;
+            $newProduct->price = (float)$row['price'];
+
+            if ($newProduct->save()) {
+                $this->new_count++;
+            } else {
+                var_dump($newProduct->errors);
+                var_dump($newProduct);
+                exit();
+            }
+        }
+    }
+
+    private function uploadFreya()
+    {
+
+        $rows = [];
+        foreach ($this->sheetData as $row) {
+            if (!empty($row['A']) && !empty($row['B']) && !empty($row['C'])) {
+                $rows[(string)trim($row['A'])] = [
+                    'name' => (string)(trim($row['B']) . " " . trim($row['C']) . " " . trim($row['D'])),
+                    'color' => (string)trim($row['E']),
+                    'price' => (float)trim($row['I']),
+                    'height' => (int)trim($row['J']),
+                    'diametr' => (int)trim($row['K']),
+                    'width' => (int)trim($row['L']),
+                    'depth' => (int)trim($row['M']),
+                    'lamps' => (string)trim($row['N']),
+                ];
+            }
+        }
+
+        $products = Product::find()->shop(Product::FREYA_SHOP)->all();
+
+        foreach ($products as $product) {
+            if (array_key_exists($product->code, $rows)) {
+                if ($product->active) {
+                    $this->updated_count++;
+                } else {
+                    $this->activated_count++;
+                    $product->active = 1;
+                }
+
+                $product->name = (string)$rows[$product->code]['name'];
+                $product->shop = Product::FREYA_SHOP;
+                $product->color = (string)$rows[$product->code]['color'];
+                $product->price = (float)$rows[$product->code]['price'];
+                $product->height = (int)$rows[$product->code]['height'];
+                $product->diametr = (int)$rows[$product->code]['diametr'];
+                $product->width = (int)$rows[$product->code]['width'];
+                $product->depth = (int)$rows[$product->code]['depth'];
+                $product->lamps = (string)$rows[$product->code]['lamps'];
+            } else {
+                if ($product->active) {
+                    $product->active = 0;
+                    $this->deactivated_count++;
+                }
+            }
+
+            if ($product->save()) {
+                unset($rows[$product->code]);
+            } else {
+                var_dump($product->errors);
+                var_dump($product);
+                exit();
+            }
+        }
+
+        foreach ($rows as $code => $row) {
+            $newProduct = new Product();
+            $newProduct->code = (string)$code;
+            $newProduct->name = (string)$row['name'];
+            $newProduct->shop = Product::FREYA_SHOP;
+            $newProduct->color = (string)$row[$product->code]['color'];
+            $newProduct->price = (float)$row['price'];
+            $newProduct->height = (int)$row['height'];
+            $newProduct->diametr = (int)$row['diametr'];
+            $newProduct->width = (int)$row['width'];
+            $newProduct->depth = (int)$row['depth'];
+            $newProduct->lamps = (string)$row['lamps'];
+
+
+            if ($newProduct->save()) {
+                $this->new_count++;
+            } else {
+                var_dump($newProduct->errors);
+                var_dump($newProduct);
+                exit();
+            }
+        }
+    }
+
+    private function uploadMaytoni()
+    {
+
+        $rows = [];
+        foreach ($this->sheetData as $row) {
+            if (!empty($row['A']) && !empty($row['B']) && !empty($row['C'])) {
+                $rows[(string)trim($row['A'])] = [
+                    'name' => (string)(trim($row['B']) . " " . trim($row['C'])),
+                    'color' => (string)trim($row['D']),
+                    'price' => (float)trim($row['H']),
+                    'height' => (int)trim($row['I']),
+                    'diametr' => (int)trim($row['J']),
+                    'width' => (int)trim($row['K']),
+                    'depth' => (int)trim($row['L']),
+                    'lamps' => (string)trim($row['M']),
+                ];
+            }
+        }
+
+        $products = Product::find()->shop(Product::MAYTONI_SHOP)->all();
+
+        foreach ($products as $product) {
+            if (array_key_exists($product->code, $rows)) {
+                if ($product->active) {
+                    $this->updated_count++;
+                } else {
+                    $this->activated_count++;
+                    $product->active = 1;
+                }
+
+                $product->name = (string)$rows[$product->code]['name'];
+                $product->shop = Product::MAYTONI_SHOP;
+                $product->price = (float)$rows[$product->code]['price'];
+                $product->height = (int)$rows[$product->code]['height'];
+                $product->diametr = (int)$rows[$product->code]['diametr'];
+                $product->width = (int)$rows[$product->code]['width'];
+                $product->depth = (int)$rows[$product->code]['depth'];
+                $product->lamps = (string)$rows[$product->code]['lamps'];
+            } else {
+                if ($product->active) {
+                    $product->active = 0;
+                    $this->deactivated_count++;
+                }
+            }
+
+            if ($product->save()) {
+                unset($rows[$product->code]);
+            } else {
+                var_dump($product->errors);
+                var_dump($product);
+                exit();
+            }
+        }
+
+        foreach ($rows as $code => $row) {
+            $newProduct = new Product();
+            $newProduct->code = (string)$code;
+            $newProduct->name = (string)$row['name'];
+            $newProduct->shop = Product::MAYTONI_SHOP;
+            $newProduct->price = (float)$row['price'];
+            $newProduct->height = (int)$row['height'];
+            $newProduct->diametr = (int)$row['diametr'];
+            $newProduct->width = (int)$row['width'];
+            $newProduct->depth = (int)$row['depth'];
+            $newProduct->lamps = (string)$row['lamps'];
+
+
+            if ($newProduct->save()) {
+                $this->new_count++;
             } else {
                 var_dump($newProduct->errors);
                 var_dump($newProduct);
@@ -111,9 +347,7 @@ class ShopUploader
             }
         }
 
-        return $this->renderReport($updated_count, $new_count, $deactivated_count, $activated_count);
     }
-
 
 
     private function getFilter()
@@ -132,24 +366,10 @@ class ShopUploader
                 return new XlsFilter(6, ['A', 'B', 'C', 'D', 'E', 'I', 'J', 'K', 'L', 'M', 'N']);
                 break;
 
-            case Product::MAYTONY_SHOP:
+            case Product::MAYTONI_SHOP:
                 return new XlsFilter(6, ['A', 'B', 'C', 'D', 'H', 'I', 'J', 'K', 'L', 'M']);
                 break;
         }
-
-    }
-
-    private function renderReport($updated_count, $new_count, $deactivated_count, $activated_count)
-    {
-        $report = '<div class="upload-report">
-            <h3 style="color: green;"> Прайс магазина &laquo;<span>' . Product::shopName(Product::SVET_SHOP) . '</span>&raquo; успешно загружен : </h3>
-            <div> &nbsp;&nbsp;Обновлено <span >' . $updated_count . '</span> активных продуктов</div>
-            <div> &nbsp;&nbsp;Добавлено новых <span>' . $new_count . '</span> продуктов</div>
-            <div> &nbsp;&nbsp;Деактивировано <span >' . $deactivated_count . '</span> активных продуктов</div>
-            <div> &nbsp;&nbsp;Активировано и обновлено <span>' . $activated_count . '</span> неактивных продуктов</div>
-            </div>';
-
-        return $report;
 
     }
 

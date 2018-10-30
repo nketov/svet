@@ -111,8 +111,7 @@ class SiteController extends Controller
             $model->shop= $_POST['UploadForm']['shop'];
 
             if ($model->upload()) {
-                $uploader= new ShopUploader($model->shop);
-                return $uploader->upload();
+                return  ShopUploader::widget(['shop' => $model->shop]);
             }
         }
 

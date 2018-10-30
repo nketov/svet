@@ -22,7 +22,7 @@ use Yii;
  * @property string $image_5
  * @property string $color
  * @property int $height
- * @property int $diameter
+ * @property int $diametr
  * @property int $width
  * @property int $depth
  * @property string $lamps
@@ -42,14 +42,14 @@ class Product extends \yii\db\ActiveRecord
     const SVET_SHOP = '0';
     const EGLO_SHOP = '1';
     const FREYA_SHOP = '2';
-    const MAYTONY_SHOP = '3';
+    const MAYTONI_SHOP = '3';
 
 
     private static $_shopName = [
         self::SVET_SHOP => 'Светлоград',
         self::EGLO_SHOP => 'ЕГЛО',
         self::FREYA_SHOP => 'Freya',
-        self::MAYTONY_SHOP => 'Maytoni',
+        self::MAYTONI_SHOP => 'Maytoni',
     ];
 
     /**
@@ -58,7 +58,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['shop', 'active', 'category', 'height', 'diameter', 'width', 'depth'], 'integer'],
+            [['shop', 'active', 'category', 'height', 'diametr', 'width', 'depth'], 'integer'],
             [['price'], 'number'],
             [['description'], 'string'],
             [['code', 'second_code'], 'string', 'max' => 50],
@@ -77,13 +77,13 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'code' => 'Code',
-            'shop' => 'Shop',
+            'code' => 'Код товара',
+            'shop' => 'Магазин',
             'active' => 'Active',
-            'category' => 'Category',
-            'name' => 'Name',
-            'price' => 'Price',
-            'description' => 'Description',
+            'category' => 'Категория',
+            'name' => 'Наименование',
+            'price' => 'Цена',
+            'description' => 'Описание',
             'image_1' => 'Фото 1',
             'image_2' => 'Фото 2',
             'image_3' => 'Фото 3',
@@ -92,11 +92,11 @@ class Product extends \yii\db\ActiveRecord
             'color' => 'Цвет',
             'material' => 'Материал',
             'height' => 'Высота',
-            'diameter' => 'Diameter',
+            'diametr' => 'Диаметр',
             'width' => 'Ширина',
-            'depth' => 'Depth',
-            'lamps' => 'Lamps',
-            'second_code' => 'Second Code',
+            'depth' => 'Глубина',
+            'lamps' => 'Лампочки',
+            'second_code' => 'Запасной код',
         ];
     }
 
