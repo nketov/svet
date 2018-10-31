@@ -24,6 +24,7 @@ html, body {
     text-align: center;
     font: bold 2rem "Arial Black";
     color: #ffe077;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5) !important;
 }
 
 .skin-black .main-sidebar {
@@ -58,12 +59,36 @@ html, body {
     width: 25px;
 }
 
+
+
+#products-table tbody tr:hover {
+    color: #112255;
+    font-weight: bold;
+    text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5) !important;
+    cursor: pointer;
+}
+
+#products-table tbody tr:active {
+    color: #111;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5) !important ;
+
+}
+
 #products-table .image_icon{
     margin: 0 .2rem;
     width: 30px;
     height: 30px;
     border-radius: 2px;
 }
+
+
+#products-table .summary{
+    float:right;
+    font: italic .8rem  "Segoe UI";
+    top:70px;
+}
+
+
 
 #image-preview {
     width: 65vw;

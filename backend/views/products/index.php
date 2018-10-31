@@ -60,7 +60,6 @@ $this->title = 'Товары';
                 ],
 
                 ['attribute' => 'price',
-                    'headerOptions' => ['style' => 'text-align:right'],
                     'contentOptions' => ['style' => 'width:100px;text-align:right'],
                     'filter' => false,
                 ],
