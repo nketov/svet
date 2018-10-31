@@ -53,10 +53,10 @@ html, body {
     text-align: center;
 }
 
-#products-table select[name="active"] {
-    width: 125px;
-}
 
+#products-table tr > *:nth-child(1) {
+    width: 25px;
+}
 
 #products-table .image_icon{
     margin: 0 .2rem;
