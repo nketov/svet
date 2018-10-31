@@ -14,7 +14,6 @@ $(document).ready(function () {
     $('#excel-upload').on('beforeSubmit ', function () {
 
         $('#upload-overlay').css({"display": "grid", "animation-name": "show"});
-
         var formData = new FormData($('#excel-upload')[0]);
 
         $.ajax({
@@ -24,9 +23,7 @@ $(document).ready(function () {
             data: formData,
             processData: false,
             contentType: false,
-
             success: function (report) {
-
                 $('.uploader-panel').html(report).css({"width": "100%", "text-align": "left", "top": "-25px"});
                 $(".content-header h1").html('Отчёт о загрузке');
                 $('#upload-overlay').html('');
@@ -38,15 +35,24 @@ $(document).ready(function () {
                 $('#upload-overlay').html('');
                 $('#upload-overlay').css({"animation-name": "hide"});
             }
-
-
-
-
         });
-
         return false;
-
     });
+
+    $('#products-table select[name="active"]').on('change',
+        function() {
+            var active =$(this).val();
+            var product = $(this).closest('tr').data('key');
+            $.ajax({
+                method: "POST",
+                url: '/admin/products/active',
+                data: {active:active,product:product}
+            })
+                .done(function( data ) {
+                    console.log('Status Changed');
+                });
+        }
+    );
 
 
     // $('#image-preview').css('background-image', 'url("/images/lamps/lamp007.jpg")')

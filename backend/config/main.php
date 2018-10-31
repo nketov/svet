@@ -11,7 +11,7 @@ return [
     'language' => 'ru-RU',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'defaultRoute' => 'site/content',
+    'defaultRoute' => '/products',
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [

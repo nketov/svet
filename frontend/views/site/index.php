@@ -49,7 +49,7 @@ $model = new Product();
     <?php for ($i = 0; $i < 12; $i++) { ?>
         <div class="card">
             <div class="card-contur"></div>
-            <img class="card-img" src="/images/lamps/lamp007.jpg"/>
+            <img class="card-img" src="/images/products/lamp007.jpg"/>
             <div class="card-text">
                 <span class="card-text-text">Большие люстры 9606 <br> серии "Валенсия NEW"</span><span
                         class="card-price"><?= round(25000 / ($i + 1), 2) ?> грн</span></p>

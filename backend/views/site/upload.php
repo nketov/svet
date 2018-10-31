@@ -8,7 +8,7 @@ $form = ActiveForm::begin(['id' => 'excel-upload', 'options' => ['enctype' => 'm
 
 echo '<div class="box" style="width: 662px"><div class="box-body uploader-panel">';
 
-$this->title = 'Загрузка прайсов магазинов из файлов ".xls"';
+$this->title = 'Загрузка товаров для магазинов из файла ".xls"';
 
 echo $form->field($model, 'shop')->dropDownList([
     '' => 'Выберите магазин',

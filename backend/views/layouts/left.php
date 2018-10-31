@@ -34,13 +34,13 @@
 //                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
 //                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-
+                    ['label' => 'Товары', 'icon' => 'shopping-bag', 'url' => ['/products'],],
                     ['label' => 'Содержание сайта', 'icon' => 'tv', 'url' => ['/content'],],
 //                    ['label' => 'Содержание акций', 'icon' => 'gift', 'url' => ['/actions-content'],],
 //                    ['label' => 'Курсы валют', 'icon' => 'money', 'url' => ['/currency'],],
                     ['label' => 'Загрузка данных', 'icon' => 'upload', 'url' => ['/upload'],],
 //                    ['label' => 'Загрузка изображений', 'icon' => 'upload', 'url' => ['/image-upload'],],
-//                    ['label' => 'Акции', 'icon' => 'gift', 'url' => ['/actions'],],
+//                    ['label' => 'Акции', 'icon' => 'gift', 'url' => ['/actions'],],//
 //                    ['label' => 'Заказы', 'icon' => 'shopping-basket', 'url' => ['/order'],],
 //                    ['label' => 'Клиенты', 'icon' => 'user', 'url' => ['/user'],],
 

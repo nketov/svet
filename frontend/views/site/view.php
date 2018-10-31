@@ -7,15 +7,15 @@ $model = new Product();
 <div class="content-header">"Валенсия NEW"</div>
 <div class="image_block">
     <div class="image_container">
-        <img class="image" id="image" src="/images/lamps/lamp007.jpg"/>
+        <img class="image" id="image" src="/images/products/lamp007.jpg"/>
     </div>
 
     <div class="image_icons">
-        <img class="image_icon" src="/images/lamps/lamp007.jpg"/>
-        <img class="image_icon" src="/images/lamps/lamp006.jpg"/>
-        <img class="image_icon" src="/images/lamps/lamp005.jpg"/>
-        <img class="image_icon" src="/images/lamps/lamp004.jpg"/>
-        <img class="image_icon" src="/images/lamps/lamp003.jpg"/>
+        <img class="image_icon" src="/images/products/lamp007.jpg"/>
+        <img class="image_icon" src="/images/products/lamp006.jpg"/>
+        <img class="image_icon" src="/images/products/lamp005.jpg"/>
+        <img class="image_icon" src="/images/products/lamp004.jpg"/>
+        <img class="image_icon" src="/images/products/lamp003.jpg"/>
     </div>
 
 </div>

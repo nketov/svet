@@ -11,8 +11,8 @@ html, body {
     position: relative;
 }
 
-
 .content-wrapper {
+
     background-image: url('/admin/images/background.png') !important;
     padding: 16px;
     display: grid;
@@ -20,18 +20,49 @@ html, body {
     justify-content: center;
 }
 
+.content-header h1 {
+    text-align: center;
+    font: bold 2rem "Arial Black";
+    color: #ffe077;
+}
+
 .skin-black .main-sidebar {
     background-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-.box{
+.box {
     margin: 25px auto;
-    box-shadow: 5px 5px 2px  rgba(0,0,0,0.5) !important;
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.5) !important;
 
 }
 
 .box-body {
     color: black;
+}
+
+#products-table {
+    color: #333;
+    width: calc(99vw - 265px);
+}
+
+#products-table tr th {
+    text-align: center;
+}
+
+#products-table select {
+    text-align: center;
+}
+
+#products-table select[name="active"] {
+    width: 125px;
+}
+
+
+#products-table .image_icon{
+    margin: 0 .2rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
 }
 
 #image-preview {
@@ -74,43 +105,42 @@ html, body {
     text-align: center;
 }
 
- #upload-overlay {
-       animation-duration: 3s;
-       display: none;
-       align-content: center;
-       justify-content: center;
-       text-align: center;
-       font: bold 2rem "Arial Black";
-       position: fixed;
-       width: 100%;
-       height: 100%;
-       animation-fill-mode: forwards, forwards;
-       background-color: #070409;
-       top: 0;
-       left: 0;
-       right: 0;
-       bottom: 0;
-       z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
-       cursor: none;
-   }
+#upload-overlay {
+    animation-duration: 3s;
+    display: none;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    font: bold 2rem "Arial Black";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    animation-fill-mode: forwards, forwards;
+    background-color: #070409;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: none;
+}
 
-#upload-overlay img{
+#upload-overlay img {
     margin: 0 auto;
 }
 
-
-
-.uploader-panel{
+.uploader-panel {
     width: 300px;
     margin: 25px auto;
     text-align: center;
+    top: -20px;
 }
 
-.uploader-panel .help-block{
-    top:-20px;
+.uploader-panel .help-block {
+    top: -20px;
 }
 
-.uploader-panel select{
+.uploader-panel select {
     width: 300px;
     margin: 5px auto 30px;
     text-align: center;
@@ -120,7 +150,6 @@ html, body {
     border-radius: 3px;
 
 }
-
 
 #uploadform-excelfile {
     width: 300px;
@@ -135,21 +164,63 @@ html, body {
 .upload-report span {
     color: #003311;
     font-weight: bold;
-    font-size:1.2em;
+    font-size: 1.2em;
     margin: 0 3px;
 }
 
-.upload-report>* {
-    left:25px;
+.upload-report > * {
+    left: 25px;
 }
 
-
-.main-footer{
+.main-footer {
     background-color: #222d32 !important;
     border-top: 5px solid #605ca8 !important;
 }
 
+@media screen and (max-width: 1575px) {
+    #products-table tr > *:nth-child(6) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    #products-table tr > *:nth-child(7) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1190px) {
+    #products-table tr > *:nth-child(5) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    #products-table tr > *:nth-child(4) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 985px) {
+    #products-table tr > *:nth-child(8),#products-table tr > *:nth-child(1) {
+          display: none;
+      }
+    #products-table tr > *:nth-child(8),#products-table tr > *:nth-child(2) {
+        max-width: 200px;
+        overflow: hidden;
+    }
+}
+
+
+@media screen and (max-width: 766px) {
+    #products-table{
+        width: calc(99vw - 75px);
+    }
+}
+
+
 @media screen and (max-width: 700px) {
+
     .content-wrapper {
         padding: 2px;
     }
@@ -161,11 +232,21 @@ html, body {
 }
 
 @keyframes show {
-    0%   {opacity: 0;}
-    100% {opacity: 1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes hide {
-    0%   {opacity: 1;}
-    100% {opacity: 0; visibility: hidden}
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden
+    }
 }
+
