@@ -29,17 +29,12 @@ $this->title = 'Товары';
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
             'layout' => "{items}{summary}{pager}",
-//        'pager' => [
-//            'options' => ['class' => 'pagination justify-content-end'],
-//            'hideOnSinglePage' => true,
-//            'pageCssClass' => 'paginate_button page-item',
-//            'prevPageCssClass' => 'paginate_button page-item previous',
-//            'nextPageCssClass' => 'paginate_button page-item next',
-//            'prevPageLabel' => 'Previous',
-//            'nextPageLabel' => 'Next',
-//            'linkOptions' => ['class' => 'page-link'],
-//            'disabledListItemSubTagOptions' => ['class' => 'page-link'],
-//        ],
+            'pager' => [
+                'hideOnSinglePage' => true,
+                'prevPageLabel' => 'Педыдущая',
+                'nextPageLabel' => 'Следующая',
+
+            ],
             'tableOptions' => ['class' => 'table table-striped table-hover table-responsive '],
             'columns' => [
                 ['class' => 'yii\grid\SerialColumn'],
@@ -104,7 +99,7 @@ $this->title = 'Товары';
                 ['attribute' => 'active',
                     'format' => 'raw',
                     'filter' => Product::getStatuses(),
-                    'contentOptions' => ['style' => 'width:130px;text-align:center'],
+                    'contentOptions' => ['class'=>'td-active','style' => 'width:130px;text-align:center'],
                     'value' => function ($data) {
                         return Html::dropDownList('active', $data->active, Product::getStatuses());
                     }

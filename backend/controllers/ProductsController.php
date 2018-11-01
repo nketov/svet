@@ -64,6 +64,7 @@ class ProductsController extends Controller
      */
     public function actionCreate()
     {
+        exit;
         $model = new Product();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -87,8 +88,10 @@ class ProductsController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(Yii::$app->user->returnUrl);
         }
+
+        Yii::$app->user->returnUrl=Yii::$app->request->referrer;
 
         return $this->render('update', [
             'model' => $model,

@@ -74,7 +74,6 @@ class ShopUploader extends Widget
 
     private function uploadSvet()
     {
-
         $rows = [];
         foreach ($this->sheetData as $row) {
             if (!empty($row['H']) && !empty($row['A'])) {

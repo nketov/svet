@@ -41,9 +41,10 @@ html, body {
     color: black;
 }
 
-#products-table {
-    color: #333;
+#products-table,#form-product-update {
+    color: #222;
     width: calc(99vw - 265px);
+    overflow: hidden;
 }
 
 #products-table tr th {
@@ -54,12 +55,9 @@ html, body {
     text-align: center;
 }
 
-
 #products-table tr > *:nth-child(1) {
     width: 25px;
 }
-
-
 
 #products-table tbody tr:hover {
     color: #112255;
@@ -70,11 +68,39 @@ html, body {
 
 #products-table tbody tr:active {
     color: #111;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.5) !important ;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.5) !important;
 
 }
 
-#products-table .image_icon{
+#products-table .image_icon {
+    margin: 0 .2rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+}
+
+#products-table .summary {
+    float: right;
+    font: italic .8rem "Segoe UI";
+}
+
+#form-product-update .form-grid{
+    padding: 10px 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-column-gap: 35px;
+}
+#form-product-update .form-footer{
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+}
+
+#form-product-update .field-product-description{
+    min-width:600px;
+}
+
+#products-table .image_icon {
     margin: 0 .2rem;
     width: 30px;
     height: 30px;
@@ -82,13 +108,15 @@ html, body {
 }
 
 
-#products-table .summary{
-    float:right;
-    font: italic .8rem  "Segoe UI";
-    top:70px;
+
+#images-form .image_icon {
+    margin: 10px;
+    width: 275px;
+    height: 275px;
+    border-radius: 5px;
+    border: black solid 1px;
+
 }
-
-
 
 #image-preview {
     width: 65vw;
@@ -227,22 +255,25 @@ html, body {
 }
 
 @media screen and (max-width: 985px) {
-    #products-table tr > *:nth-child(8),#products-table tr > *:nth-child(1) {
-          display: none;
-      }
-    #products-table tr > *:nth-child(8),#products-table tr > *:nth-child(2) {
+    #products-table tr > *:nth-child(8), #products-table tr > *:nth-child(1) {
+        display: none;
+    }
+
+    #products-table tr > *:nth-child(8), #products-table tr > *:nth-child(2) {
         max-width: 200px;
         overflow: hidden;
     }
-}
 
-
-@media screen and (max-width: 766px) {
-    #products-table{
-        width: calc(99vw - 75px);
+    #form-product-update .field-product-description{
+        min-width:450px;
     }
 }
 
+@media screen and (max-width: 766px) {
+    #products-table,#form-product-update {
+        width: calc(99vw - 75px);
+    }
+}
 
 @media screen and (max-width: 700px) {
 
@@ -253,6 +284,8 @@ html, body {
     .content {
         padding: 2px !important;
     }
+
+
 
 }
 

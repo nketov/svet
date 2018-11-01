@@ -1,3 +1,27 @@
+function markDeactivated(product) {
+    "use strict";
+    var row_tr = $('tr[data-key="' + product + '"]');
+    var active = row_tr.find('select[name="active"]').val();
+    var row_tds = row_tr.find('td:not(.td-active)');
+    if (active == 1) {
+        row_tds.css('opacity', 1);
+        row_tds.css('color', '#222');
+    } else {
+        row_tds.css('opacity', 0.25);
+        row_tds.css('color', '#722');
+    }
+    return active;
+}
+
+function checkDeactivated() {
+    "use strict";
+    $('#products-table tbody tr').each(function () {
+        markDeactivated($(this).data('key'));
+    });
+}
+
+
+
 $(document).ready(function () {
     "use strict";
 
@@ -30,7 +54,11 @@ $(document).ready(function () {
                 $('#upload-overlay').css({"animation-name": "hide"});
             },
             error: function (xhr) {
-                $('.uploader-panel').html(xhr.responseText).css({"width": "100%", "text-align": "left", "top": "-25px"});
+                $('.uploader-panel').html(xhr.responseText).css({
+                    "width": "100%",
+                    "text-align": "left",
+                    "top": "-25px"
+                });
                 $(".content-header h1").html('Отчёт о загрузке');
                 $('#upload-overlay').html('');
                 $('#upload-overlay').css({"animation-name": "hide"});
@@ -39,21 +67,35 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#products-table select[name="active"]').on('change',
-        function() {
-            var active =$(this).val();
+    $('body').on('change', '#products-table select[name="active"]',
+        function () {
             var product = $(this).closest('tr').data('key');
+            var active = markDeactivated(product);
             $.ajax({
                 method: "POST",
                 url: '/admin/products/active',
-                data: {active:active,product:product}
+                data: {active: active, product: product}
             })
-                .done(function( data ) {
+                .done(function (data) {
                     console.log('Status Changed');
                 });
         }
     );
 
+    $('body').on('click', '#products-table tbody tr td:not(.td-active)',
+        function () {
+            var product = $(this).closest('tr').data('key');
+            location.href = '/admin/products/update?id=' + product;
+        }
+    );
+
+   checkDeactivated();
 
     // $('#image-preview').css('background-image', 'url("/images/lamps/lamp007.jpg")')
+});
+
+
+$(document).on('ready pjax:end', function(event) {
+    "use strict"
+   checkDeactivated();
 });
