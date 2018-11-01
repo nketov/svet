@@ -87,9 +87,14 @@ html, body {
 #form-product-update .form-grid{
     padding: 10px 25px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
     grid-column-gap: 35px;
 }
+
+#form-product-update .form-control{
+font-size: 1rem;
+}
+
 #form-product-update .form-footer{
     display: grid;
     grid-auto-flow: row;
@@ -100,23 +105,18 @@ html, body {
     min-width:600px;
 }
 
-#products-table .image_icon {
-    margin: 0 .2rem;
-    width: 30px;
-    height: 30px;
-    border-radius: 2px;
-}
-
-
 
 #images-form .image_icon {
     margin: 10px;
     width: 275px;
     height: 275px;
     border-radius: 5px;
-    border: black solid 1px;
+    /*border: black solid 1px;*/
 
 }
+
+
+
 
 #image-preview {
     width: 65vw;

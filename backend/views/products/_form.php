@@ -38,6 +38,8 @@ use common\models\Product;
 
     <?= $form->field($model, 'material')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'lamps')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'height')->textInput() ?>
 
     <?= $form->field($model, 'diametr')->textInput() ?>
@@ -45,8 +47,6 @@ use common\models\Product;
     <?= $form->field($model, 'width')->textInput() ?>
 
     <?= $form->field($model, 'depth')->textInput() ?>
-
-    <?= $form->field($model, 'lamps')->textInput(['maxlength' => true]) ?>
 
 <!--    --><?//= $form->field($model, 'second_code')->textInput(['maxlength' => true]) ?>
 

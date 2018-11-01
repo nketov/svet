@@ -42,10 +42,10 @@ $this->title = 'Товары';
 //                'id',
                 [
                     'attribute' => 'name',
-                    'contentOptions' => ['style' => 'width:250px;'],
+                    'contentOptions' => ['style' => 'width:275px;max-width:300px'],
                     'value' => function ($data) {
 
-                        return StringHelper::truncate($data->name, 35);
+                        return StringHelper::truncate($data->name, 36);
                     }
                 ],
 
