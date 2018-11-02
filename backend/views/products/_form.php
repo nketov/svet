@@ -56,7 +56,7 @@ use common\models\Product;
     <?= $form->field($model, 'description')->textarea(['rows' => 10]) ?>
 
     <div class="form-group" style="text-align: center">
-        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-lg btn-success',]) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-lg btn-primary',]) ?>
     </div>
 
 </div>

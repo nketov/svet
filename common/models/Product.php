@@ -156,7 +156,7 @@ class Product extends \yii\db\ActiveRecord
         for ($i = 1; $i < 6; $i++) {
             $k = 'image_' . $i;
             if (!empty($this->$k)) {
-                $images[$i] = $this->$k;
+                $images[$k] = $this->$k;
             }
         }
         return $images;

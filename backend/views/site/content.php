@@ -1,6 +1,5 @@
 <?php
 
-
 ?>
 
 <!--<h1 style="text-align: center;">Админка</h1>-->
@@ -16,6 +15,6 @@
     </div>
 
 
-<?php
 
-return;
+
+

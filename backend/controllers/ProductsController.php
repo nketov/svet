@@ -2,12 +2,14 @@
 
 namespace backend\controllers;
 
+use app\models\ImageUploadForm;
 use Yii;
 use common\models\Product;
 use common\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * ProductsController implements the CRUD actions for Product model.
@@ -86,16 +88,62 @@ class ProductsController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $modelImageUpload = new ImageUploadForm();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(Yii::$app->user->returnUrl);
+
+        if (!empty(Yii::$app->request->post()['ImageUploadForm']['key'])) {
+
+            if(empty($modelImageUpload->image = UploadedFile::getInstance($modelImageUpload, 'image'))){
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
+
+            $modelImageUpload->load(Yii::$app->request->post());
+
+            if ($modelImageUpload->key == 'new') {
+                $images = $model->getImages();
+                for ($i = 1; $i < 6; $i++) {
+                    if (!array_key_exists('image_' . $i, $images)) {
+                        $modelImageUpload->key = 'image_' . $i;
+                        break;
+                    }
+                }
+            }
+
+            if ($modelImageUpload->upload()) {
+                $key = $modelImageUpload->key;
+                $model->$key = 'p_' . $id . '_' . $key . '.' . $modelImageUpload->image->extension;
+                $model->save();
+                return $this->render('update', [
+                    'model' => $model,
+                    'message' => 'Фото успешно загружено!',
+                ]);
+            }
+
+        } else {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(Yii::$app->user->returnUrl);
+            }
         }
 
-        Yii::$app->user->returnUrl=Yii::$app->request->referrer;
+        Yii::$app->user->returnUrl = Yii::$app->request->referrer;
 
         return $this->render('update', [
             'model' => $model,
         ]);
+    }
+
+
+    public function actionImageUpload()
+    {
+        $model = new ImageUploadForm();
+
+        foreach (Yii::$app->request->get() as $key => $val) {
+            $model[$key] = $val;
+        };
+
+        return $this->render('image-upload', compact('model'));
     }
 
     /**
@@ -116,8 +164,8 @@ class ProductsController extends Controller
     {
         if (Yii::$app->request->isAjax) {
             $data = Yii::$app->request->post();
-            $model=self::findModel($data['product']);
-            $model->active=$data['active'];
+            $model = self::findModel($data['product']);
+            $model->active = $data['active'];
             $model->save();
             return true;
         }

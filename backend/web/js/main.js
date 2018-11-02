@@ -21,7 +21,6 @@ function checkDeactivated() {
 }
 
 
-
 $(document).ready(function () {
     "use strict";
 
@@ -89,13 +88,24 @@ $(document).ready(function () {
         }
     );
 
-   checkDeactivated();
+    checkDeactivated();
+
+    $('body').on(
+        'click',
+        '#images-form .image_icon, .btn-add-image',
+        function () {
+            var product = $(this).data('product');
+            var key = $(this).data('key');
+
+            location.href = '/admin/products/image-upload?product=' + product + '&key=' + key;
+        }
+    );
 
     // $('#image-preview').css('background-image', 'url("/images/lamps/lamp007.jpg")')
 });
 
 
-$(document).on('ready pjax:end', function(event) {
+$(document).on('ready pjax:end', function (event) {
     "use strict"
-   checkDeactivated();
+    checkDeactivated();
 });
