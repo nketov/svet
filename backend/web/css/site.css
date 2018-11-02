@@ -111,7 +111,7 @@ font-size: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
     justify-content: start;
-    grid-gap: 15px;
+    grid-gap: 16px;
 }
 
 #images-form .image_icon {

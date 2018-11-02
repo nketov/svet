@@ -17,7 +17,7 @@ class AppAsset extends AssetBundle
 
     ];
     public $js = [
-        'js/jquery.uploadPreview.min.js',
+        'js/jquery.uploadPreview.js',
         'js/main.js'
 
     ];

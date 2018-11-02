@@ -31,7 +31,7 @@
                 if (file.type.match('image')) {
                   // Image
                   $(settings.preview_box).css("background-image", "url("+loadedFile.result+")");
-                  $(settings.preview_box).css("background-size", "cover");
+                  $(settings.preview_box).css("background-size", "100% 100%");
                   $(settings.preview_box).css("background-position", "center center");
                 } else if (file.type.match('audio')) {
                   // Audio
