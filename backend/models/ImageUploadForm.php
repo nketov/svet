@@ -19,7 +19,7 @@ class ImageUploadForm extends Model
         return [
             [['product'], 'integer'],
             [['key'], 'string'],
-            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg', 'checkExtensionByMimeType' => false],
+            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg, jpeg, gif', 'checkExtensionByMimeType' => false],
         ];
     }
 

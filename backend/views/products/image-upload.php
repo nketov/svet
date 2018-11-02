@@ -6,6 +6,7 @@ use yii\helpers\Html;
 
 $background = '';
 
+
 if ($image = $model->key) {
     $productModel = Product::findOne($model->product);
 

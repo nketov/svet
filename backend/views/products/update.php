@@ -1,4 +1,7 @@
-<?php $this->title = 'Редактирование товара: ' . $model->name . ' (' . $model->code . ')'; ?>
+<?php
+$this->title = 'Редактирование товара: ' . $model->name . ' (' . $model->code . ')';
+
+?>
 
 <div class="box ">
     <div class="box-body">

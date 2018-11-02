@@ -93,7 +93,7 @@ class ProductsController extends Controller
 
         if (!empty(Yii::$app->request->post()['ImageUploadForm']['key'])) {
 
-            if(empty($modelImageUpload->image = UploadedFile::getInstance($modelImageUpload, 'image'))){
+            if (empty($modelImageUpload->image = UploadedFile::getInstance($modelImageUpload, 'image'))) {
                 return $this->render('update', [
                     'model' => $model,
                 ]);
@@ -127,7 +127,9 @@ class ProductsController extends Controller
             }
         }
 
-        Yii::$app->user->returnUrl = Yii::$app->request->referrer;
+        if (!mb_strpos( Yii::$app->request->referrer ,'image-upload')) {
+            Yii::$app->user->returnUrl = Yii::$app->request->referrer;
+        }
 
         return $this->render('update', [
             'model' => $model,
@@ -135,7 +137,8 @@ class ProductsController extends Controller
     }
 
 
-    public function actionImageUpload()
+    public
+    function actionImageUpload()
     {
         $model = new ImageUploadForm();
 
@@ -153,14 +156,16 @@ class ProductsController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public
+    function actionDelete($id)
     {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
-    public function actionActive()
+    public
+    function actionActive()
     {
         if (Yii::$app->request->isAjax) {
             $data = Yii::$app->request->post();
@@ -172,7 +177,8 @@ class ProductsController extends Controller
     }
 
 
-    protected function findModel($id)
+    protected
+    function findModel($id)
     {
         if (($model = Product::findOne($id)) !== null) {
             return $model;
