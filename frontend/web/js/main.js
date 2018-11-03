@@ -1,6 +1,6 @@
 function topCatalogResize() {
     "use strict";
-    var height = $('.top-catalog div:last').offset().top - 375;
+    var height = $('.top-catalog div:last').offset().top - 388;
     $('.top-catalog').css('height', height);
 }
 
