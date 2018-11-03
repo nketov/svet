@@ -53,6 +53,7 @@ return [
                     'skin' => 'skin-purple',
                 ],
             ],
+            'appendTimestamp' => true
         ],
     ],
     'params' => $params,

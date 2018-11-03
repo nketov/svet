@@ -101,7 +101,16 @@ $(document).ready(function () {
         }
     );
 
-    // $('#image-preview').css('background-image', 'url("/images/lamps/lamp007.jpg")')
+    // $('body').on(
+    //     'keyup',
+    //     '#products-table thead input',
+    //     function () {
+    //         $(this).trigger('change');
+    //         $(this).select();
+    //     }
+    // );
+
+
 });
 
 

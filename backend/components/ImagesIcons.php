@@ -16,7 +16,7 @@ class ImagesIcons extends Widget
     {
         $render = '';
         foreach ($this->images as $key => $img) {
-            $render .= '<img data-key="' . $key . '"  data-product="' . $this->product_edit . '" class="image_icon " src="/images/products/' . $img . '"/>';
+            $render .= '<img data-key="' . $key . '"  data-product="' . $this->product_edit . '" class="image_icon " src="/images/products/' . $img . '?rnd='. time().'"/>';
         }
 
         if ($this->product_edit) {

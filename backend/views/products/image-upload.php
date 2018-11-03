@@ -5,15 +5,14 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 
 $background = '';
-
+$productModel = Product::findOne($model->product);
 
 if ($image = $model->key) {
-    $productModel = Product::findOne($model->product);
-
-    $background = 'style="background-image: url(/images/products/' . $productModel->$image . ')"';
+    $this->title = 'Смена изображения для товара: ' . $productModel->name . ' (' . $productModel->code . ')';
+    $background = 'style="background-image: url(/images/products/' . $productModel->$image . '?rnd='. time().')"';
 } else {
+    $this->title = 'Новое изображение для товара: ' . $productModel->name . ' (' . $productModel->code . ')';
     $model->key = 'new';}
-
 ?>
 
 <div class="box ">
