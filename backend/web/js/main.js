@@ -101,6 +101,17 @@ $(document).ready(function () {
         }
     );
 
+    $('body').on(
+        'click',
+        '#image-delete-modal #delete-confirm',
+        function () {
+            var product = $('#image-delete-button').data('product');
+            var key = $('#image-delete-button').data('key');
+
+            location.href = '/admin/products/update?id=' + product + '&delete_key=' + key;
+        }
+    );
+
     // $('body').on(
     //     'keyup',
     //     '#products-table thead input',

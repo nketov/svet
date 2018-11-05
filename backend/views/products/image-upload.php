@@ -9,10 +9,11 @@ $productModel = Product::findOne($model->product);
 
 if ($image = $model->key) {
     $this->title = 'Смена изображения для товара: ' . $productModel->name . ' (' . $productModel->code . ')';
-    $background = 'style="background-image: url(/images/products/' . $productModel->$image . '?rnd='. time().')"';
+    $background = 'style="background-image: url(/images/products/' . $productModel->$image . '?rnd=' . time() . ')"';
 } else {
     $this->title = 'Новое изображение для товара: ' . $productModel->name . ' (' . $productModel->code . ')';
-    $model->key = 'new';}
+    $model->key = 'new';
+}
 ?>
 
 <div class="box ">
@@ -27,9 +28,14 @@ if ($image = $model->key) {
             'style' => 'margin: 15px auto'
         ]) ?>
 
-        <?php if ($image = $model->key) echo Html::button('Удалить фото', [
+        <?php if ($model->key != 'new') echo Html::button('Удалить фото', [
+            'id' => 'image-delete-button',
             'class' => 'btn btn-lg btn-danger',
-            'style' => 'margin: 15px auto'
+            'style' => 'margin: 15px auto',
+            'data-key' => $model->key,
+            'data-product' => $model->product,
+            'data-toggle' => 'modal',
+            'data-target' => '#image-delete-modal'
         ]) ?>
 
         <div id="image-preview" <?= $background ?> >
@@ -42,3 +48,7 @@ if ($image = $model->key) {
 
     </div>
 </div>
+
+
+
+

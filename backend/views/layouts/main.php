@@ -1,15 +1,16 @@
 <?php
+
 use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
 
-if (Yii::$app->controller->action->id === 'login') { 
-/**
- * Do not use this code in your template. Remove it. 
- * Instead, use the code  $this->layout = '//main-login'; in your controller.
- */
+if (Yii::$app->controller->action->id === 'login') {
+    /**
+     * Do not use this code in your template. Remove it.
+     * Instead, use the code  $this->layout = '//main-login'; in your controller.
+     */
     echo $this->render(
         'main-login',
         ['content' => $content]
@@ -41,7 +42,9 @@ if (Yii::$app->controller->action->id === 'login') {
     </head>
     <body class=" <?= \dmstr\helpers\AdminLteHelper::skinClass() ?> hold-transition sidebar-mini">
     <?php $this->beginBody() ?>
-    <div id="upload-overlay"><div>Подождите, пожалуйста, идёт загрузка и обработка файла, это может занять около минуты...</div><img src="/admin/images/uploader2.gif" alt=""></div>
+    <div id="upload-overlay">
+        <div>Подождите, пожалуйста, идёт загрузка и обработка файла, это может занять около минуты...</div>
+        <img src="/admin/images/uploader2.gif" alt=""></div>
     <div class="wrapper">
 
 
@@ -62,6 +65,10 @@ if (Yii::$app->controller->action->id === 'login') {
         ) ?>
 
     </div>
+
+    <?php if (Yii::$app->controller->action->id == 'image-upload') {
+        echo $this->render('_image_delete_modal.php');
+    }?>
 
     <?php $this->endBody() ?>
     </body>

@@ -79,7 +79,8 @@ class ShopUploader extends Widget
             if (!empty($row['H']) && !empty($row['A'])) {
                 $rows[(string)trim($row['H'])] = [
                     'name' => (string)trim($row['A']),
-                    'second_code' => (string)trim($row['E'])
+                    'second_code' => (string)trim($row['E']),
+                    'price' => (float)trim($row['I'])
                 ];
             }
         }
@@ -98,6 +99,7 @@ class ShopUploader extends Widget
                 $product->name = (string)$rows[$product->code]['name'];
                 $product->shop = Product::SVET_SHOP;
                 $product->second_code = (string)$rows[$product->code]['second_code'];
+                $product->price = (float)$rows[$product->code]['price'];
             } else {
                 if ($product->active) {
                     $product->active = 0;
@@ -120,6 +122,7 @@ class ShopUploader extends Widget
             $newProduct->name = (string)$row['name'];
             $newProduct->shop = Product::SVET_SHOP;
             $newProduct->second_code = (string)$row['second_code'];
+            $newProduct->price = (float)$row['price'];
 
             if ($newProduct->save()) {
                 $this->new_count++;
@@ -354,7 +357,7 @@ class ShopUploader extends Widget
     {
         switch ($this->shop) {
             case Product::SVET_SHOP:
-                return new XlsFilter(9, ['A', 'E', 'H']);
+                return new XlsFilter(9, ['A', 'E', 'H','I']);
                 break;
 
             case Product::EGLO_SHOP:

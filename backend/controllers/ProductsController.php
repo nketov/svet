@@ -131,6 +131,13 @@ class ProductsController extends Controller
             Yii::$app->user->returnUrl = Yii::$app->request->referrer;
         }
 
+
+        if (!empty($delete_key=Yii::$app->request->get()['delete_key'])){
+            $model->$delete_key = '';
+            $model->save();
+        }
+
+
         return $this->render('update', [
             'model' => $model,
         ]);
