@@ -298,12 +298,14 @@ display: block;
     float: right;
     font: italic .9rem "Segoe UI";
     margin: 10px;
+    padding-right: 15px;
 }
 
 .pagination {
     display: table;
     max-width: 100%;
     margin: 10px;
+    font: bold 16px "Segoe UI";
 }
 
 .pager li, .pagination > li {
@@ -386,7 +388,12 @@ display: block;
     cursor: pointer;
 }
 
-.card-img.empty:hover {
+
+.image.empty{
+    transition: 3s;
+}
+
+.card-img.empty:hover, .image.empty:hover {
     transform: rotateY(360deg);
 }
 

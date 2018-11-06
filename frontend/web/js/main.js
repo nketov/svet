@@ -26,18 +26,18 @@ $(document).ready(function () {
     });
 
 
-    $('body').on('change','#left-filter-form input:not(#prices)', function () {
+    $('body').on('change', '#left-filter-form input:not(#prices)', function () {
         $(this).closest('form').submit();
     });
 
-    $('.card-img,.card-text').on('click', function () {
-        location.href = '/view';
-        }
-    );
+    $('body').on('click', '.card-img,.card-text', function () {
+        var product = $(this).closest('.card').data('key');
+        location.href = '/product/' + product;
+    });
 
     $('.image_icon').on('click', function () {
-            $('.image_icon').css('border','none');
-            $(this).css('border','#C3A solid 3px');
+            $('.image_icon').css('border', 'none');
+            $(this).css('border', '#C3A solid 3px');
             $('#image').attr('src', $(this).attr('src'));
         }
     );

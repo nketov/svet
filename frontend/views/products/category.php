@@ -39,7 +39,7 @@ if(isset($searchModel->category)){
             'pluginOptions' => [
                 'min' => 1,
                 'max' => Product::maxPrice(),
-                'step' => 10,
+                'step' => 1,
                 'range' => true
             ],
             'pluginEvents' => [

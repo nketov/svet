@@ -1,6 +1,6 @@
 <?php
 
-use backend\components\ImagesIcons;
+use common\components\ImagesIcons;
 
 ?>
 <div id="images-form">

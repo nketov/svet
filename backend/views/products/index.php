@@ -1,6 +1,6 @@
 <?php
 
-use backend\components\ImagesIcons;
+use common\components\ImagesIcons;
 use common\models\Product;
 use yii\helpers\Html;
 use yii\grid\GridView;
