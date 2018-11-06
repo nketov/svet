@@ -7,11 +7,13 @@ use yii\helpers\Html;
 $background = '';
 $productModel = Product::findOne($model->product);
 
+$productName = $productModel->name . ' (' . $productModel->code . ')';
+
 if ($image = $model->key) {
-    $this->title = 'Смена изображения для товара: ' . $productModel->name . ' (' . $productModel->code . ')';
+    $this->title = 'Смена изображения для товара: ' . $productName;
     $background = 'style="background-image: url(/images/products/' . $productModel->$image . '?rnd=' . time() . ')"';
 } else {
-    $this->title = 'Новое изображение для товара: ' . $productModel->name . ' (' . $productModel->code . ')';
+    $this->title = 'Новое изображение для товара: ' . $productName;
     $model->key = 'new';
 }
 ?>

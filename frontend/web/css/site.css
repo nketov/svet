@@ -247,7 +247,6 @@ html, body {
     text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #ffe0c2, 0 0 5px #ffe0c2;
 }
 
-
 .main-content {
     grid-area: content;
     display: grid;
@@ -263,25 +262,60 @@ html, body {
     padding-top: 15px;
     font-size: calc(1rem + 2vw);
     font-weight: bold;
-    text-shadow: 5px 2px 2px rgba(0, 0, 0, .1);
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3) !important;
 }
 
-
-
-.left{
+.left {
     margin-left: 15px;
 }
 
 .left form {
     background: rgba(255, 225, 150, .15);
     border-radius: 10px;
-    padding: 2rem ;
+    padding: 2rem;
     margin: 35px auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     text-align: left;
+}
+
+#prices-slider, .slider-text{
+display: block;
+    margin: 10px auto;
+    text-align: center;
+ }
+
+
+#category-list-wrapper>.empty {
+    font: italic 3rem "Segoe UI";
+    text-align: center;
+    margin: 50px auto;
+    color: #F84;
+    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3) !important;
 
 }
 
+#category-list-wrapper .summary {
+    float: right;
+    font: italic .9rem "Segoe UI";
+    margin: 10px;
+}
+
+.pagination {
+    display: table;
+    max-width: 100%;
+    margin: 10px;
+}
+
+.pager li, .pagination > li {
+    display: inline;
+    display: table-cell;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+    width: 100%;
+    text-align: center;
+}
 
 .cards-block {
     margin: .5rem;
@@ -304,19 +338,19 @@ html, body {
     font-weight: bold;
 }
 
-.card .info_hover{
+.card .info_hover {
     opacity: 0;
     background: white;
-    padding-top: 1.2rem;
+    padding-top: 1rem;
     margin: 0 1em;
 }
 
-.card:hover .info_hover{
+.card:hover .info_hover {
     opacity: 1;
     z-index: 5;
 }
 
-.card:hover .card-img{
+.card:hover .card-img {
     opacity: .9;
 }
 
@@ -324,17 +358,16 @@ html, body {
     z-index: 5;
 }
 
-.card-contur{
-    position:absolute;
+.card-contur {
+    position: absolute;
     background: white;
     width: 305px;
-    top:-5px;
+    top: -5px;
     height: 430px;
     opacity: 0;
 }
 
-
-.card:hover .card-contur{
+.card:hover .card-contur {
     opacity: 1;
     z-index: 3;
     border-radius: 5px;
@@ -347,38 +380,49 @@ html, body {
     margin: 0 auto;
     height: 275px;
     overflow: hidden;
-
     background-repeat: round;
     border-radius: 5px;
+    transition: 3s;
+    cursor: pointer;
 }
-.card-text{
+
+.card-img.empty:hover {
+    transform: rotateY(360deg);
+}
+
+.card-text {
     z-index: 5;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    width: 270px;
+    max-height: 50px;
     margin: 10px auto;
     text-align: left;
     font-size: .9rem;
- }
-
-.card-text-text{
-    /*justify-self: start;*/
+    cursor: pointer;
+    /*overflow: hidden;*/
 }
-.card-price{
+
+.card-text-text {
+    padding-right: 7px;
+    align-self: flex-start;
+    max-width: 200px;
+
+}
+
+.card-price {
     color: #A12;
-    align-self:flex-end;
-    left: 20px;
+    align-self: flex-end;
+    text-align: right;
 }
-
 
 /*   VIEW   */
-.image_block{
+.image_block {
     display: flex;
     margin: 2.5rem 1rem 2rem 3.6rem;
 }
 
-
-
-.image_container{
+.image_container {
     align-self: start;
     width: 500px;
     border: 1px solid white;
@@ -388,25 +432,26 @@ html, body {
     align-items: flex-start;
     overflow: hidden;
 }
-.image{
+
+.image {
     width: 100%;
     transition: transform .7s ease-out;
 }
 
-.image_icons{
+.image_icons {
     display: flex;
     flex-direction: column;
     margin-left: .5rem;
 }
 
-.image_icon{
+.image_icon {
     margin: .5rem;
     width: 64px;
     height: 64px;
     border-radius: 2px;
 }
 
-.image_icon:first-child{
+.image_icon:first-child {
     border: rgb(204, 51, 170) solid 3px;
 }
 
@@ -420,17 +465,18 @@ html, body {
     text-align: center;
 }
 
-.view_buttons{
+.view_buttons {
     text-align: center;
     padding: 0;
     padding-top: 2rem;
 }
 
-.view_description,.view_spec{
+.view_description, .view_spec {
     text-align: justify;
     padding: 10px;
     font-family: Tahoma;
 }
+
 .view_description {
     text-indent: 1rem;
 }
@@ -442,35 +488,33 @@ html, body {
     /*color: #163;*/
 }
 
-.view_spec{
+.view_spec {
     padding-top: 2rem;
 }
 
-.view_spec .string{
+.view_spec .string {
     display: flex;
     justify-content: space-between;
     margin: .7rem auto;
     font-family: "Segoe UI";
 }
 
-.spec_name{
+.spec_name {
     justify-self: flex-start;
     font-weight: bolder;
     color: #999;
 }
 
-.spec_value{
+.spec_value {
     justify-self: flex-end;
     font-weight: bold;
     text-align: right;
 }
 
-
-.view_price{
+.view_price {
     font-size: 2.2rem;
     color: #A12;
 }
-
 
 #footer {
     background-color: #070712;
@@ -548,19 +592,21 @@ html, body {
     text-align: center;
     line-height: 31px;
     text-decoration: none;
-    transition: color 0.3s,transform 0.3s;
+    transition: color 0.3s, transform 0.3s;
 }
 
 #footer .fa:hover,
-#footer .fa:focus{
+#footer .fa:focus {
     transform: scale(1.1);
 }
 
-#footer .fa-facebook:hover {    color: #2b55ff;
+#footer .fa-facebook:hover {
+    color: #2b55ff;
 
 }
 
-#footer .fa-facebook:focus {    color: #2b55ff;
+#footer .fa-facebook:focus {
+    color: #2b55ff;
 
 }
 
@@ -580,7 +626,7 @@ html, body {
     color: #00aced;
 }
 
-.footer-contacts img{
+.footer-contacts img {
     position: absolute;
     left: -25px;
     top: -3px;
@@ -588,16 +634,13 @@ html, body {
 
 }
 
-
-
-#footer{
+#footer {
     flex: 0 0 auto;
 }
 
-#product-material br{
+#product-material br {
     height: 1px;
 }
-
 
 @media screen and (max-width: 1780px) {
     .header-img {
@@ -615,48 +658,57 @@ html, body {
         width: 0;
     }
 
-    .image_container{
+    .image_container {
         margin-left: 5px;
         margin-right: 2px;
         width: calc(100vw - 350px);
     }
 
-    .image_block{
+    .image_block {
         flex-direction: column;
         margin: 2.5rem 1rem 2rem .2rem;
     }
 
-    .image_icons{
+    .image_icons {
         flex-direction: row;
         margin-left: 0;
     }
 
 }
 
-
 @media screen and (max-width: 767px) {
     #footer {
         text-align: center;
     }
+
     #footer .row {
         margin: 0;
     }
 
-    .footer-contacts img{
+    .footer-contacts img {
         position: relative;
         left: 10px;
     }
 
-    .image_icon{
+    .image_icon {
         margin: .1rem;
         width: 60px;
         height: 60px;
         border-radius: 2px;
     }
 
-    .image_container{
+    .image_container {
 
         width: calc(150px + 25vw);
+    }
+
+    .pagination {
+        font-size: 12px;
+    }
+
+    .pagination > li > a,
+    .pagination > li > span {
+        padding: 5px 10px;
     }
 
 }
@@ -672,32 +724,42 @@ html, body {
         padding-top: 25px;
     }
 
-    .left{
+    .left {
         margin-left: 2px;
     }
 
-    .image_container{
+    .image_container {
         margin-left: 0px;
         margin-right: 0px;
         width: calc(99vw);
     }
 
-    .image_block{
+    .image_block {
         margin-left: 0px;
         margin-right: 0px;
     }
 
     .header-phone img {
-       transform: scale(.8);
+        transform: scale(.8);
     }
 
-    .view_info{
+    .view_info {
         margin: 0;
         padding: 0;
         margin-bottom: 4.5rem;
     }
 
-
+    .pagination > li > a,
+    .pagination > li > span {
+        padding: 4px 8px;
+    }
 }
+
+@media screen and (max-width: 395px) {
+    .pagination {
+        font-size: 10px;
+    }
+}
+
 
 

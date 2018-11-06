@@ -162,6 +162,11 @@ class Product extends \yii\db\ActiveRecord
         return $images;
     }
 
+    public function getFirstImage()    {
+
+        return array_shift($this->getImages());
+    }
+
 
     public function beforeSave($insert)
     {
@@ -170,6 +175,19 @@ class Product extends \yii\db\ActiveRecord
             return true;
         }
         return false;
+    }
+
+
+    public static function maxPrice()
+    {
+        $model = self::find()->orderBy('price DESC')->one();
+        return ceil($model->price);
+    }
+
+    public static function minPrice()
+    {
+        $model = self::find()->orderBy('price ASC')->one();
+        return $model->price;
     }
 
 

@@ -1,6 +1,15 @@
+<?php
+
+use yii\helpers\Html;
+use common\models\Product;
+use yii\helpers\Url;
+
+?>
+
 <nav class="top-catalog">
     <div>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px"
              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <circle style="fill:#FF2746;" cx="256" cy="256" r="256"/>
             <path style="fill:#940030;" d="M344.781,110.33L262.896,0l-6.041,132.727L174.114,13.378l-13.791,128.845l-53.441,170.667
@@ -11,24 +20,32 @@
                 <rect x="249.104" style="fill:#FFEDB5;" width="6.322" height="170.667"/>
             </g>
             <rect x="255.431" style="fill:#FEE187;" width="7.47" height="170.667"/>
-            <path style="fill:#FFFFFF;" d="M337.886,13.379v105.57h13.791V18.496C347.141,16.667,342.547,14.951,337.886,13.379z"/>
+            <path style="fill:#FFFFFF;"
+                  d="M337.886,13.379v105.57h13.791V18.496C347.141,16.667,342.547,14.951,337.886,13.379z"/>
             <path style="fill:#FDE085;" d="M405.118,312.889H284.444l8.701-139.216c2.084-33.342,21.756-63.055,51.636-77.996l0,0l0,0
 	c29.88,14.941,49.552,44.654,51.636,77.996L405.118,312.889z"/>
-            <path style="fill:#FFFFFF;" d="M160.323,18.496v100.454h13.791V13.379C169.453,14.951,164.859,16.667,160.323,18.496z"/>
+            <path style="fill:#FFFFFF;"
+                  d="M160.323,18.496v100.454h13.791V13.379C169.453,14.951,164.859,16.667,160.323,18.496z"/>
             <path style="fill:#FFEDB5;" d="M227.556,312.889H106.882l8.701-139.216c2.084-33.342,21.756-63.055,51.636-77.996l0,0l0,0
 	c29.88,14.941,49.552,44.654,51.636,77.996L227.556,312.889z"/>
             <path style="fill:#F9D56E;" d="M316.337,364.606H195.663l8.701-139.216c2.084-33.342,21.756-63.055,51.636-77.996l0,0l0,0
 	c29.88,14.941,49.552,44.654,51.636,77.996L316.337,364.606z"/>
             <path style="fill:#FFC61B;" d="M307.636,225.39c-2.084-33.342-21.756-63.055-51.636-77.996c-0.193,0.097-0.381,0.202-0.574,0.298
 	v216.914h60.911L307.636,225.39z"/>
-            <path style="fill:#F9D56E;" d="M204.364,225.39l-8.701,139.216h59.763V147.692C225.87,162.726,206.434,192.264,204.364,225.39z"/>
+            <path style="fill:#F9D56E;"
+                  d="M204.364,225.39l-8.701,139.216h59.763V147.692C225.87,162.726,206.434,192.264,204.364,225.39z"/>
 </svg>
 
-        <span><a href="/">Люстры</a></span>
+        <span><?= Html::a(Product::categoryName(
+                Product::CATEGORY_LUSTER),
+                Url::toRoute(['/category/'.Product::CATEGORY_LUSTER]),
+                ['title' => Product::categoryName(Product::CATEGORY_LUSTER)])
+            ?></span>
     </div>
 
     <div>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px"
              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <circle style="fill:#366796;" cx="256" cy="256" r="256"/>
             <path style="fill:#273B7A;" d="M511.071,277.764L352.682,119.375L170.515,256l103.012,87.057l-26.872-3.448L113.778,227.556
@@ -42,7 +59,11 @@
             <polygon style="fill:#D48B07;" points="352.68,119.375 281.285,119.375 281.285,256 398.222,256 "/>
             <rect x="85.333" y="227.556" style="fill:#FF5419;" width="28.444" height="142.222"/>
 </svg>
-        <span><a href="/">Бра и настенные светильники</a></span>
+        <span><?= Html::a(Product::categoryName(
+                Product::CATEGORY_WALL_LAMP),
+                Url::toRoute(['/category/'. Product::CATEGORY_WALL_LAMP]),
+                ['title' => Product::categoryName(Product::CATEGORY_WALL_LAMP)])
+            ?></span>
     </div>
 
     <div>
@@ -62,12 +83,17 @@
             <rect x="159.461" y="103.762" style="fill:#FFC61B;" width="193.077" height="176.218"/>
             <rect x="256" y="103.762" style="fill:#EAA22F;" width="96.539" height="176.218"/>
 </svg>
-        <a href="/">Настольные лампы</a>
+        <span><?= Html::a(Product::categoryName(
+                Product::CATEGORY_TABLE_LAMP),
+                Url::toRoute(['/category/'. Product::CATEGORY_TABLE_LAMP]),
+                ['title' => Product::categoryName(Product::CATEGORY_TABLE_LAMP)])
+            ?></span>
     </div>
 
 
     <div>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px"
              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <circle style="fill:#334D5C;" cx="256" cy="256" r="256"/>
             <path style="opacity:0.1;enable-background:new    ;" d="M262.837,0.171C260.56,0.112,258.293,0,256,0
@@ -83,20 +109,29 @@
 		C189.808,321.109,219.44,350.747,256,350.747z"/>
                 <rect x="253.12" y="360.8" style="fill:#FCD462;" width="5.787" height="13.547"/>
 
-                <rect x="294.66" y="349.654" transform="matrix(0.866 -0.5001 0.5001 0.866 -138.3728 196.5939)" style="fill:#FCD462;" width="5.786" height="13.546"/>
+                <rect x="294.66" y="349.654" transform="matrix(0.866 -0.5001 0.5001 0.866 -138.3728 196.5939)"
+                      style="fill:#FCD462;" width="5.786" height="13.546"/>
 
-                <rect x="177.291" y="323.185" transform="matrix(0.8661 -0.4999 0.4999 0.8661 -138.3556 135.6785)" style="fill:#FCD462;" width="13.547" height="5.787"/>
+                <rect x="177.291" y="323.185" transform="matrix(0.8661 -0.4999 0.4999 0.8661 -138.3556 135.6785)"
+                      style="fill:#FCD462;" width="13.547" height="5.787"/>
 
-                <rect x="207.693" y="353.595" transform="matrix(0.4999 -0.8661 0.8661 0.4999 -201.4937 364.0286)" style="fill:#FCD462;" width="13.547" height="5.787"/>
+                <rect x="207.693" y="353.595" transform="matrix(0.4999 -0.8661 0.8661 0.4999 -201.4937 364.0286)"
+                      style="fill:#FCD462;" width="13.547" height="5.787"/>
 
-                <rect x="325.017" y="319.318" transform="matrix(0.4999 -0.8661 0.8661 0.4999 -118.4329 447.08)" style="fill:#FCD462;" width="5.787" height="13.547"/>
+                <rect x="325.017" y="319.318" transform="matrix(0.4999 -0.8661 0.8661 0.4999 -118.4329 447.08)"
+                      style="fill:#FCD462;" width="5.787" height="13.547"/>
             </g>
 </svg>
-        <span><a href="/">Подвесы</a></span>
+        <span><?= Html::a(Product::categoryName(
+                Product::CATEGORY_MOUNT_LAMP),
+                Url::toRoute(['/category/'. Product::CATEGORY_MOUNT_LAMP]),
+                ['title' => Product::categoryName(Product::CATEGORY_MOUNT_LAMP)])
+            ?></span>
     </div>
 
     <div>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px"
              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <circle style="fill:#273B7A;" cx="256" cy="256" r="256"/>
             <path style="fill:#121149;" d="M305.648,78.352l-44.239,78.417l-88.157,20.88L256,260.396v197.301l-54.303,10.343l43.725,43.725
@@ -108,11 +143,16 @@
             <rect x="201.697" y="447.354" style="fill:#FF7F4F;" width="108.606" height="20.687"/>
             <rect x="253.707" y="447.354" style="fill:#E03A00;" width="56.601" height="20.687"/>
 </svg>
-        <span><a href="/">Торшеры</a></span>
+        <span><?= Html::a(Product::categoryName(
+                Product::CATEGORY_FLOOR_LAMP),
+                Url::toRoute(['/category/'. Product::CATEGORY_FLOOR_LAMP]),
+                ['title' => Product::categoryName(Product::CATEGORY_FLOOR_LAMP)])
+            ?></span>
     </div>
 
     <div>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px"
              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <path style="fill:#47CEAC;" d="M512,256.006C512,397.402,397.394,512.004,256.004,512C114.606,512.004,0,397.402,0,256.006
 	C-0.007,114.61,114.606,0,256.004,0C397.394,0,512,114.614,512,256.006z"/>
@@ -144,12 +184,17 @@
 		 M256,342.436c-18.064,0-42.857-20.017-48.303-41.159h96.606C298.857,322.419,274.064,342.436,256,342.436z"/>
             </g>
 </svg>
-        <span><a href="/">Точечные светильники</a></span>
+        <span><?= Html::a(Product::categoryName(
+                Product::CATEGORY_SPOOT_LIGHT),
+                Url::toRoute(['/category/'. Product::CATEGORY_SPOOT_LIGHT]),
+                ['title' => Product::categoryName(Product::CATEGORY_SPOOT_LIGHT)])
+            ?></span>
     </div>
 
 
     <div>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px"
              viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
 <circle style="fill:#273B7A;" cx="256" cy="256" r="256"/>
             <path style="fill:#121149;" d="M270.941,137.625L155.077,253.992l38.862,122.106l-13.321,31.03l103.345,103.345
@@ -179,7 +224,11 @@
             <path style="fill:#38C6D9;" d="M191.867,388.043c-7.102,0-12.86,5.758-12.86,12.859l0,0c0,7.102,5.758,12.859,12.86,12.859h50.916
 	v-25.719h-50.916V388.043z"/>
 </svg>
-        <span><a href="/">Другое</a></span>
+        <span><?= Html::a(Product::categoryName(
+                Product::CATEGORY_OTHER),
+                Url::toRoute(['/category/'. Product::CATEGORY_OTHER]),
+                ['title' => Product::categoryName(Product::CATEGORY_OTHER)])
+            ?></span>
     </div>
 
 </nav>

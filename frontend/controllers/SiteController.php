@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Product;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\web\BadRequestHttpException;
@@ -73,9 +74,16 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
+        $products = Product::find()->shop(Product::MAYTONI_SHOP)->active()->orderBy('price')->all();
 
-        return $this->render('index');
+        return $this->render('index',compact('products'));
     }
+
+
+
+
+
+
 
     public function actionView()
     {

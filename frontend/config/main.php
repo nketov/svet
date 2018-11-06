@@ -7,7 +7,7 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-frontend',
+    'id' => 'Svitlograd',
     'basePath' => dirname(__DIR__),
     'language' => 'ru-RU',
     'bootstrap' => ['log'],
@@ -43,11 +43,9 @@ return [
             'showScriptName' => false,
 
             'rules' => [
-                [
-                    'pattern' => '',
-                    'route' => '/',
-                    'suffix' => ''
-                ],
+                '' => 'products/category',
+                'product/<id:\d+>' => 'products/view',
+                'category/<category:\d+>' => 'products/category',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '<action:(about|contact|login|signup|view)>' => 'site/<action>'
             ],

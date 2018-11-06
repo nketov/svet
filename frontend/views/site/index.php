@@ -1,8 +1,10 @@
 <?php use kartik\slider\Slider;
 use common\models\Product;
 use yii\bootstrap\ActiveForm;
+use frontend\components\Card;
 
 $model = new Product();
+
 ?>
 <div class="content-header">Большие люстры</div>
 
@@ -46,19 +48,7 @@ $model = new Product();
 </aside>
 
 <div class="cards-block">
-    <?php for ($i = 0; $i < 12; $i++) { ?>
-        <div class="card">
-            <div class="card-contur"></div>
-            <img class="card-img" src="/images/products/lamp007.jpg"/>
-            <div class="card-text">
-                <span class="card-text-text">Большие люстры 9606 <br> серии "Валенсия NEW"</span><span
-                        class="card-price"><?= round(25000 / ($i + 1), 2) ?> грн</span></p>
-            </div>
-            <div class="info_hover">
-                <button class="btn btn-primary">ДОБАВИТЬ В КОРЗИНУ</button>
-                <p style="font-size: .7rem; font-weight: lighter">Артикул: 9606-cl112-aba26n-ct2807</p>
-            </div>
-        </div>
-    <?php } ?>
-
+    <?php foreach ($products as $product) {
+        echo Card::widget(['product' => $product]);
+    } ?>
 </div>

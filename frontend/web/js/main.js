@@ -19,14 +19,18 @@ $(document).ready(function () {
     });
 
 
-    $('input#price').on('change', function () {
+    $('body').on('change', 'input#prices', function () {
         var prices = ($(this).val()).split(',');
         $('.bage-min').text(prices[0] + ' грн');
         $('.bage-max').text(prices[1] + ' грн');
     });
 
 
-    $('.card-img').on('click', function () {
+    $('body').on('change','#left-filter-form input:not(#prices)', function () {
+        $(this).closest('form').submit();
+    });
+
+    $('.card-img,.card-text').on('click', function () {
         location.href = '/view';
         }
     );
