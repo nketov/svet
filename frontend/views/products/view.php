@@ -8,7 +8,7 @@ $this->title = $model->name;
 <div class="content-header"><?= $model->name ?></div>
 <div class="image_block">
     <div class="image_container">
-        <?php if($model->images_count > 1){ ?>
+        <?php if($model->images_count > 0){ ?>
         <img class="image" id="image" src="/images/products/<?= $model->getFirstImage() ?>"/>
         <?php } else { ?>
             <img class="image empty" src="/images/main/logo.png"/>

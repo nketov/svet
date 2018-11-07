@@ -6,8 +6,8 @@
 <!--<base href="http://svitlograd.in.ua/"/>-->
 
 
-<link rel="icon" type="image/png" href="images/main/logo_32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="images/main/logo_16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="/images/main/logo_32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/main/logo_16.png" sizes="16x16">
 
 <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">-->
 <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">

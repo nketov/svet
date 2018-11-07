@@ -81,6 +81,7 @@ html, body {
     margin: auto;
     color: #ACF;
     transition: 1.5s;
+    cursor: pointer;
 
 }
 

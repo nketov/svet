@@ -37,8 +37,8 @@ if(isset($searchModel->category)){
             'value' => $searchModel->prices[0].','.$searchModel->prices[1],
             'sliderColor' => Slider::TYPE_PRIMARY,
             'pluginOptions' => [
-                'min' => 1,
-                'max' => Product::maxPrice(),
+                'min' => $searchModel->minPrice,
+                'max' => $searchModel->maxPrice,
                 'step' => 1,
                 'range' => true
             ],
@@ -71,6 +71,14 @@ if(isset($searchModel->category)){
             'class' => 'list-wrapper',
             'id' => 'category-list-wrapper',
         ],
+        'pager' => [
+            'firstPageLabel' => 'Первая',
+            'lastPageLabel' => 'Последняя',
+            'prevPageLabel' => '<span class="glyphicon glyphicon-chevron-left"></span>',
+            'nextPageLabel' => '<span class="glyphicon glyphicon-chevron-right"></span>',
+            'maxButtonCount' => 6,
+        ],
+
         'layout' => '<div class="cards-block">{items}</div>{summary}{pager}',
         'itemOptions' => ['class' => 'card'],
         'itemView' => '_card'

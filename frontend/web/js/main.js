@@ -35,6 +35,10 @@ $(document).ready(function () {
         location.href = '/product/' + product;
     });
 
+    $('body').on('click', '.header-panel .logo', function () {
+        location.href = '/';
+    });
+
     $('.image_icon').on('click', function () {
             $('.image_icon').css('border', 'none');
             $(this).css('border', '#C3A solid 3px');

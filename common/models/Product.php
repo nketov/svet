@@ -178,16 +178,16 @@ class Product extends \yii\db\ActiveRecord
     }
 
 
-    public static function maxPrice()
+    public static function maxPrice($query)
     {
-        $model = self::find()->orderBy('price DESC')->one();
+        $model = $query->orderBy('price DESC')->one();
         return ceil($model->price);
     }
 
-    public static function minPrice()
+    public static function minPrice($query)
     {
-        $model = self::find()->orderBy('price ASC')->one();
-        return $model->price;
+        $model = $query->andFilterWhere(['>','price',0])->orderBy('price ASC')->one();
+        return floor($model->price);
     }
 
 
