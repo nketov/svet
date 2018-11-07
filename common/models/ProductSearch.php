@@ -131,6 +131,8 @@ class ProductSearch extends Product
         $this->maxPrice = self::maxPrice(clone ($query));
         $this->minPrice = self::minPrice(clone ($query));
 
+        if($this->maxPrice < $this->minPrice) $this->maxPrice = $this->minPrice;
+
 
         if (isset($params['ProductSearch']['prices'])) {
             $prices = explode(',', $this->prices);

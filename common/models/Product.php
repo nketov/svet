@@ -187,6 +187,7 @@ class Product extends \yii\db\ActiveRecord
     public static function minPrice($query)
     {
         $model = $query->andFilterWhere(['>','price',0])->orderBy('price ASC')->one();
+        if(empty($model)) return 1;
         return floor($model->price);
     }
 
