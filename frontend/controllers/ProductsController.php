@@ -30,25 +30,15 @@ class ProductsController extends Controller
     }
 
 
-
-
     public function actionCategory()
     {
         $searchModel = new ProductSearch();
-        $searchModel->setAttribute('active',1);
+        $searchModel->setAttribute('active', 1);
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        if(Yii::$app->request->getHeaders()->has('X-PJAX'))
-        {
-            return $this->renderAjax('category',compact('products','searchModel', 'dataProvider'));
-        }
-        else
-        {
-            return $this->render('category',compact('products','searchModel', 'dataProvider'));
-        }
+        return $this->render('category', compact('products', 'searchModel', 'dataProvider'));
 
     }
-
 
 
     /**
