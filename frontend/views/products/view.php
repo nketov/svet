@@ -89,15 +89,12 @@ $this->title = $model->name;
                 <div class="spec_value"><?= $model->depth ?>&nbsp;мм</div>
             </div>
         <?php } ?>
-
-
     </div>
 
 
     <div class="view_buttons">
-        <div class="view_price"><?= $model->price >0 ?  number_format($model->price, 2, ',', '&nbsp;') .' грн' : 'Цена не указана' ?></div>
+        <div class="view_price"><?= $model->price > 0 ?  number_format($model->price, 2, ',', '&nbsp;') .' грн' : 'Цена не указана' ?></div>
         <p style="color: #00a65a">Есть в наличии</p>
         <button class="btn btn-primary btn-lg">ДОБАВИТЬ В КОРЗИНУ</button>
     </div>
-
 </div>

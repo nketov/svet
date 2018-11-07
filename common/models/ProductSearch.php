@@ -15,8 +15,8 @@ class ProductSearch extends Product
 
     public $prices = [];
     public $withoutPricesShow = 1;
-    public $withoutImageShow = 1;
-    public $maxPrice = 500000;
+    public $withoutImageShow = 0;
+    public $maxPrice = 1000000;
     public $minPrice = 1;
 
 
@@ -127,10 +127,14 @@ class ProductSearch extends Product
             ->andFilterWhere(['like', 'lamps', $this->lamps])
             ->andFilterWhere(['like', 'second_code', $this->second_code]);
 
+
+        if (!$this->withoutImageShow) {
+            $query->andFilterWhere(
+                ['>', 'images_count', 0]);
+        }
+
         $this->maxPrice = self::maxPrice(clone ($query));
         $this->minPrice = self::minPrice(clone ($query));
-
-
 
 
         if (isset($params['ProductSearch']['prices'])) {
@@ -157,10 +161,7 @@ class ProductSearch extends Product
                 ['<=', 'price', $this->prices[1]]]);
         }
 
-        if (!$this->withoutImageShow) {
-            $query->andFilterWhere(
-                ['>', 'images_count', 0]);
-        }
+
 
 
         return $dataProvider;

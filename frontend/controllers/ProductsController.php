@@ -39,7 +39,6 @@ class ProductsController extends Controller
 
         $searchModel->setAttribute('active',1);
 
-
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('category',compact('products','searchModel', 'dataProvider'));
