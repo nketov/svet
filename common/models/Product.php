@@ -180,7 +180,9 @@ class Product extends \yii\db\ActiveRecord
 
     public static function maxPrice($query)
     {
-        $model = $query->orderBy('price DESC')->one();
+        $model = $query->andFilterWhere(['>','price',0])->orderBy('price DESC')->one();
+        if(empty($model)) return 1;
+
         return ceil($model->price);
     }
 

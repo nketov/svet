@@ -16,8 +16,8 @@ class ProductSearch extends Product
     public $prices = [];
     public $withoutPricesShow = 1;
     public $withoutImageShow = 1;
-    public $maxPrice=500000;
-    public $minPrice=1;
+    public $maxPrice = 500000;
+    public $minPrice = 1;
 
 
     /**
@@ -98,7 +98,6 @@ class ProductSearch extends Product
         $this->load($params);
 
 
-
         if (isset($params['category'])) $this->setAttribute('category', $params['category']);
 
         if (!$this->validate()) {
@@ -131,14 +130,14 @@ class ProductSearch extends Product
         $this->maxPrice = self::maxPrice(clone ($query));
         $this->minPrice = self::minPrice(clone ($query));
 
-        if($this->maxPrice < $this->minPrice) $this->maxPrice = $this->minPrice;
+
 
 
         if (isset($params['ProductSearch']['prices'])) {
             $prices = explode(',', $this->prices);
             $this->prices = [];
-            $this->prices[0] = $prices[0] > $this->minPrice ? $prices[0] : $this->minPrice ;
-            $this->prices[1] = $prices[1] < $this->maxPrice ? $prices[1] : $this->maxPrice ;
+            $this->prices[0] = $prices[0] > $this->minPrice ? $prices[0] : $this->minPrice;
+            $this->prices[1] = $prices[1] < $this->maxPrice ? $prices[1] : $this->maxPrice;
         } else {
             $this->prices[0] = $this->minPrice;
             $this->prices[1] = $this->maxPrice;
@@ -160,9 +159,8 @@ class ProductSearch extends Product
 
         if (!$this->withoutImageShow) {
             $query->andFilterWhere(
-                ['>','images_count', 0]);
+                ['>', 'images_count', 0]);
         }
-
 
 
         return $dataProvider;
