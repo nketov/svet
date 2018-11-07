@@ -100,8 +100,14 @@ $(document).ready(function () {
 
     }
 
+    $("#pjax_form").on("pjax:end", function() {
+        $.pjax.reload({container:"#pjax_list"});
+    });
+
     $(window).resize(function () {
         topCatalogResize();
     });
+
+
 
 });

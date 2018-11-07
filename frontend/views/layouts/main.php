@@ -7,6 +7,7 @@
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
+use yii\widgets\Pjax;
 
 AppAsset::register($this);
 ?>
@@ -17,7 +18,7 @@ AppAsset::register($this);
     <!--    --><? //= $this->render('_head.php',compact('headerContent')) ?>
     <?= $this->render('_head.php') ?>
     <?= Html::csrfMetaTags() ?>
-    <?php $this->head() ?>
+    <?php $this->head() ?>p
 </head>
 <body class="wrap">
 <?php $this->beginBody() ?>
@@ -26,11 +27,11 @@ AppAsset::register($this);
 <?= $this->render('_header.php') ?>
 <?= $this->render('_top_catalog.php') ?>
 
-
 <main class="main-content">
     <?= Alert::widget() ?>
     <?= $content ?>
 </main>
+
 <?= $this->render('_footer.php') ?>
 <?php $this->endBody() ?>
 </body>

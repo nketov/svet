@@ -11,8 +11,8 @@ use yii\helpers\Html;
             <div class="col-sm-4">
                 <h5>Старт</h5>
                 <ul>
-                    <li><a href="#">Главная</a></li>
-                    <li><a href="#">Каталог</a></li>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/">Каталог</a></li>
                     <li><a href="#">Вход</a></li>
                 </ul>
             </div>
