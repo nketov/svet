@@ -18,7 +18,7 @@ AppAsset::register($this);
     <!--    --><? //= $this->render('_head.php',compact('headerContent')) ?>
     <?= $this->render('_head.php') ?>
     <?= Html::csrfMetaTags() ?>
-    <?php $this->head() ?>p
+    <?php $this->head() ?>
 </head>
 <body class="wrap">
 <?php $this->beginBody() ?>

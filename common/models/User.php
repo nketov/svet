@@ -11,7 +11,6 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
- * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
@@ -51,10 +50,21 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            ['phone', 'string', 'length' => 9, 'message' => 'Неверный номер'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
     }
+
+
+    public function attributeLabels()
+    {
+        return [
+            'email' => 'E-mail',
+            'phone' => 'Телефон',
+        ];
+    }
+    
 
     /**
      * {@inheritdoc}
@@ -72,16 +82,12 @@ class User extends ActiveRecord implements IdentityInterface
         throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
     }
 
-    /**
-     * Finds user by username
-     *
-     * @param string $username
-     * @return static|null
-     */
-    public static function findByUsername($username)
+
+    public static function findByEmail($email)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
     }
+    
 
     /**
      * Finds user by password reset token

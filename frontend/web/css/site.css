@@ -255,6 +255,11 @@ html, body {
     /*grid-template-rows: 75px 1fr;*/
 }
 
+.main-content>.container{
+    grid-column-end: span 2;
+}
+
+
 .content-header {
     font-family: "Century Gothic";
     grid-column: span 2;
@@ -523,6 +528,18 @@ display: block;
     font-size: 2.2rem;
     color: #A12;
 }
+
+#login-form{
+    margin: 50px auto;
+    max-width: 375px;
+    min-width: 300px;
+}
+
+
+#login-form>div>label {
+    font-size: 1.6rem;
+}
+
 
 #footer {
     background-color: #070712;

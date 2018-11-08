@@ -7,11 +7,15 @@
             <a href="/">О компании</a>
             <a href="/">Оплата и доставка</a>
             <a href="/">Акции и скидки</a>
-            <a href="/">Помощь</a>
-            <a href="/">Контакты</a>
             <a href="/">Статьи</a>
-<!--            <a href="/"><i class="fa fa-user"></i> Вход</a>-->
-            <a href="/"> Вход</a>
+            <a href="/">Контакты</a>
+            <a href="/">Корзина</a>
+            <?php if(Yii::$app->user->isGuest){ ?>
+            <a href="/login">Вход</a>
+            <?php }else{ ?>
+                <a href="/"><i class="fa fa-user"></i>&nbsp;<?= Yii::$app->user->identity->email ?></a>
+                <a href="/site/logout">Выход</a>
+            <?php } ?>
         </nav>
     </div>
     <div class="header-text">Продаём светильники <br> европейского качества</div>
