@@ -33,7 +33,7 @@
 //                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
 //                    ['label' => 'Gii', 'icon' => 'file-code-o', 'url' => ['/gii']],
 //                    ['label' => 'Debug', 'icon' => 'dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+//                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Товары', 'icon' => 'shopping-bag', 'url' => ['/products'],],
 //                    ['label' => 'Содержание сайта', 'icon' => 'tv', 'url' => ['/content'],],
 //                    ['label' => 'Содержание акций', 'icon' => 'gift', 'url' => ['/actions-content'],],
