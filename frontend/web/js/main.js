@@ -106,7 +106,13 @@ $(document).ready(function () {
 
     $('.form-footer-text.toggle').click(function(e){
         e.preventDefault();
-        $('.login-form').animate({height: "toggle", opacity: "toggle"});
+        $('.login-form:not("#request-password-reset-form")').animate({height: "toggle", opacity: "toggle"}, 'slow');
+    });
+
+    $('.form-footer-text.reset').click(function(e){
+        e.preventDefault();
+        $('#request-password-reset-form').animate({height: "toggle", opacity: "toggle"}, 'slow');
+        $(this).closest('form').animate({height: "toggle", opacity: "toggle"}, 'slow');
     });
 
     $(window).resize(function () {

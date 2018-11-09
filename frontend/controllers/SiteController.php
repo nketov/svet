@@ -101,6 +101,18 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         $signupModel = new SignupForm();
+        $passwordModel = new PasswordResetRequestForm();
+
+        if ($passwordModel->load(Yii::$app->request->post()) && $passwordModel->validate()) {
+            if ($passwordModel->sendEmail()) {
+                Yii::$app->session->setFlash('success', 'Проверьте свой почтовый ящик для дальнейших инструкций');
+
+                return $this->goHome();
+            } else {
+                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
+                return $this->goBack();
+            }
+        }
 
 
         if ($signupModel->load(Yii::$app->request->post()) && $user = $signupModel->signup()) {
@@ -115,7 +127,7 @@ class SiteController extends Controller
 
         $model->password = '';
 
-        return $this->render('login', compact('model', 'signupModel'));
+        return $this->render('login', compact('model', 'signupModel','passwordModel'));
     }
 
     /**
@@ -166,59 +178,9 @@ class SiteController extends Controller
         return $this->render('about');
     }
 
-    /**
-     * Signs user up.
-     *
-     * @return mixed
-     */
-    public
-    function actionSignup()
-    {
-        $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post())) {
-            if ($user = $model->signup()) {
-                if (Yii::$app->getUser()->login($user)) {
-                    return $this->goHome();
-                }
-            }
-        }
 
-        return $this->render('signup', [
-            'model' => $model,
-        ]);
-    }
 
-    /**
-     * Requests password reset.
-     *
-     * @return mixed
-     */
-    public
-    function actionRequestPasswordReset()
-    {
-        $model = new PasswordResetRequestForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail()) {
-                Yii::$app->session->setFlash('success', 'Check your email for further instructions.');
 
-                return $this->goHome();
-            } else {
-                Yii::$app->session->setFlash('error', 'Sorry, we are unable to reset password for the provided email address.');
-            }
-        }
-
-        return $this->render('requestPasswordResetToken', [
-            'model' => $model,
-        ]);
-    }
-
-    /**
-     * Resets password.
-     *
-     * @param string $token
-     * @return mixed
-     * @throws BadRequestHttpException
-     */
     public
     function actionResetPassword($token)
     {

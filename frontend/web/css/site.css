@@ -531,7 +531,9 @@ display: block;
 
 .login-form{
     z-index: 1;
+    position: absolute;
     background: #FFFFFF;
+    left: calc(50vw - 190px);
     max-width: 360px;
     min-width: 300px;
     margin:  100px auto;
@@ -544,6 +546,11 @@ display: block;
 #signup-form {
     display: none;
     z-index: 2;
+}
+
+#request-password-reset-form {
+    display: none;
+    z-index: 3;
 }
 
 .login-form input:not([type='checkbox']) {
