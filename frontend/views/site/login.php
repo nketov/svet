@@ -7,36 +7,107 @@
 
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
+use yii\widgets\MaskedInput;
 
 $this->title = 'Вход';
-$this->params['breadcrumbs'][] = $this->title;
+
+$fieldOptions1 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span>"
+];
+
+$fieldOptions2 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-lock form-control-feedback'></span>"
+];
+
+$fieldOptions3 = [
+    'options' => ['class' => 'form-group has-feedback'],
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-phone form-control-feedback'></span>"
+];
 ?>
 
 
-<div class="container">
-    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+<div class="container-login">
+    <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => [
+        'class' => 'login-form'
+    ]]); ?>
 
-    <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+    <?= $form
+        ->field($model, 'email', $fieldOptions1)
+        ->label(false)
+        ->textInput(['placeholder' => $model->getAttributeLabel('email')]) ?>
 
-    <?= $form->field($model, 'password')->passwordInput() ?>
+    <?= $form
+        ->field($model, 'password', $fieldOptions2)
+        ->label(false)
+        ->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
 
-    <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
-    <div style="color:#999;margin:1em 0; ; text-align: center ">
-        <?= Html::submitButton('Войти', ['class' => 'btn btn-primary btn-lg', 'name' => 'login-button']) ?>
+    <div class="row">
+        <div class="col-xs-7">
+            <?= $form->field($model, 'rememberMe')->checkbox() ?>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-5">
+            <?= Html::submitButton('Войти', ['class' => 'btn btn-primary btn-block btn-flat btn-lg', 'name' => 'login-button']) ?>
+        </div>
+        <!-- /.col -->
     </div>
 
-    <div style="color:#999;margin:1em 0; text-align: center">
-        Если Вы забыли пароль, можете его <?= Html::a('восстановить', ['site/request-password-reset']) ?>.
-    </div>
-
-    <div style="color:#999;margin:1em 0; ; text-align: center ">
+    <div class="form-footer-text toggle">
         Если Вы новый пользователь, то можете <?= Html::a('зарегистрироваться', ['signup']) ?>.
     </div>
 
-
-
+    <div class="form-footer-text" style="">
+        Если Вы забыли пароль, можете его <?= Html::a('восстановить', ['site/request-password-reset']) ?>.
+    </div>
     <?php ActiveForm::end(); ?>
+
+
+
+
+    <?php $form = ActiveForm::begin(['id' => 'signup-form',
+        'enableClientValidation' => true,
+        'options' => [
+            'class' => 'login-form'
+        ]]); ?>
+
+    <?= $form
+        ->field($signupModel, 'email', $fieldOptions1)
+        ->label(false)
+        ->textInput(['placeholder' => $signupModel->getAttributeLabel('email'), 'autofocus' => true]) ?>
+
+    <?= $form
+        ->field($signupModel, 'password', $fieldOptions2)
+        ->label(false)
+        ->passwordInput(['placeholder' => $signupModel->getAttributeLabel('password')]) ?>
+
+
+    <?= $form->field($signupModel, 'phone', $fieldOptions3)->widget(MaskedInput::className(), [
+        'mask' => '+38 (099) 999 99 99',
+        'clientOptions' => [
+            'removeMaskOnSubmit' => true,
+        ]
+    ])->label(false)
+        ->textInput(['placeholder' => $signupModel->getAttributeLabel('phone'), 'autofocus' => true]) ?>
+
+
+
+
+
+    <?= Html::submitButton('Зарегистрироваться', ['class' => 'btn btn-primary btn-block btn-flat btn-lg', 'name' => 'login-button']) ?>
+
+    <div class="form-footer-text toggle">
+        Если Вы уже зарегистрированы, можете <?= Html::a('войти', ['/']) ?>.
+    </div>
+
+    <div class="form-footer-text" style="">
+        Если Вы забыли пароль, можете его <?= Html::a('восстановить', ['site/request-password-reset']) ?>.
+    </div>
+    <?php ActiveForm::end(); ?>
+
+
 </div>
 
 

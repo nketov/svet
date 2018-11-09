@@ -104,6 +104,11 @@ $(document).ready(function () {
         $.pjax.reload({container:"#pjax_list"});
     });
 
+    $('.form-footer-text.toggle').click(function(e){
+        e.preventDefault();
+        $('.login-form').animate({height: "toggle", opacity: "toggle"});
+    });
+
     $(window).resize(function () {
         topCatalogResize();
     });

@@ -9,9 +9,9 @@ use common\models\User;
  */
 class SignupForm extends Model
 {
-    public $username;
     public $email;
     public $password;
+    public $phone;
 
 
     /**
@@ -19,22 +19,28 @@ class SignupForm extends Model
      */
     public function rules()
     {
-        return [
-            ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
-
+        return [                  
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
-            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
-
+            ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Пользователь с таким почтовым ящиком уже зарегистрирован.'],
+            ['phone', 'required'],
+            ['phone', 'string', 'min' => 9, 'message' => 'Неверный номер'],
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
         ];
     }
+    public function attributeLabels()
+    {
+        return [
+
+            'email' => 'E-mail',
+            'password' => 'Пароль',
+            'phone' => 'Телефон'
+        ];
+    }
+
 
     /**
      * Signs user up.
@@ -47,9 +53,9 @@ class SignupForm extends Model
             return null;
         }
         
-        $user = new User();
-        $user->username = $this->username;
+        $user = new User();      
         $user->email = $this->email;
+        $user->phone = $this->phone;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         

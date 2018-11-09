@@ -4,6 +4,7 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use common\models\User;
+use yii\helpers\Url;
 
 /**
  * Password reset request form
@@ -54,7 +55,8 @@ class PasswordResetRequestForm extends Model
             }
         }
 
-        return Yii::$app
+        /*
+         *  return Yii::$app
             ->mailer
             ->compose(
                 ['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'],
@@ -64,5 +66,13 @@ class PasswordResetRequestForm extends Model
             ->setTo($this->email)
             ->setSubject('Password reset for ' . Yii::$app->name)
             ->send();
+        */
+        $url = Url::home(true);
+        $text =' Здравствуйте!'."\n\n"
+            . ' Вы отправили запрос на восстановление пароля для  почтового ящика . ' . $this->email . "\n"           
+            . ' Для того чтобы задать новый пароль, перейдите по ссылке ниже ' ."\n"
+            . $url.'site/reset-password?token='.$user->password_reset_token ;
+             
+        return mail($this->email, 'Восстановление пароля svitlograd.in.ua ', $text) ;
     }
 }

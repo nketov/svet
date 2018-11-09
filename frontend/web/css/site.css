@@ -255,8 +255,10 @@ html, body {
     /*grid-template-rows: 75px 1fr;*/
 }
 
-.main-content>.container{
+.main-content>.container-login{
     grid-column-end: span 2;
+    height: 650px;
+    background: linear-gradient(to bottom, #CDF, #FFF);
 }
 
 
@@ -315,7 +317,6 @@ display: block;
 }
 
 .pager li, .pagination > li {
-    display: inline;
     display: table-cell;
 }
 
@@ -342,7 +343,7 @@ display: block;
     border-radius: 2px;
     padding: 10px;
     justify-self: center;
-    font-family: "Segoe UI";
+    font-family: "Roboto", sans-serif;
     font-weight: bold;
 }
 
@@ -497,7 +498,6 @@ display: block;
 .view_description div:first-letter {
     font-size: 1.2rem;
     font-weight: bold;
-    font: bold;
     /*color: #163;*/
 }
 
@@ -509,7 +509,7 @@ display: block;
     display: flex;
     justify-content: space-between;
     margin: .7rem auto;
-    font-family: "Segoe UI";
+    font-family: "Roboto", sans-serif;
 }
 
 .spec_name {
@@ -529,16 +529,45 @@ display: block;
     color: #A12;
 }
 
-#login-form{
-    margin: 50px auto;
-    max-width: 375px;
+.login-form{
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
     min-width: 300px;
+    margin:  100px auto;
+    padding: 35px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    font-family: "Roboto-Bold", sans-serif;
+}
+
+#signup-form {
+    display: none;
+    z-index: 2;
+}
+
+.login-form input:not([type='checkbox']) {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    margin: 5px 0 20px;
+    padding: 20px;
+    font-size: 20px;
 }
 
 
-#login-form>div>label {
-    font-size: 1.6rem;
+.login-form label, .login-form .help-block {
+    font-size: 12px;
 }
+
+.login-form .form-footer-text{
+    color:#999;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+
+
 
 
 #footer {

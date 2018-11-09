@@ -7,25 +7,73 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Request password reset';
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = 'Запрос на смену пароля';
+
 ?>
 <div class="site-request-password-reset">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out your email. A link to reset password will be sent there.</p>
+    <section>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
+        <div class="site-login">
 
-                <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+            <br>
+            <br><br><br><br><br>
+            <br><br><br><br><br>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
+            <section class="b-login">
+                <div class="container">
+                    <?php
+                    /*
+                          var_dump(  Yii::$app->mailer->compose()
+                                ->setTo('ketovnv@gmail.com')
+                                ->setFrom(['mail@lion-auto.com.ua' => 'lion'])
+                                ->setSubject('Test')
+                                ->setHtmlBody('Test')
+                    //            ->setTextBody($this->text)
+                                ->send());
+
+
+                            var_dump(mail('ketovnv@gmail.com','Test','Text'));
+
+
+                            exit;
+                    */
+                    ?>
+
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4">
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <p>Пожалуйста, укажите свой E-mail, на него будет выслана ссылка на восстановление
+                                пароля.</p>
+
+                            <?php $form = ActiveForm::begin(['id' => 'request-password-reset-form']); ?>
+
+                            <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+
+                            <div class="form-group">
+                                <?= Html::submitButton('Send', ['class' => 'btn btn-primary']) ?>
+                            </div>
+
+                            <?php ActiveForm::end(); ?>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                        </div>
+                    </div>
                 </div>
-
-            <?php ActiveForm::end(); ?>
         </div>
-    </div>
+    </section>
 </div>
+</section>
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<br><br><br>
+<br><br>
+<br><br>
+<br><br>
+

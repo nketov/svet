@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use common\models\Product;
@@ -76,13 +77,8 @@ class SiteController extends Controller
 
         $products = Product::find()->shop(Product::MAYTONI_SHOP)->active()->orderBy('price')->all();
 
-        return $this->render('index',compact('products'));
+        return $this->render('index', compact('products'));
     }
-
-
-
-
-
 
 
     public function actionView()
@@ -98,20 +94,28 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        } else {
-            $model->password = '';
+        $signupModel = new SignupForm();
 
-            return $this->render('login', [
-                'model' => $model,
-            ]);
+
+        if ($signupModel->load(Yii::$app->request->post()) && $user = $signupModel->signup()) {
+            if (Yii::$app->getUser()->login($user)) {
+                Yii::$app->session->setFlash('success', 'Добро пожаловать!');
+                return $this->goHome();
+            }
+        } else if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            Yii::$app->session->setFlash('success', 'Добро пожаловать!');
+            return $this->goBack();
         }
+
+        $model->password = '';
+
+        return $this->render('login', compact('model', 'signupModel'));
     }
 
     /**
@@ -119,7 +123,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionLogout()
+    public
+    function actionLogout()
     {
         Yii::$app->user->logout();
 
@@ -131,7 +136,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionContact()
+    public
+    function actionContact()
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -154,7 +160,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
+    public
+    function actionAbout()
     {
         return $this->render('about');
     }
@@ -164,7 +171,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionSignup()
+    public
+    function actionSignup()
     {
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
@@ -185,7 +193,8 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionRequestPasswordReset()
+    public
+    function actionRequestPasswordReset()
     {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
@@ -210,7 +219,8 @@ class SiteController extends Controller
      * @return mixed
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
+    public
+    function actionResetPassword($token)
     {
         try {
             $model = new ResetPasswordForm($token);
