@@ -69,7 +69,7 @@ class PasswordResetRequestForm extends Model
         */
         $url = Url::home(true);
         $text =' Здравствуйте!'."\n\n"
-            . ' Вы отправили запрос на восстановление пароля для  почтового ящика . ' . $this->email . "\n"           
+            . ' Вы отправили запрос на восстановление пароля для  почтового ящика : ' . $this->email . "\n"
             . ' Для того чтобы задать новый пароль, перейдите по ссылке ниже ' ."\n"
             . $url.'site/reset-password?token='.$user->password_reset_token ;
              

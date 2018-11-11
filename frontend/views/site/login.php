@@ -29,7 +29,7 @@ $fieldOptions3 = [
 
 <!--LOGIN-FORM-->
 
-<div class="container-login">
+<section class="container-login">
     <?php $form = ActiveForm::begin(['id' => 'login-form', 'options' => [
         'class' => 'login-form'
     ]]); ?>
@@ -122,7 +122,7 @@ $fieldOptions3 = [
     <?php ActiveForm::end(); ?>
 
 
-</div>
+</section>
 
 
 

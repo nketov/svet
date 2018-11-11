@@ -11,6 +11,10 @@ html, body {
     position: relative;
 }
 
+a{
+    cursor: pointer;
+}
+
 .wrap {
     display: grid;
     grid-template-areas: "header" "content" "footer";
@@ -40,7 +44,7 @@ html, body {
 .header-phone {
     color: #33ff99;
     font-size: calc(.75rem + .5vw);
-    font-family: "Segoe UI Semibold";
+    font-family: "Segoe UI Semibold", sans-serif;
     z-index: 5;
     text-align: center;
 }
@@ -255,12 +259,24 @@ html, body {
     /*grid-template-rows: 75px 1fr;*/
 }
 
-.main-content>.container-login{
+.alert{
+    top: 15px;
+    right: 15px;
+    position: absolute;
+    font: bold 1.5rem "Roboto", sans-serif;
+    z-index: 99;
+}
+
+.alert .close{
+   top:-7px;
+   left: 7px;
+}
+
+.main-content > .container-login {
     grid-column-end: span 2;
     height: 650px;
     background: linear-gradient(to bottom, #CDF, #FFF);
 }
-
 
 .content-header {
     font-family: "Century Gothic";
@@ -286,14 +302,13 @@ html, body {
     text-align: left;
 }
 
-#prices-slider, .slider-text{
-display: block;
+#prices-slider, .slider-text {
+    display: block;
     margin: 10px auto;
     text-align: center;
- }
+}
 
-
-#category-list-wrapper>.empty {
+#category-list-wrapper > .empty {
     font: italic 3rem "Segoe UI";
     text-align: center;
     margin: 50px auto;
@@ -395,8 +410,7 @@ display: block;
     cursor: pointer;
 }
 
-
-.image.empty{
+.image.empty {
     transition: 3s;
 }
 
@@ -529,14 +543,14 @@ display: block;
     color: #A12;
 }
 
-.login-form{
+.login-form {
     z-index: 1;
     position: absolute;
     background: #FFFFFF;
     left: calc(50vw - 190px);
     max-width: 360px;
     min-width: 300px;
-    margin:  100px auto;
+    margin: 100px auto;
     padding: 35px;
     text-align: center;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
@@ -562,20 +576,15 @@ display: block;
     font-size: 20px;
 }
 
-
 .login-form label, .login-form .help-block {
     font-size: 12px;
 }
 
-.login-form .form-footer-text{
-    color:#999;
+.login-form .form-footer-text {
+    color: #999;
     margin: 5px 0;
     font-size: 14px;
 }
-
-
-
-
 
 #footer {
     background-color: #070712;
