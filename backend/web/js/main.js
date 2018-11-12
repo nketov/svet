@@ -121,7 +121,7 @@ $(document).ready(function () {
             var key = $(this).data('key');
             modal.data('key', key);
             var product = $(this).find('img').data('product');
-            if (!product) {
+            if (product === undefined) {
                 modal.find('.modal-title').text('Добавление товара');
             }
             $('#main-page-select').val(product).trigger('change');
