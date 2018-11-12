@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\MainPage;
 use common\models\Product;
 use Yii;
 use yii\base\InvalidParamException;
@@ -75,9 +76,9 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        $products = Product::find()->shop(Product::MAYTONI_SHOP)->active()->orderBy('price')->all();
+        $models=MainPage::find()->with(['product'])->all();
 
-        return $this->render('index', compact('products'));
+        return $this->render('index', compact('models'));
     }
 
 

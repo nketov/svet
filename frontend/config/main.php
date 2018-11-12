@@ -43,7 +43,8 @@ return [
             'showScriptName' => false,
 
             'rules' => [
-                '' => 'products/category',
+                '' => '/',
+                'catalog' => 'products/category',
                 'product/<id:\d+>' => 'products/view',
                 'category/<category:\d+>' => 'products/category',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',

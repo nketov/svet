@@ -9,7 +9,7 @@
             <a href="/">Акции и скидки</a>
             <a href="/">Статьи</a>
             <a href="/">Контакты</a>
-            <a href="/">Корзина</a>
+            <a href="/catalog">Каталог</a>
             <?php if(Yii::$app->user->isGuest){ ?>
             <a href="/login">Вход</a>
             <?php }else{ ?>

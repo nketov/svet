@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "product".
@@ -193,6 +194,11 @@ class Product extends \yii\db\ActiveRecord
         return floor($model->price);
     }
 
+
+    public static function getActiveCodesArray()
+    {
+        return ArrayHelper::map(self::find()->active()->all(),'id','code');
+    }
 
     public static function find()
     {

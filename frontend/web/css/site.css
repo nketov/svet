@@ -278,6 +278,13 @@ a{
     background: linear-gradient(to bottom, #CDF, #FFF);
 }
 
+.main-content > .main-page {
+    grid-column-end: span 2;
+    margin: 25px;
+    padding-bottom: 55px;
+
+}
+
 .content-header {
     font-family: "Century Gothic";
     grid-column: span 2;
@@ -787,6 +794,10 @@ a{
     .main-content, .header-panel {
         grid-template-columns: 1fr;
         margin: 1px;
+    }
+
+    .main-content > .main-page{
+        margin: 25px 0;
     }
 
     .content-header {

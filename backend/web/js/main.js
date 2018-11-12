@@ -112,14 +112,45 @@ $(document).ready(function () {
         }
     );
 
-    // $('body').on(
-    //     'keyup',
-    //     '#products-table thead input',
-    //     function () {
-    //         $(this).trigger('change');
-    //         $(this).select();
-    //     }
-    // );
+
+    $('body').on(
+        'click',
+        '#grid-main-page div',
+        function () {
+            var modal = $('#main-page-modal');
+            var key = $(this).data('key');
+            modal.data('key', key);
+            var product = $(this).find('img').data('product');
+            if (!product) {
+                modal.find('.modal-title').text('Добавление товара');
+            }
+            $('#main-page-select').val(product).trigger('change');
+
+        }
+    );
+
+
+    $('body').on(
+        'click',
+        '#main-page-modal #confirm',
+        function () {
+            var modal = $('#main-page-modal');
+            var product = $('#main-page-select').val();
+            var key = modal.data('key');
+
+            $.ajax({
+                method: "POST",
+                // url: '/admin/products/active',
+                data: {key: key, product: product}
+            })
+                .done(function (data) {
+                    var div = $('#grid-main-page div[data-key="' + key + '"]');
+                    div.html(data);
+                    modal.find('#cancel').click();
+                });
+
+        }
+    );
 
 
 });

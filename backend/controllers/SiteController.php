@@ -1,8 +1,12 @@
 <?php
+
 namespace backend\controllers;
 
 use app\models\UploadForm;
 use backend\components\ShopUploader;
+use common\models\MainPage;
+use common\models\Product;
+use yii\base\Model;
 use yii\web\Response;
 use yii\web\UploadedFile;
 use Yii;
@@ -30,7 +34,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'content','upload'],
+                        'actions' => ['logout', 'content', 'upload', 'main-page'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -64,6 +68,8 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+
+
         return $this->render('index');
     }
 
@@ -90,13 +96,34 @@ class SiteController extends Controller
         }
     }
 
-    public function actionContent()
+    public function actionMainPage()
     {
 
-            return $this->render('content');
+        $post = Yii::$app->request->post();
+        if(Yii::$app->request->isAjax && $post) {
+           \ Yii::$app->response->format = Response::FORMAT_JSON;
+            $model=MainPage::findOne($post['key']);
+            $model->product_id=$post['product'];
+            $model->save();
+            return $this->renderAjax('_main_img', [
+                'product' => $model->product,
+            ]);
+        }
+
+        $models=MainPage::find()->with(['product'])->all();
+
+
+        return $this->render('main-page', compact('models'));
 
     }
 
+
+    public function actionContent()
+    {
+
+        return $this->render('content');
+
+    }
 
 
     public function actionUpload()
@@ -108,17 +135,15 @@ class SiteController extends Controller
         if (Yii::$app->request->isPost) {
 
             $model->excelFile = UploadedFile::getInstance($model, 'excelFile');
-            $model->shop= $_POST['UploadForm']['shop'];
+            $model->shop = $_POST['UploadForm']['shop'];
 
             if ($model->upload()) {
-                return  ShopUploader::widget(['shop' => $model->shop]);
+                return ShopUploader::widget(['shop' => $model->shop]);
             }
         }
 
         return $this->render('upload', ['model' => $model]);
     }
-
-
 
 
     /**

@@ -12,7 +12,7 @@ use yii\helpers\Html;
                 <h5>Старт</h5>
                 <ul>
                     <li><a href="/">Главная</a></li>
-                    <li><a href="/">Каталог</a></li>
+                    <li><a href="/catalog">Каталог</a></li>
                     <li><a href="#">Вход</a></li>
                 </ul>
             </div>

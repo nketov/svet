@@ -70,6 +70,11 @@ if (Yii::$app->controller->action->id === 'login') {
         echo $this->render('_image_delete_modal.php');
     }?>
 
+    <?php if (Yii::$app->controller->action->id == 'main-page') {
+        echo $this->render('_main_page_modal.php');
+    }?>
+
+
     <?php $this->endBody() ?>
     </body>
     </html>
