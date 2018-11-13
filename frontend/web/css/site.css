@@ -2,6 +2,9 @@ html, body {
     color: #111;
     font-size: 16px;
     font-family: 'Century Gothic', sans-serif;
+    /*background-color: #F0F5F6;*/
+    background: linear-gradient(to bottom, #F0F7FA, #FAF7F0);
+
 }
 
 * {
@@ -9,6 +12,11 @@ html, body {
     padding: 0;
     box-sizing: border-box;
     position: relative;
+    text-decoration: none !important;
+}
+
+ol, ul {
+    list-style: none;
 }
 
 a{
@@ -256,6 +264,7 @@ a{
     grid-area: content;
     display: grid;
     grid-template-columns: auto 1fr;
+    background: linear-gradient(to bottom, #F0F7FA, #FAF7F0);
     /*grid-template-rows: 75px 1fr;*/
 }
 

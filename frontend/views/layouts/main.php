@@ -32,6 +32,7 @@ AppAsset::register($this);
     <?= $content ?>
 </main>
 
+<?= $this->render('_cart.php') ?>
 <?= $this->render('_footer.php') ?>
 <?php $this->endBody() ?>
 </body>

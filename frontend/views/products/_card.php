@@ -17,6 +17,6 @@ use yii\helpers\StringHelper;
             class="card-price"><?= $model->price >0 ?  number_format($model->price, 2, ',', '&nbsp;') .' грн' : 'Цена не указана' ?></span></p>
 </div>
 <div class="info_hover">
-    <button class="btn btn-primary">ДОБАВИТЬ В КОРЗИНУ</button>
+    <button class="btn btn-primary cd-add-to-cart" data-price="<?= $model->price ?>">ДОБАВИТЬ В КОРЗИНУ</button>
     <p style="font-size: .7rem; font-weight: lighter">Артикул: <?= $model->code ?></p>
 </div>

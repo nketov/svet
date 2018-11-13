@@ -275,12 +275,13 @@ html, body {
     overflow: hidden;
     background-repeat: round;
     border-radius: 5px;
-    transition: 1s;
+    transition: .5s;
     cursor: pointer;
 }
 
 #grid-main-page img:hover {
-    box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    transform: scale(1.02);
 }
 
 #main-page-modal  {
