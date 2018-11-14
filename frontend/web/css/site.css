@@ -182,7 +182,7 @@ a{
     justify-self: center;
     border-radius: 15px;
     top: -25px;
-    z-index: 100;
+    z-index: 50;
 }
 
 .bar {

@@ -22,7 +22,7 @@ AppAsset::register($this);
 </head>
 <body class="wrap">
 <?php $this->beginBody() ?>
-
+<?= $this->render('_cart.php') ?>
 <!--    --><? //= $this->render('_header.php',compact('headerContent')) ?>
 <?= $this->render('_header.php') ?>
 <?= $this->render('_top_catalog.php') ?>
@@ -32,7 +32,6 @@ AppAsset::register($this);
     <?= $content ?>
 </main>
 
-<?= $this->render('_cart.php') ?>
 <?= $this->render('_footer.php') ?>
 <?php $this->endBody() ?>
 </body>

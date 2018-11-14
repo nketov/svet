@@ -11,6 +11,7 @@ class ShopUploader extends Widget
 {
 
     public $shop;
+    public $markup=0;
     private $sheetData;
 
     private $new_count = 0;
@@ -80,7 +81,7 @@ class ShopUploader extends Widget
                 $rows[(string)trim($row['H'])] = [
                     'name' => (string)trim($row['A']),
                     'second_code' => (string)trim($row['E']),
-                    'price' => (float)trim($row['I'])
+                    'price' => (float)trim($row['I'])*(1+$this->markup/100)
                 ];
             }
         }
@@ -142,7 +143,7 @@ class ShopUploader extends Widget
             if (!empty($row['A']) && !empty($row['B'])) {
                 $rows[(string)trim($row['A'])] = [
                     'name' => (string)trim($row['B']),
-                    'price' => (float)trim($row['C'])
+                    'price' => (float)trim($row['C'])*(1+$this->markup/100)
                 ];
             }
         }
@@ -203,7 +204,7 @@ class ShopUploader extends Widget
                 $rows[(string)trim($row['A'])] = [
                     'name' => (string)(trim($row['B']) . " " . trim($row['C']) . " " . trim($row['D'])),
                     'color' => (string)trim($row['E']),
-                    'price' => (float)trim($row['I']),
+                    'price' => (float)trim($row['I'])*(1+$this->markup/100),
                     'height' => (int)trim($row['J']),
                     'diametr' => (int)trim($row['K']),
                     'width' => (int)trim($row['L']),
@@ -282,7 +283,7 @@ class ShopUploader extends Widget
                 $rows[(string)trim($row['A'])] = [
                     'name' => (string)(trim($row['B']) . " " . trim($row['C'])),
                     'color' => (string)trim($row['D']),
-                    'price' => (float)trim($row['H']),
+                    'price' => (float)trim($row['H'])*(1+$this->markup/100),
                     'height' => (int)trim($row['I']),
                     'diametr' => (int)trim($row['J']),
                     'width' => (int)trim($row['K']),

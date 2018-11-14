@@ -14,11 +14,13 @@ class UploadForm extends Model
      */
     public $excelFile;
     public $shop;
+    public $markup=0;
 
     public function rules()
     {
         return [
             [['excelFile'], 'file', 'skipOnEmpty' => false, 'extensions' => 'xls', 'checkExtensionByMimeType' => false],
+            [['markup'], 'number'],
             [['shop'], 'required']
         ];
     }
@@ -27,7 +29,8 @@ class UploadForm extends Model
     {
         return [
             'shop' => 'Магазин',
-            'excelFile' => 'Фаил Excel (.xls)'
+            'excelFile' => 'Фаил Excel (.xls)',
+            'markup' => 'Наценка, %'
         ];
     }
 

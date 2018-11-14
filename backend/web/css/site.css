@@ -212,9 +212,10 @@ html, body {
     top: -20px;
 }
 
-.uploader-panel .help-block {
+.uploader-panel div:not(.field-uploadform-markup) .help-block {
     top: -20px;
 }
+
 
 .uploader-panel select {
     width: 300px;

@@ -1,72 +1,52 @@
 <?php
+use yii\widgets\Pjax;
+use yii\bootstrap\ActiveForm;
+use kartik\slider\Slider;
 
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+Pjax::begin(['id' => 'pjax_form']);
+$form = ActiveForm::begin([
+    'method' => 'get',
+    'action' => $formTarget,
+    'id' => 'left-filter-form',
+    'options' => [
+        'data-pjax' => 1
+    ],
+]) ?>
 
-/* @var $this yii\web\View */
-/* @var $model common\models\ProductSearch */
-/* @var $form yii\widgets\ActiveForm */
-?>
+<h3 style="font-weight: bold">Подбор по параметрам:</h3>
 
-<div class="product-search">
-
-    <?php $form = ActiveForm::begin([
-        'action' => ['index'],
-        'method' => 'get',
-        'options' => [
-            'data-pjax' => 1
-        ],
-    ]); ?>
-
-    <?= $form->field($model, 'id') ?>
-
-    <?= $form->field($model, 'code') ?>
-
-    <?= $form->field($model, 'shop') ?>
-
-    <?= $form->field($model, 'active') ?>
-
-    <?= $form->field($model, 'category') ?>
-
-    <?php // echo $form->field($model, 'name') ?>
-
-    <?php // echo $form->field($model, 'price') ?>
-
-    <?php // echo $form->field($model, 'description') ?>
-
-    <?php // echo $form->field($model, 'image_1') ?>
-
-    <?php // echo $form->field($model, 'image_2') ?>
-
-    <?php // echo $form->field($model, 'image_3') ?>
-
-    <?php // echo $form->field($model, 'image_4') ?>
-
-    <?php // echo $form->field($model, 'image_5') ?>
-
-    <?php // echo $form->field($model, 'images_count') ?>
-
-    <?php // echo $form->field($model, 'color') ?>
-
-    <?php // echo $form->field($model, 'material') ?>
-
-    <?php // echo $form->field($model, 'height') ?>
-
-    <?php // echo $form->field($model, 'diametr') ?>
-
-    <?php // echo $form->field($model, 'width') ?>
-
-    <?php // echo $form->field($model, 'depth') ?>
-
-    <?php // echo $form->field($model, 'lamps') ?>
-
-    <?php // echo $form->field($model, 'second_code') ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
+<div class="form-group field-productsearch-prices">
+    <label class="control-label">Цена</label><br>
+    <?php
+    echo Slider::widget([
+            'id' => 'prices',
+            'name' => 'ProductSearch[prices]',
+            'value' => $searchModel->prices[0] . ',' . $searchModel->prices[1],
+            'sliderColor' => Slider::TYPE_PRIMARY,
+            'pluginOptions' => [
+                'min' => $searchModel->minPrice,
+                'max' => $searchModel->maxPrice,
+                'step' => 1,
+                'range' => true
+            ],
+            'pluginEvents' => [
+                "slideStop" => "function() { $(this).closest('form').submit(); }",
+            ]
+        ]) . '<div class="slider-text">oт <b class="badge bage-min">' . $searchModel->prices[0] . ' грн</b> до <b class="badge bage-max">' . $searchModel->prices[1] . ' грн</b></div>';
+    ?>
 </div>
+
+
+<!--    --><? //=
+//    $form->field($searchModel, 'material')->checkboxList(
+//        ['Металл' => 'Металл', 'Стекло' => 'Стекло', 'Дерево' => 'Дерево', 'Пластик' => 'Пластик'])
+//    ?>
+
+<?= $form->field($searchModel, 'withoutPricesShow')->checkbox(); ?>
+
+<?= $form->field($searchModel, 'withoutImageShow')->checkbox(); ?>
+
+
+<?php ActiveForm::end();
+Pjax::end();
+?>

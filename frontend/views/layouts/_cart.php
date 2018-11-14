@@ -20,7 +20,7 @@
             </div>
 
             <footer>
-                <a href="#0" class="checkout btn-cart"><em>ЗАКАЗАТЬ <span>0</span>&nbsp;грн</em></a>
+                <a href="#0" class="checkout btn-cart"><em>ЗАКАЗАТЬ &nbsp;&nbsp;&nbsp;<span>0</span>&nbsp;грн</em></a>
             </footer>
         </div>
     </div> <!-- .cd-cart -->

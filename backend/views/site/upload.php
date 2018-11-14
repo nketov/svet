@@ -20,6 +20,10 @@ echo $form->field($model, 'shop')->dropDownList([
 
 echo $form->field($model, 'excelFile')->fileInput();
 
+echo $form->field($model, 'markup')->textInput([
+    'style'=>'text-align:right;width:92px;margin:0 auto'
+]);
+
 echo Button::widget([
     'label' => 'Загрузить данные из файла',
     'options' => ['class' => 'btn-primary'],

@@ -11,7 +11,7 @@ $(document).ready(function () {
 
     $('.hamburger').mouseover(function () {
         $('.top-catalog').css('opacity', '0.99');
-        $('.top-catalog').css('z-index', '99');
+        $('.top-catalog').css('z-index', '35');
     });
     $('.main-content,.header-img').mouseover(function () {
         $('.top-catalog').css('opacity', '0');

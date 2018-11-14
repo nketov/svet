@@ -132,13 +132,12 @@ class SiteController extends Controller
 
         $model = new UploadForm();
 
-        if (Yii::$app->request->isPost) {
+        if ($model->load(Yii::$app->request->post())) {
 
             $model->excelFile = UploadedFile::getInstance($model, 'excelFile');
-            $model->shop = $_POST['UploadForm']['shop'];
 
             if ($model->upload()) {
-                return ShopUploader::widget(['shop' => $model->shop]);
+                return ShopUploader::widget(['shop' => $model->shop,'markup' => $model->markup]);
             }
         }
 

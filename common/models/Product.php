@@ -178,6 +178,22 @@ class Product extends \yii\db\ActiveRecord
         return false;
     }
 
+    public  function getDiscountPrice()
+    {
+//        $discounts = Actions::getDiscounts();
+//
+//
+//        if(array_key_exists($this->code, $discounts)) {
+//            return round($this->price *(100-$discounts[$this->code])/100, 2);
+//        }
+//
+//        if(array_key_exists('*', $discounts)) {
+//            return round($this->price *(100-$discounts['*'])/100, 2);
+//        }
+
+        return $this->price;
+    }
+
 
     public static function maxPrice($query)
     {
