@@ -14,8 +14,18 @@ jQuery(document).ready(function ($) {
 
         //add product to cart
         $('body').on('click', '.cd-add-to-cart', function (event) {
+
             event.preventDefault();
-            addToCartAjax($(this).data(),1);
+
+            var qty = Number($('#cd-product-' + $(this).data('id')).val());
+
+            if (qty === 9) {
+                alert('Максимальное количество одного продукта 9 единиц');
+                return;
+            }
+
+            addToCartAjax($(this).data(), 1);
+
         });
 
         //open/close cart
@@ -37,6 +47,14 @@ jQuery(document).ready(function ($) {
 
         //update item quantity
         cartList.on('change', 'select', function () {
+            var product = $(this).closest('.product');
+            var qty = Number(product.find('select').val());
+            product.find('select').val(0);
+
+            $.post('/products/delete-cart?id=' + product.data('id'),
+                function () {
+                    addToCartAjax(product.data(), qty);
+                });
             quickUpdateCart();
         });
 
@@ -44,10 +62,18 @@ jQuery(document).ready(function ($) {
         undo.on('click', 'a', function (event) {
             clearInterval(undoTimeoutId);
             event.preventDefault();
-            cartList.find('.deleted').addClass('undo-deleted').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function () {
+
+            var product = cartList.find('.deleted');
+            var qty = Number(product.find('select').val());
+            product.find('select').val(0);
+
+            addToCartAjax(product.data(), qty);
+
+            product.addClass('undo-deleted').one('webkitAnimationEnd oanimationend msAnimationEnd animationend', function () {
                 $(this).off('webkitAnimationEnd oanimationend msAnimationEnd animationend').removeClass('deleted undo-deleted').removeAttr('style');
                 quickUpdateCart();
             });
+
             undo.removeClass('visible');
         });
     }
@@ -72,12 +98,12 @@ jQuery(document).ready(function ($) {
         }
     }
 
-    function addToCart(data,quantity) {
+    function addToCart(data, quantity) {
         var cartIsEmpty = cartWrapper.hasClass('empty');
 
-        addProduct(data,quantity);
+        addProduct(data, quantity);
 
-        updateCartCount(cartIsEmpty,quantity);
+        updateCartCount(cartIsEmpty, quantity);
 
         updateCartTotal(data.price, true, quantity);
 
@@ -85,46 +111,40 @@ jQuery(document).ready(function ($) {
     }
 
 
-    function addToCartAjax(data,quantity) {
-
+    function addToCartAjax(data, quantity) {
         $.ajax({
                 url: '/products/add-cart',
                 data: {data: data, qty: quantity},
-                type: 'GET',
+                type: 'post',
+                async: false,
                 success: function () {
-                    addToCart(data,quantity);
+                    addToCart(data, quantity);
                 },
-
                 error: function (e) {
                     alert('Error!')
                     console.log(e.responseText);
                 }
             }
         );
-
     }
 
-    function addProduct(data,quantity) {
+    function addProduct(data, quantity) {
 
-        var summ = (Number(data.price)*Number(quantity)).toFixed(2);
+        var summ = (Number(data.price) * Number(quantity)).toFixed(2);
 
         if ($('#product_' + data.id).length > 0) {
             var product = $('#product_' + data.id);
+
             var qty = Number(product.find('select').val());
 
-            if (qty === 9) {
-                alert('Максимальное количество одного продукта 9 единиц');
-                return;
-            }
-
-            qty = Number(qty) + Number(quantity) ;
+            qty = Number(qty) + Number(quantity);
             product.find('select').val(qty);
 
-            summ = (Number(summ) + Number(product.find('.price').text().replace(' грн','').replace('Цена не указана',0))).toFixed(2);
+            summ = (Number(summ) + Number(product.find('.price').text().replace(' грн', '').replace('Цена не указана', 0))).toFixed(2);
 
             product.find('.price').text(summ + ' грн')
 
-            if(summ == 0){
+            if (summ == 0) {
                 product.find('.price').text('Цена не указана');
             }
 
@@ -139,13 +159,11 @@ jQuery(document).ready(function ($) {
 
             var selectSpan = '<span class="select"><select id="cd-product-' + data.id + '" name="quantity">' + selectOptions + '</select></span>';
 
-
-
             var quantityBlock = '<div class="quantity"><label for="cd-product-' + data.id + '">Количество</label>' + selectSpan + '</div>';
 
             var spanPrice = '<span class="price">' + summ + ' грн</span>';
 
-            if(summ == 0){
+            if (summ == 0) {
                 spanPrice = '<span class="price">Цена не указана</span>';
             }
 
@@ -153,37 +171,40 @@ jQuery(document).ready(function ($) {
 
             var imageBlock = '<div class="product-image"><a href="#0"><img src="' + data.image + '" alt="' + data.name + '"></a></div>';
 
-
             var productAdded = $('<li id="product_' + data.id + '" class="product">' + imageBlock + nameLink + spanPrice + '<div class="actions">' + quantityBlock + deleteLink + '</div></li>');
             productAdded.data(data);
 
             cartList.prepend(productAdded);
 
             $('#cd-product-' + data.id).val(quantity);
-
         }
 
     }
 
     function removeProduct(product) {
-        clearInterval(undoTimeoutId);
-        cartList.find('.deleted').remove();
 
-        var topPosition = product.offset().top - cartBody.children('ul').offset().top,
-            productQuantity = Number(product.find('.quantity').find('select').val()),
-            productTotPrice = Number(product.data('price')) * productQuantity;
+        $.post('/products/delete-cart?id=' + product.data('id'),
+            function () {
+                clearInterval(undoTimeoutId);
+                cartList.find('.deleted').remove();
 
-        product.css('top', topPosition + 'px').addClass('deleted');
+                var topPosition = product.offset().top - cartBody.children('ul').offset().top,
+                    productQuantity = Number(product.find('.quantity').find('select').val()),
+                    productTotPrice = Number(product.data('price')) * productQuantity;
 
-        updateCartTotal(productTotPrice, false);
-        quickUpdateCart(-productQuantity);
-        undo.addClass('visible');
+                product.css('top', topPosition + 'px').addClass('deleted');
 
-        //wait 8sec before completely remove the item
-        undoTimeoutId = setTimeout(function () {
-            undo.removeClass('visible');
-            cartList.find('.deleted').remove();
-        }, 8000);
+                updateCartTotal(productTotPrice, false);
+                quickUpdateCart(-productQuantity);
+                undo.addClass('visible');
+
+                //wait 10sec before completely remove the item
+                undoTimeoutId = setTimeout(function () {
+                    undo.removeClass('visible');
+                    cartList.find('.deleted').remove();
+                }, 20000);
+            }
+        );
     }
 
     function quickUpdateCart(quantity) {
@@ -196,10 +217,10 @@ jQuery(document).ready(function ($) {
 
                 var singleQuantity = Number($(this).find('select').val());
                 var singlePrice = Number($(this).data('price'));
-                var singleSumm = (singlePrice*singleQuantity).toFixed(2);
+                var singleSumm = (singlePrice * singleQuantity).toFixed(2);
                 $(this).find('.price').text(singleSumm + ' грн');
 
-                if(singleSumm == 0){
+                if (singleSumm == 0) {
                     $(this).find('.price').text('Цена не указана');
                 }
 
@@ -223,9 +244,9 @@ jQuery(document).ready(function ($) {
 
     }
 
-    function updateCartCount(emptyCart,quantity) {
+    function updateCartCount(emptyCart, quantity) {
 
-        var actual = Number(cartCount.find('li').eq(0).text())+quantity;
+        var actual = Number(cartCount.find('li').eq(0).text()) + quantity;
         var next = actual + 1;
 
         if (emptyCart) {
@@ -233,6 +254,7 @@ jQuery(document).ready(function ($) {
             cartCount.find('li').eq(1).text(next);
         } else {
             cartCount.addClass('update-count');
+
 
             setTimeout(function () {
                 cartCount.find('li').eq(0).text(actual);
@@ -246,7 +268,6 @@ jQuery(document).ready(function ($) {
                 cartCount.find('li').eq(1).text(next);
             }, 230);
         }
-
     }
 
     function updateCartTotal(price, bool, quantity) {
@@ -258,17 +279,16 @@ jQuery(document).ready(function ($) {
 
 
 
-
     $.ajax({
             url: '/products/ajax-get-session',
 
             success: function (cart) {
 
-                for(var id in cart){
-                    var product =cart[id];
-                    product.id=id;
-                    product.price=Number(product.price);
-                    addToCart(product,Number(product.qty));
+                for (var id in cart) {
+                    var product = cart[id];
+                    product.id = id;
+                    product.price = Number(product.price);
+                    addToCart(product, Number(product.qty));
                     quickUpdateCart();
                 }
 
@@ -282,12 +302,7 @@ jQuery(document).ready(function ($) {
     );
 
 
-
-
     // addToCart({ image: "/images/products/p_9157_image_1.jpg", name: "Diamant Crystal Palace2", price: "210000.25", id: 91572 },2);
-
-
-
 
 
 });

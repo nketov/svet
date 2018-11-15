@@ -41,17 +41,19 @@ class ProductsController extends Controller
 
     public function actionAjaxGetSession()
     {
-        \ Yii::$app->response->format = Response::FORMAT_JSON;
-        $cart= new Cart;
-        return  $cart->getCart();
+        if(Yii::$app->request->isAjax) {
+            \ Yii::$app->response->format = Response::FORMAT_JSON;
+            $cart = new Cart;
+            return $cart->getCart();
+        }
     }
 
 
 
     public function actionAddCart()
     {
-        $data=Yii::$app->request->get('data');
-        $qty=Yii::$app->request->get('qty');
+        $data=Yii::$app->request->post('data');
+        $qty=Yii::$app->request->post('qty');
 
         if (empty($this->findModel($data['id']))) return false;
 
@@ -74,7 +76,6 @@ class ProductsController extends Controller
     {
         $cart= new Cart;
         $cart->deleteCart($id);
-
     }
 
 
@@ -84,7 +85,6 @@ class ProductsController extends Controller
         if (($model = Product::findOne($id)) !== null) {
             return $model;
         }
-
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
