@@ -5,8 +5,6 @@ namespace backend\controllers;
 use app\models\UploadForm;
 use backend\components\ShopUploader;
 use common\models\MainPage;
-use common\models\Product;
-use yii\base\Model;
 use yii\web\Response;
 use yii\web\UploadedFile;
 use Yii;

@@ -10,26 +10,14 @@ use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 /**
  * ProductsController implements the CRUD actions for Product model.
  */
 class ProductsController extends Controller
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
+
 
 
     public function actionCategory()
@@ -51,18 +39,28 @@ class ProductsController extends Controller
     }
 
 
+    public function actionAjaxGetSession()
+    {
+        \ Yii::$app->response->format = Response::FORMAT_JSON;
+        $cart= new Cart;
+        return  $cart->getCart();
+    }
+
+
+
     public function actionAddCart()
     {
-        $id=Yii::$app->request->get('id');
+        $data=Yii::$app->request->get('data');
         $qty=Yii::$app->request->get('qty');
-        $product= $this->findModel($id);
-        if (empty($product)) return false;
+
+        if (empty($this->findModel($data['id']))) return false;
+
         $session=Yii::$app->session;
         $session->open();
         $cart= new Cart;
-        $cart->addCart($product,$qty);
+        $cart->addCart($data,$qty);
 
-        return  $_SESSION['cart.sum'];
+        return  true;
     }
 
     public function actionResetCart()

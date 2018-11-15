@@ -35,5 +35,6 @@ AppAsset::register($this);
 <?= $this->render('_footer.php') ?>
 <?php $this->endBody() ?>
 </body>
+<?php var_dump($_SESSION) ?>
 </html>
 <?php $this->endPage() ?>

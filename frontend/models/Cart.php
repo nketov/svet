@@ -6,18 +6,24 @@ use yii\base\Model;
 
 class Cart extends Model{
 
-    public function addCart(Product $product, $qty=1){
+    public function addCart($data, $qty=1){
 
-       
-        if(isset($_SESSION['cart'][$product->id])){
-            $_SESSION['cart'][$product->id]['qty'] += $qty;
+        $id=$data['id'];
+
+        if(isset($_SESSION['cart'][$id])){
+            $_SESSION['cart'][$id]['qty'] += $qty;
         } else{
-            $_SESSION['cart'][$product->id] = [
+            $_SESSION['cart'][$id] = [
                'qty' => $qty] ;
         }
-        
-        $_SESSION['cart.qty'] = isset($_SESSION['cart.qty'] )? $_SESSION['cart.qty'] + $qty : $qty;
-        $_SESSION['cart.sum'] = isset($_SESSION['cart.sum'] )? $_SESSION['cart.sum'] + $qty *$product->getDiscountPrice() : $qty *$product->getDiscountPrice();
+
+
+        $_SESSION['cart'][$id]['name'] = $data['name'];
+        $_SESSION['cart'][$id]['image'] = $data['image'];
+        $_SESSION['cart'][$id]['price'] = $data['price'];
+
+        $_SESSION['cart.qty'] = $qty + ($_SESSION['cart.qty'] ?? 0);
+        $_SESSION['cart.sum'] = $qty * $data['price'] +  ($_SESSION['cart.sum'] ?? 0 );
 
        }
 
@@ -35,16 +41,25 @@ class Cart extends Model{
         }
     }
 
-    public function getSumm(){
-        return isset($_SESSION['cart.sum'])? $_SESSION['cart.sum'] :0;
+    public function getCart(){
+        return  $_SESSION['cart'] ?? 0;
     }
 
-    public function getQuantity(){
-        return isset($_SESSION['cart']) ? sizeof($_SESSION['cart']):0;
+
+    public function getSumm(){
+        return  $_SESSION['cart.sum'] ?? 0;
+    }
+
+    public function getPositionQuantity(){
+        return $_SESSION['cart'] ?? 0;
+    }
+
+    public function getProductsQuantity(){
+        return $_SESSION['cart.qty'] ?? 0;
     }
 
     public function getProducts(){
-        return isset($_SESSION['cart']) ? $_SESSION['cart']:[];
+        return  $_SESSION['cart'] ?? [];
     }
 
 

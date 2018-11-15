@@ -106,9 +106,9 @@
     height: 28px;
     width: 28px;
     background: #55BB16;
-    color: #ffffCC;
+    color: #ffffAA;
     /*text-shadow: 0 0 1px #fff, 0 0 2px #ffe0c2;*/
-    font-size: 1.7em;
+    font-size: 2em;
     font-weight: bold;
     border-radius: 50%;
     text-indent: 0;
@@ -516,6 +516,7 @@
     .cd-cart-trigger,
     .cd-cart {
         right: 15px;
+        bottom: 15px;
     }
 
     .cd-cart .body li.deleted + li {

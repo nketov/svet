@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
         //add product to cart
         $('body').on('click', '.cd-add-to-cart', function (event) {
             event.preventDefault();
-            addToCart($(this).data(),1);
+            addToCartAjax($(this).data(),1);
         });
 
         //open/close cart
@@ -82,6 +82,26 @@ jQuery(document).ready(function ($) {
         updateCartTotal(data.price, true, quantity);
 
         cartWrapper.removeClass('empty');
+    }
+
+
+    function addToCartAjax(data,quantity) {
+
+        $.ajax({
+                url: '/products/add-cart',
+                data: {data: data, qty: quantity},
+                type: 'GET',
+                success: function () {
+                    addToCart(data,quantity);
+                },
+
+                error: function (e) {
+                    alert('Error!')
+                    console.log(e.responseText);
+                }
+            }
+        );
+
     }
 
     function addProduct(data,quantity) {
@@ -237,7 +257,32 @@ jQuery(document).ready(function ($) {
     }
 
 
-    // addToCart({ image: "/images/products/p_9157_image_1.jpg", name: "Diamant Crystal Palace", price: "210000.33", id: 9157 },1);
+
+
+    $.ajax({
+            url: '/products/ajax-get-session',
+
+            success: function (cart) {
+
+                for(var id in cart){
+                    var product =cart[id];
+                    product.id=id;
+                    product.price=Number(product.price);
+                    addToCart(product,Number(product.qty));
+                    quickUpdateCart();
+                }
+
+            },
+
+            error: function (e) {
+                alert('Error!')
+                console.log(e.responseText);
+            }
+        }
+    );
+
+
+
 
     // addToCart({ image: "/images/products/p_9157_image_1.jpg", name: "Diamant Crystal Palace2", price: "210000.25", id: 91572 },2);
 
