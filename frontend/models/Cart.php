@@ -69,11 +69,6 @@ class Cart extends Model
         return $_SESSION['cart.qty'] ?? 0;
     }
 
-    public function getProducts()
-    {
-        return $_SESSION['cart'] ?? [];
-    }
-
 
 }
 

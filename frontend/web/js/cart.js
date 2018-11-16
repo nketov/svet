@@ -167,9 +167,9 @@ jQuery(document).ready(function ($) {
                 spanPrice = '<span class="price">Цена не указана</span>';
             }
 
-            var nameLink = '<a class="product-name" href="#0">' + data.name + '</a>';
+            var nameLink = '<a class="product-name" href="/product/' + data.id + '">' + data.name + '</a>';
 
-            var imageBlock = '<div class="product-image"><a href="#0"><img src="' + data.image + '" alt="' + data.name + '"></a></div>';
+            var imageBlock = '<div class="product-image"><a href="/product/' + data.id + '"><img src="' + data.image + '" alt="' + data.name + '"></a></div>';
 
             var productAdded = $('<li id="product_' + data.id + '" class="product">' + imageBlock + nameLink + spanPrice + '<div class="actions">' + quantityBlock + deleteLink + '</div></li>');
             productAdded.data(data);
@@ -268,6 +268,7 @@ jQuery(document).ready(function ($) {
                 cartCount.find('li').eq(1).text(next);
             }, 230);
         }
+
     }
 
     function updateCartTotal(price, bool, quantity) {

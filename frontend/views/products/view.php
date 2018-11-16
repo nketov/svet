@@ -8,10 +8,14 @@ $this->title = $model->name;
 <div class="content-header"><?= $model->name ?></div>
 <div class="image_block">
     <div class="image_container">
-        <?php if($model->images_count > 0){ ?>
-        <img class="image" id="image" src="/images/products/<?= $model->getFirstImage() ?>"/>
-        <?php } else { ?>
-            <img class="image empty" src="/images/main/logo.png"/>
+        <?php if ($model->images_count > 0) {
+            $src='/images/products/'.$model->getFirstImage();
+            ?>
+            <img class="image" id="image" src="<?= $src ?>"/>
+        <?php } else {
+            $src='/images/main/logo.png';
+            ?>
+            <img class="image empty" src="<?= $src ?>"/>
         <?php } ?>
     </div>
 
@@ -93,8 +97,15 @@ $this->title = $model->name;
 
 
     <div class="view_buttons">
-        <div class="view_price"><?= $model->price > 0 ?  number_format($model->price, 2, ',', '&nbsp;') .' грн' : 'Цена не указана' ?></div>
+        <div class="view_price"><?= $model->price > 0 ? number_format($model->price, 2, ',', '&nbsp;') . ' грн' : 'Цена не указана' ?></div>
         <p style="color: #00a65a">Есть в наличии</p>
-        <button class="btn btn-primary btn-lg">ДОБАВИТЬ В КОРЗИНУ</button>
+        <button
+                class="btn btn-primary btn-lg cd-add-to-cart"
+                data-id="<?= $model->id ?>"
+                data-price="<?= $model->price ?>"
+                data-name="<?= $model->name ?>"
+                data-image="<?= $src ?>">
+            ДОБАВИТЬ В КОРЗИНУ
+        </button>
     </div>
 </div>

@@ -221,7 +221,8 @@
 .cd-cart .undo {
     float: right;
     font-size: 1.6em;
-    padding: 15px;
+    padding: 5px 15px;
+    top: -18px;
     opacity: 0;
     visibility: hidden;
     transition: opacity .2s, visibility .2s;
