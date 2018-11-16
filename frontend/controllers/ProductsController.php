@@ -96,7 +96,7 @@ class ProductsController extends Controller
         $count=1;
         foreach ($products as $id=>$array) {
             $product = $this->findModel($id);
-            $order_content .= '<p>'.$count.'. '.$product->name. ' ('.$product->code.') '. $array['qty']. ' шт.  - '. round($product->getDiscountPrice() * $array['qty'], 2) . ' ' . $currencySign . ' </p>';
+            $order_content .= '<p>'.$count.'. '.$product->name. ' ('.$product->code.') '. $array['qty']. ' шт.  - '. round($product->getDiscountPrice() * $array['qty'], 2) . ' грн</p>';
             $count++;
         }
         $order_content .= '<p><b> Всего: '.round($cart->getSumm() , 2) . ' грн</b></p>';
