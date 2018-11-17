@@ -24,10 +24,10 @@ jQuery(document).ready(function ($) {
                 return;
             }
 
+            $(this).css('pointer-events', 'none');
 
             setTimeout(function () {
                 cartCount.css('animation', '1s shake');
-                $(this).css('pointer-events', 'none');
             }, 50);
 
             setTimeout(function () {
