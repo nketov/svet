@@ -32,10 +32,10 @@ jQuery(document).ready(function ($) {
 
             setTimeout(function () {
                 cartCount.css('animation', 'none');
-                $(this).css('pointer-events', 'auto');
             }, 2000);
 
             addToCartAjax($(this).data(), 1);
+            $(this).css('pointer-events', 'auto');
 
         });
 
