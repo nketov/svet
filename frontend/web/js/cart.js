@@ -126,6 +126,14 @@ jQuery(document).ready(function ($) {
                 }
             }
         );
+
+        setTimeout(function () {
+            cartCount.css('animation', '1s shake')
+        }, 50);
+
+        setTimeout(function () {
+            cartCount.css('animation', 'none')
+        }, 1100);
     }
 
     function addProduct(data, quantity) {
@@ -269,6 +277,8 @@ jQuery(document).ready(function ($) {
             }, 230);
         }
 
+
+
     }
 
     function updateCartTotal(price, bool, quantity) {
@@ -278,13 +288,9 @@ jQuery(document).ready(function ($) {
         bool ? cartTotal.text((Number(cartTotal.text()) + Number(summ)).toFixed(2)) : cartTotal.text((Number(cartTotal.text()) - Number(price)).toFixed(2));
     }
 
-
-
     $.ajax({
             url: '/products/ajax-get-session',
-
             success: function (cart) {
-
                 for (var id in cart) {
                     var product = cart[id];
                     product.id = id;
@@ -292,9 +298,7 @@ jQuery(document).ready(function ($) {
                     addToCart(product, Number(product.qty));
                     quickUpdateCart();
                 }
-
             },
-
             error: function (e) {
                 alert('Error!')
                 console.log(e.responseText);
