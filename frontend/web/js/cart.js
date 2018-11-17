@@ -24,6 +24,17 @@ jQuery(document).ready(function ($) {
                 return;
             }
 
+
+            setTimeout(function () {
+                cartCount.css('animation', '1s shake');
+                $(this).css('pointer-events', 'none');
+            }, 50);
+
+            setTimeout(function () {
+                cartCount.css('animation', 'none');
+                $(this).css('pointer-events', 'auto');
+            }, 2000);
+
             addToCartAjax($(this).data(), 1);
 
         });
@@ -126,14 +137,6 @@ jQuery(document).ready(function ($) {
                 }
             }
         );
-
-        setTimeout(function () {
-            cartCount.css('animation', '1s shake')
-        }, 50);
-
-        setTimeout(function () {
-            cartCount.css('animation', 'none')
-        }, 1100);
     }
 
     function addProduct(data, quantity) {
@@ -276,9 +279,6 @@ jQuery(document).ready(function ($) {
                 cartCount.find('li').eq(1).text(next);
             }, 230);
         }
-
-
-
     }
 
     function updateCartTotal(price, bool, quantity) {
