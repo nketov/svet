@@ -2,6 +2,7 @@
 use yii\widgets\Pjax;
 use yii\bootstrap\ActiveForm;
 use kartik\slider\Slider;
+use common\models\Product;
 
 Pjax::begin(['id' => 'pjax_form']);
 $form = ActiveForm::begin([
@@ -14,6 +15,8 @@ $form = ActiveForm::begin([
 ]) ?>
 
 <h3 style="font-weight: bold">Подбор по параметрам:</h3>
+
+<?= $form->field($searchModel, 'shop')->label('Производитель')->dropDownList(Product::shopNamesList(),['prompt' => 'Любой']) ?>
 
 <div class="form-group field-productsearch-prices">
     <label class="control-label">Цена</label><br>
@@ -46,6 +49,9 @@ $form = ActiveForm::begin([
 
 <?= $form->field($searchModel, 'withoutImageShow')->checkbox(); ?>
 
+<?= $form->field($searchModel, 'color')->dropDownList(Product::colorsNamesList(),['prompt' => 'Любой']) ?>
+
+<?= $form->field($searchModel, 'material')->dropDownList(Product::materialsNamesList(),['prompt' => 'Любой']) ?>
 
 <?php ActiveForm::end();
 Pjax::end();

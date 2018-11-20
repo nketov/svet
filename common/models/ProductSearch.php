@@ -109,23 +109,9 @@ class ProductSearch extends Product
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'shop' => $this->shop,
             'active' => $this->active,
             'category' => $this->category,
-            'price' => $this->price,
-            'height' => $this->height,
-            'diametr' => $this->diametr,
-            'width' => $this->width,
-            'depth' => $this->depth,
         ]);
-
-        $query->andFilterWhere(['like', 'code', $this->code])
-            ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'color', $this->color])
-            ->andFilterWhere(['like', 'material', $this->material])
-            ->andFilterWhere(['like', 'lamps', $this->lamps])
-            ->andFilterWhere(['like', 'second_code', $this->second_code]);
 
 
         if (!$this->withoutImageShow) {
@@ -147,6 +133,8 @@ class ProductSearch extends Product
             $this->prices[1] = $this->maxPrice;
         }
 
+        if ($this->prices[1]<$this->prices[0]) $this->prices[1]=$this->prices[0];
+
         if ($this->withoutPricesShow) {
             $query->andFilterWhere(
                 ['or',
@@ -160,6 +148,25 @@ class ProductSearch extends Product
                 ['>=', 'price', $this->prices[0]],
                 ['<=', 'price', $this->prices[1]]]);
         }
+
+
+        $query->andFilterWhere([
+            'shop' => $this->shop,
+            'material' => $this->material,
+            'color' => $this->color,
+            'price' => $this->price,
+            'height' => $this->height,
+            'diametr' => $this->diametr,
+            'width' => $this->width,
+            'depth' => $this->depth,
+        ]);
+
+
+        $query->andFilterWhere(['like', 'code', $this->code])
+            ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'description', $this->description])
+            ->andFilterWhere(['like', 'lamps', $this->lamps])
+            ->andFilterWhere(['like', 'second_code', $this->second_code]);
 
 
 

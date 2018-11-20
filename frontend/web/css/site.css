@@ -318,6 +318,11 @@ a{
     text-align: left;
 }
 
+.left select {
+    font-weight: bold;
+    font-size: .9em;
+}
+
 #prices-slider, .slider-text {
     display: block;
     margin: 10px auto;

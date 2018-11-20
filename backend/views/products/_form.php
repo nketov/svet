@@ -34,9 +34,9 @@ use common\models\Product;
     <!---->
     <? //= $form->field($model, 'image_5')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'color')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'color')->dropDownList(Product::colorsNamesList(),['prompt' => 'Не указан']) ?>
 
-    <?= $form->field($model, 'material')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'material')->dropDownList(Product::materialsNamesList(),['prompt' => 'Не указан']) ?>
 
     <?= $form->field($model, 'lamps')->textInput(['maxlength' => true]) ?>
 

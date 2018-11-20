@@ -26,7 +26,7 @@ $(document).ready(function () {
     });
 
 
-    $('body').on('change', '#left-filter-form input:not(#prices)', function () {
+    $('body').on('change', '#left-filter-form input:not(#prices),#left-filter-form select', function () {
         $(this).closest('form').submit();
     });
 

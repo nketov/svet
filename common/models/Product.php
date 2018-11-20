@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
+use common\models\Color;
 
 /**
  * This is the model class for table "product".
@@ -72,19 +73,32 @@ class Product extends \yii\db\ActiveRecord
         self::CATEGORY_SPOOT_LIGHT => 'Точечные светильники',
     ];
 
+    private static $_materialName = [
+        '1' => 'Дерево',
+        '2' => 'Дерево-металл',
+        '3' => 'Керамика',
+        '4' => 'Латунь',
+        '5' => 'Металл',
+        '6' => 'Металл-керамика',
+        '7' => 'Металл-стекло',
+        '8' => 'Полирезина',
+        '9' => 'Сталь-акрил',
+        '10' => 'Стекло',
+        '11' => 'Стекло-зеркало-металл',
+    ];
+
     /**
      * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            [['shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'images_count'], 'integer'],
+            [['shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'images_count','color', 'material'], 'integer'],
             [['price'], 'number'],
             [['description'], 'string'],
             [['code', 'second_code'], 'string', 'max' => 50],
             [['name'], 'string', 'max' => 200],
             [['image_1', 'image_2', 'image_3', 'image_4', 'image_5'], 'string', 'max' => 55],
-            [['color', 'material'], 'string', 'max' => 75],
             [['lamps'], 'string', 'max' => 100],
             [['code'], 'unique'],
 
@@ -140,6 +154,26 @@ class Product extends \yii\db\ActiveRecord
     public static function categoryName($category)
     {
         return self::$_categoryName[$category];
+    }
+
+    public static function materialsNamesList()
+    {
+        return self::$_materialName;
+    }
+
+    public static function materialName($material_id)
+    {
+        return self::$_materialName[$material_id];
+    }
+
+    public static function colorsNamesList()
+    {
+        return ArrayHelper::map(Color::find()->all(),'id','name');
+    }
+
+    public static function colorName($color_id)
+    {
+        return self::colorsNamesList()[$color_id];
     }
 
     public static function getStatuses()

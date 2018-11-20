@@ -48,14 +48,14 @@ $this->title = $model->name;
         <?php if (!empty($model->material)) { ?>
             <div class="string">
                 <div class="spec_name">Материал:&nbsp;</div>
-                <div class="spec_value"><?= $model->material ?></div>
+                <div class="spec_value"><?= Product::materialName($model->material) ?></div>
             </div>
         <?php } ?>
 
         <?php if (!empty($model->color)) { ?>
             <div class="string">
                 <div class="spec_name">Цвет:&nbsp;</div>
-                <div class="spec_value"><?= $model->color ?></div>
+                <div class="spec_value"><?= Product::colorName($model->color) ?></div>
             </div>
         <?php } ?>
 

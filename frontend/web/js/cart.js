@@ -25,17 +25,12 @@ jQuery(document).ready(function ($) {
             }
 
             $(this).css('pointer-events', 'none');
-
-            setTimeout(function () {
-                cartCount.css('animation', '1s shake');
-            }, 50);
-
-            setTimeout(function () {
-                cartCount.css('animation', 'none');
-            }, 2000);
+            cartCount.css('animation', '1s shake');
 
             addToCartAjax($(this).data(), 1);
+
             $(this).css('pointer-events', 'auto');
+            cartCount.css('animation', 'none');
 
         });
 
@@ -168,7 +163,7 @@ jQuery(document).ready(function ($) {
                 selectOptions += '<option value="' + i + '">' + i + '</option>'
             }
 
-            var selectSpan = '<span class="select"><select id="cd-product-' + data.id + '" name="quantity">' + selectOptions + '</select></span>';
+            var selectSpan = '<span class="select"><select id="cd-product-' + data.id + '" name="quantity" >' + selectOptions + '</select></span>';
 
             var quantityBlock = '<div class="quantity"><label for="cd-product-' + data.id + '">Количество</label>' + selectSpan + '</div>';
 
