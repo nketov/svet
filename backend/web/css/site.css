@@ -41,32 +41,38 @@ html, body {
     color: black;
 }
 
-#products-table, #form-product-update {
+#products-table, #form-product-update, #orders-table, #order-view, #users-table {
     color: #222;
     width: calc(99vw - 265px);
     overflow: hidden;
 }
 
-#products-table tr th {
+table:not(#order-view) tr th{
     text-align: center;
 }
 
-#products-table select {
+table td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+table select, #users-table tr td {
     text-align: center;
 }
 
-#products-table tr > *:nth-child(1) {
+
+table:not(#order-view) tr > *:nth-child(1) {
     width: 25px;
 }
 
-#products-table tbody tr:hover {
+table:not(#order-view,#orders-table) tbody tr:hover {
     color: #112255;
     font-weight: bold;
     text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5) !important;
     cursor: pointer;
 }
 
-#products-table tbody tr:active {
+table:not(#order-view) tbody tr:active {
     color: #111;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5) !important;
 
@@ -79,7 +85,7 @@ html, body {
     border-radius: 2px;
 }
 
-#products-table .summary {
+table .summary {
     float: right;
     font: italic .8rem "Segoe UI";
 }
@@ -197,7 +203,7 @@ html, body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 9999;
     cursor: none;
 }
 
@@ -301,7 +307,7 @@ html, body {
 }
 
 @media screen and (max-width: 1575px) {
-    #products-table tr > *:nth-child(6) {
+    #products-table tr > *:nth-child(6),#orders-table tr > *:nth-child(5)  {
         display: none;
     }
 }
@@ -313,7 +319,7 @@ html, body {
 }
 
 @media screen and (max-width: 1190px) {
-    #products-table tr > *:nth-child(5) {
+    #products-table tr > *:nth-child(5),#orders-table tr > *:nth-child(1) {
         display: none;
     }
 }
@@ -325,7 +331,7 @@ html, body {
 }
 
 @media screen and (max-width: 985px) {
-    #products-table tr > *:nth-child(8), #products-table tr > *:nth-child(1) {
+    #products-table tr > *:nth-child(8), #products-table tr > *:nth-child(1), #orders-table tr > *:nth-child(3) {
         display: none;
     }
 
@@ -342,6 +348,10 @@ html, body {
 @media screen and (max-width: 766px) {
     #products-table, #form-product-update, #grid-main-page {
         width: calc(99vw - 75px);
+    }
+
+    #orders-table tr > *:nth-child(4),#users-table tr > *:nth-child(4){
+        display: none;
     }
 }
 

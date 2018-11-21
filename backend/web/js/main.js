@@ -88,6 +88,13 @@ $(document).ready(function () {
         }
     );
 
+    $('body').on('click', '#orders-table tbody tr td:not(.td-status)',
+        function () {
+            var product = $(this).closest('tr').data('key');
+            location.href = '/admin/order/view?id=' + product;
+        }
+    );
+
     checkDeactivated();
 
     $('body').on(

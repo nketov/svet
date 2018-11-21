@@ -62,6 +62,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             'email' => 'E-mail',
             'phone' => 'Телефон',
+            'created_at' => 'Зарегистрирован',
         ];
     }
     

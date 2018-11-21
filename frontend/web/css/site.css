@@ -474,12 +474,13 @@ a{
 .image_container {
     align-self: start;
     width: 500px;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     border-radius: 5px;
-    outline: 2px solid white;
+    /*outline: 2px solid white;*/
     display: flex;
     align-items: flex-start;
     overflow: hidden;
+    cursor: crosshair;
 }
 
 .image {
@@ -498,6 +499,7 @@ a{
     width: 64px;
     height: 64px;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .image_icon:first-child {

@@ -43,7 +43,7 @@
 //                    ['label' => 'Загрузка изображений', 'icon' => 'upload', 'url' => ['/image-upload'],],
 //                    ['label' => 'Акции', 'icon' => 'gift', 'url' => ['/actions'],],//
                     ['label' => 'Заказы', 'icon' => 'shopping-basket', 'url' => ['/order'],],
-//                    ['label' => 'Клиенты', 'icon' => 'user', 'url' => ['/user'],],
+                    ['label' => 'Клиенты', 'icon' => 'user', 'url' => ['/user'],],
 
 
 //                    [

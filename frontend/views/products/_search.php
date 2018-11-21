@@ -39,19 +39,13 @@ $form = ActiveForm::begin([
     ?>
 </div>
 
-
-<!--    --><? //=
-//    $form->field($searchModel, 'material')->checkboxList(
-//        ['Металл' => 'Металл', 'Стекло' => 'Стекло', 'Дерево' => 'Дерево', 'Пластик' => 'Пластик'])
-//    ?>
-
 <?= $form->field($searchModel, 'withoutPricesShow')->checkbox(); ?>
-
-<?= $form->field($searchModel, 'withoutImageShow')->checkbox(); ?>
 
 <?= $form->field($searchModel, 'color')->dropDownList(Product::colorsNamesList(),['prompt' => 'Любой']) ?>
 
 <?= $form->field($searchModel, 'material')->dropDownList(Product::materialsNamesList(),['prompt' => 'Любой']) ?>
+
+<?= $form->field($searchModel, 'withoutImageShow')->checkbox(); ?>
 
 <?php ActiveForm::end();
 Pjax::end();
