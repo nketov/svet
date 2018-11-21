@@ -48,6 +48,10 @@ $this->title = 'Заказы';
                     [
                         'attribute' => 'date',
                         'contentOptions' => ['style' => 'min-width:200px;text-align:center'],
+                        'value' => function ($data) {
+                            return  date_create($data->date)->format(' d.m.Y H:i');
+                        },
+                        'filter' => false,
                     ],
 
                     ['attribute' => 'user_id',

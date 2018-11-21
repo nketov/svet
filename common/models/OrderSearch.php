@@ -70,8 +70,7 @@ class OrderSearch extends Order
         ]);
 
         $query->andFilterWhere(['like', 'order_content', $this->order_content])
-            ->andFilterWhere(['like', 'user.email', $this->user_id])
-            ->andFilterWhere(['like', 'date', $this->date]);
+            ->andFilterWhere(['like', 'user.email', $this->user_id]);
 
         return $dataProvider;
     }
