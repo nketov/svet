@@ -41,7 +41,7 @@ html, body {
     color: black;
 }
 
-#products-table, #form-product-update, #orders-table, #order-view, #users-table {
+#products-table, #form-product-update, #orders-table, #order-view, #users-table,#actions-table {
     color: #222;
     width: calc(99vw - 265px);
     overflow: hidden;
@@ -65,14 +65,14 @@ table:not(#order-view) tr > *:nth-child(1) {
     width: 25px;
 }
 
-table:not(#order-view,#orders-table) tbody tr:hover {
+.table-hover tbody tr:hover {
     color: #112255;
     font-weight: bold;
     text-shadow: 2px 1px 1px rgba(0, 0, 0, 0.5) !important;
     cursor: pointer;
 }
 
-table:not(#order-view) tbody tr:active {
+.table-hover tbody tr:active {
     color: #111;
     text-shadow: 1px 1px rgba(0, 0, 0, 0.5) !important;
 
