@@ -214,16 +214,15 @@ class Product extends \yii\db\ActiveRecord
 
     public  function getDiscountPrice()
     {
-//        $discounts = Actions::getDiscounts();
-//
-//
-//        if(array_key_exists($this->code, $discounts)) {
-//            return round($this->price *(100-$discounts[$this->code])/100, 2);
-//        }
-//
-//        if(array_key_exists('*', $discounts)) {
-//            return round($this->price *(100-$discounts['*'])/100, 2);
-//        }
+        $discounts = \Yii::$app->user->identity->actions ?? [];
+
+        if(array_key_exists($this->id, $discounts)) {
+            return round($this->price *(100-$discounts[$this->id])/100, 2);
+        }
+
+        if(array_key_exists('', $discounts)) {
+            return round($this->price *(100-$discounts[''])/100, 2);
+        }
 
         return $this->price;
     }

@@ -90,8 +90,15 @@ $(document).ready(function () {
 
     $('body').on('click', '#orders-table tbody tr td:not(.td-status)',
         function () {
-            var product = $(this).closest('tr').data('key');
-            location.href = '/admin/order/view?id=' + product;
+            var order = $(this).closest('tr').data('key');
+            location.href = '/admin/order/view?id=' + order;
+        }
+    );
+
+    $('body').on('click', '#actions-table tbody tr td:not(:last-child)',
+        function () {
+            var action_id = $(this).closest('tr').data('key');
+            location.href = '/admin/actions/update?id=' + action_id;
         }
     );
 

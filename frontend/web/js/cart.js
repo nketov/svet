@@ -127,7 +127,7 @@ jQuery(document).ready(function ($) {
                     addToCart(data, quantity);
                 },
                 error: function (e) {
-                    alert('Error!')
+                    console.log('Error!');
                     console.log(e.responseText);
                 }
             }
@@ -295,7 +295,7 @@ jQuery(document).ready(function ($) {
                 }
             },
             error: function (e) {
-                alert('Error!')
+                console.log('Error!')
                 console.log(e.responseText);
             }
         }

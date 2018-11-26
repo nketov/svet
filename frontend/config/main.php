@@ -10,7 +10,10 @@ return [
     'id' => 'Svitlograd',
     'basePath' => dirname(__DIR__),
     'language' => 'ru-RU',
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        'frontend\components\UsersActions'
+    ],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [

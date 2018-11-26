@@ -42,7 +42,7 @@ class Actions extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => 'Клиент',
             'product_id' => 'Товар',
-            'percent' => 'Процент скидки',
+            'percent' => 'Скидка, %',
         ];
     }
 

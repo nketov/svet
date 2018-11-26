@@ -40,14 +40,14 @@ $this->title = 'Акции';
 //                ],
 
                 ['attribute' => 'user_id',
-                    'contentOptions' => ['style' => 'min-width:80px, text-align:center'],
+                    'contentOptions' => ['style' => 'min-width:80px; text-align:left'],
                     'value' => function ($data) {
                         return $data->user->email;
                     },
                 ],
 
                 ['attribute' => 'product_id',
-                    'contentOptions' => ['style' => 'min-width:80px, text-align:center'],
+                    'contentOptions' => ['style' => 'min-width:275px;max-width:500px; text-align:center'],
                     'value' => function ($data) {
                         return $data->product->code ?? 'Все товары';
                     },
@@ -56,10 +56,15 @@ $this->title = 'Акции';
 
                 ['attribute' => 'percent',
                     'contentOptions' => ['style' => 'width:100px;text-align:center'],
+                ],
+                [
+                    'class' => 'yii\grid\ActionColumn',
+                    'template' => '{delete}',
+                    'contentOptions' => ['style' => 'width:35px;text-align:center'],
 
                 ],
-
             ],
+
         ]); ?>
     <?php Pjax::end(); ?>
 </div>

@@ -9,8 +9,8 @@ use yii\helpers\Html;
 $this->title = 'Создание акции';
 
 ?>
-<div class="box">
-    <div class="box-body">
+<div class="box" style="width: 552px">
+    <div class="box-body actions-form-panel">
 
 
         <?= $this->render('_form', [

@@ -97,12 +97,12 @@ $this->title = $model->name;
 
 
     <div class="view_buttons">
-        <div class="view_price"><?= $model->price > 0 ? number_format($model->price, 2, ',', '&nbsp;') . ' грн' : 'Цена не указана' ?></div>
+        <div class="view_price"><?= $model->price > 0 ? number_format($model->getDiscountPrice(), 2, ',', '&nbsp;') . ' грн' : 'Цена не указана' ?></div>
         <p style="color: #00a65a">Есть в наличии</p>
         <button
                 class="btn btn-primary btn-lg cd-add-to-cart"
                 data-id="<?= $model->id ?>"
-                data-price="<?= $model->price ?>"
+                data-price="<?= $model->getDiscountPrice() ?>"
                 data-name="<?= $model->name ?>"
                 data-image="<?= $src ?>">
             ДОБАВИТЬ В КОРЗИНУ
