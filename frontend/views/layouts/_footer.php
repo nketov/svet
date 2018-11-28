@@ -4,7 +4,6 @@ use yii\helpers\Html;
 
 ?>
 
-
 <footer id="footer">
     <div class="container">
         <div class="row">
@@ -13,7 +12,7 @@ use yii\helpers\Html;
                 <ul>
                     <li><a href="/">Главная</a></li>
                     <li><a href="/catalog">Каталог</a></li>
-                    <li><a href="#">Вход</a></li>
+                    <li><a href="/login">Вход</a></li>
                 </ul>
             </div>
             <div class="col-sm-4">
@@ -21,15 +20,16 @@ use yii\helpers\Html;
                 <ul>
                     <li><a href="#">О компании</a></li>
                     <li><a href="#">Статьи</a></li>
-                    <li><a href="#">Помощь</a></li>
+                    <li><a href="#">Контакт</a></li>
                 </ul>
             </div>
             <div class="col-sm-4">
                 <h5>Контакты</h5>
                 <ul class="footer-contacts">
-                    <li><img src="/images/icons/voodafone.png" alt="">&nbsp&nbsp+38 (050) 505 05 05</li>
-                    <li><img src="/images/icons/email.png" alt="">&nbsp&nbspsvetlograd.in.ua@gmail.com</li>
-                    <li><img src="/images/icons/icq.png" alt="">&nbsp&nbsp123456789</li>
+                    <li><img src="/images/icons/<?=$siteContent->phone_footer_icon ?>" alt="">&nbsp&nbsp<?=$siteContent->phone_footer ?></li>
+                    <li><img src="/images/icons/email.png" alt="">&nbsp&nbspsvitlograd.krm@gmail.com
+                    </li>
+                    <li><img src="/images/icons/icq.png" alt="">&nbsp&nbsp<?=$siteContent->icq ?></li>
                 </ul>
             </div>
         </div>
@@ -48,7 +48,3 @@ use yii\helpers\Html;
         <p>© 2018 Kramatorsk </p>
     </div>
 </footer>
-
-<!--<footer class="footer">-->
-
-<!--</footer>-->

@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use app\models\UploadForm;
 use backend\components\ShopUploader;
+use common\models\Content;
 use common\models\MainPage;
 use yii\web\Response;
 use yii\web\UploadedFile;
@@ -98,17 +99,17 @@ class SiteController extends Controller
     {
 
         $post = Yii::$app->request->post();
-        if(Yii::$app->request->isAjax && $post) {
-           \ Yii::$app->response->format = Response::FORMAT_JSON;
-            $model=MainPage::findOne($post['key']);
-            $model->product_id=$post['product'];
+        if (Yii::$app->request->isAjax && $post) {
+            \ Yii::$app->response->format = Response::FORMAT_JSON;
+            $model = MainPage::findOne($post['key']);
+            $model->product_id = $post['product'];
             $model->save();
             return $this->renderAjax('_main_img', [
                 'product' => $model->product,
             ]);
         }
 
-        $models=MainPage::find()->with(['product'])->all();
+        $models = MainPage::find()->with(['product'])->all();
 
 
         return $this->render('main-page', compact('models'));
@@ -119,8 +120,14 @@ class SiteController extends Controller
     public function actionContent()
     {
 
-        return $this->render('content');
+        $model = Content::findOne(1);
 
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->render('success', ['message' => '<div class="box"><div class="box-body">Данные успешно сохранены!</div></div>',
+                'title' => 'Содержание сайта']);
+        } else {
+            return $this->render('content', compact(['model']));
+        }
     }
 
 
@@ -135,7 +142,7 @@ class SiteController extends Controller
             $model->excelFile = UploadedFile::getInstance($model, 'excelFile');
 
             if ($model->upload()) {
-                return ShopUploader::widget(['shop' => $model->shop,'markup' => $model->markup]);
+                return ShopUploader::widget(['shop' => $model->shop, 'markup' => $model->markup]);
             }
         }
 

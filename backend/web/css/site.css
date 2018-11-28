@@ -94,6 +94,10 @@ table .summary {
     font: italic .8rem "Segoe UI";
 }
 
+#content-form{
+margin: 25px;
+}
+
 #form-product-update .form-grid {
     padding: 10px 25px;
     display: grid;

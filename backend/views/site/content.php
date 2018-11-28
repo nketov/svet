@@ -1,46 +1,42 @@
 <?php
 
-use yii\helpers\Url;
-use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
-?>
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
-<h1 style="text-align: center;">Админка</h1>
-
-
-<?php
-ini_set('memory_limit', '256M');
-ini_set('max_execution_time', '300');
-
-$inputFileName = Url::to('@backend/web/uploads/colors.xlsx');
-$reader = new Xlsx();
-$reader->setReadDataOnly(true);
-
-var_dump($reader);
-try {
-    $spreadsheet = $reader->load($inputFileName);
-
-} catch (Exception $e) {
-    exit('Error loading file: ' . $e->getMessage());
-}
-
-
-$sheetData = $spreadsheet->getActiveSheet()->toArray(null, true, true, true);
-
-array_shift($sheetData);
-array_shift($sheetData);
-$array=[];
-
-foreach ($sheetData as $row) {
-    $array[]=trim($row['C']);
-}
-
-$result=array_unique($array);
-asort($result);
-
-
-?>
+$this->title = 'Содержание сайта'; ?>
 
 
 
+    <div class="box" style="width: 552px">
+        <div class="box-body">
+            <?php $form = ActiveForm::begin(['id' => 'content-form']); ?>
+<!--            --><?//= $form->field($model, 'address')->textInput() ?>
+
+            <?= $form->field($model, 'phones_header')->textInput() ?>
+
+            <?= $form->field($model, 'phone_footer')->textInput() ?>
+
+            <?= $form->field($model, 'phone_footer_icon')->dropDownList([
+                'voodafone.png' => 'Voodafone',
+                'kyivstar.png' => 'KyivStar',
+                'life.png' => 'Life'
+
+            ]); ?>
+
+            <?= $form->field($model, 'title')->textarea() ?>
+
+            <?= $form->field($model, 'description')->textarea() ?>
+
+            <?= $form->field($model, 'keywords')->textarea() ?>
+
+            <?= $form->field($model, 'icq')->textInput() ?>
+
+            <div class="form-group">
+                <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary center-block']) ?>
+            </div>
+
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
 
 

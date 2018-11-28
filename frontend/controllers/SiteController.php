@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Content;
 use common\models\MainPage;
 use common\models\Product;
 use Yii;
@@ -77,6 +78,8 @@ class SiteController extends Controller
     {
 
         $models=MainPage::find()->with(['product'])->all();
+
+        $this->view->title = Content::findOne(1)->title;
 
         return $this->render('index', compact('models'));
     }

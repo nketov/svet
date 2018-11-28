@@ -7,24 +7,25 @@
 use yii\helpers\Html;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
-use yii\widgets\Pjax;
+use common\models\Content;
 
 AppAsset::register($this);
+$siteContent = Content::findOne(1);
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
-    <!--    --><? //= $this->render('_head.php',compact('headerContent')) ?>
-    <?= $this->render('_head.php') ?>
+    <?= $this->render('_head.php', compact('siteContent')) ?>
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
 </head>
 <body class="wrap">
 <?php $this->beginBody() ?>
+
 <?= $this->render('_cart.php') ?>
-<!--    --><? //= $this->render('_header.php',compact('headerContent')) ?>
-<?= $this->render('_header.php') ?>
+<?= $this->render('_header.php', compact('siteContent')) ?>
 <?= $this->render('_top_catalog.php') ?>
 
 <main class="main-content">
@@ -32,7 +33,7 @@ AppAsset::register($this);
     <?= $content ?>
 </main>
 
-<?= $this->render('_footer.php') ?>
+<?= $this->render('_footer.php', compact('siteContent')) ?>
 <?php $this->endBody() ?>
 </body>
 </html>
