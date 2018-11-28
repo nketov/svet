@@ -122,7 +122,7 @@ class SiteController extends Controller
         if ($signupModel->load(Yii::$app->request->post()) && $user = $signupModel->signup()) {
             if (Yii::$app->getUser()->login($user)) {
                 Yii::$app->session->setFlash('success', 'Добро пожаловать!');
-                return $this->goHome();
+                return $this->goBack();
             }
         } else if ($model->load(Yii::$app->request->post()) && $model->login()) {
             Yii::$app->session->setFlash('success', 'Добро пожаловать!');

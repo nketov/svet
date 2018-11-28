@@ -98,6 +98,9 @@ class SiteController extends Controller
     public function actionMainPage()
     {
 
+        ini_set('memory_limit', '256M');
+        ini_set('max_execution_time', '300');
+
         $post = Yii::$app->request->post();
         if (Yii::$app->request->isAjax && $post) {
             \ Yii::$app->response->format = Response::FORMAT_JSON;

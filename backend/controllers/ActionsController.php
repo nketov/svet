@@ -64,6 +64,10 @@ class ActionsController extends Controller
      */
     public function actionCreate()
     {
+
+        ini_set('memory_limit', '256M');
+        ini_set('max_execution_time', '300');
+
         $model = new Actions();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -84,6 +88,9 @@ class ActionsController extends Controller
      */
     public function actionUpdate($id)
     {
+
+        ini_set('memory_limit', '256M');
+        ini_set('max_execution_time', '300');
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
