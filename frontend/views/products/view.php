@@ -87,10 +87,17 @@ $this->title = $model->name;
             </div>
         <?php } ?>
 
-        <?php if (!empty($model->Глубина)) { ?>
+        <?php if (!empty($model->depth)) { ?>
             <div class="string">
-                <div class="spec_name">Высота:&nbsp;</div>
+                <div class="spec_name">Глубина:&nbsp;</div>
                 <div class="spec_value"><?= $model->depth ?>&nbsp;мм</div>
+            </div>
+        <?php } ?>
+
+        <?php if (!empty($model->size)) { ?>
+            <div class="string">
+                <div class="spec_name">Размеры:&nbsp;</div>
+                <div class="spec_value"><?= $model->size ?></div>
             </div>
         <?php } ?>
     </div>

@@ -28,6 +28,7 @@ use common\models\Color;
  * @property int $diametr
  * @property int $width
  * @property int $depth
+ * @property string $size
  * @property string $lamps
  * @property string $second_code
  */
@@ -45,6 +46,7 @@ class Product extends \yii\db\ActiveRecord
     const EGLO_SHOP = '1';
     const FREYA_SHOP = '2';
     const MAYTONI_SHOP = '3';
+    const ARTGLASS_SHOP = '4';
 
 
     const CATEGORY_OTHER = '0';
@@ -61,6 +63,7 @@ class Product extends \yii\db\ActiveRecord
         self::EGLO_SHOP => 'ЕГЛО',
         self::FREYA_SHOP => 'Freya',
         self::MAYTONI_SHOP => 'Maytoni',
+        self::ARTGLASS_SHOP => 'ARTGLASS',
     ];
 
     private static $_categoryName = [
@@ -99,7 +102,7 @@ class Product extends \yii\db\ActiveRecord
             [['code', 'second_code'], 'string', 'max' => 50],
             [['name'], 'string', 'max' => 200],
             [['image_1', 'image_2', 'image_3', 'image_4', 'image_5'], 'string', 'max' => 55],
-            [['lamps'], 'string', 'max' => 100],
+            [['lamps', 'size'], 'string', 'max' => 100],
             [['code'], 'unique'],
 
         ];
@@ -131,6 +134,7 @@ class Product extends \yii\db\ActiveRecord
             'diametr' => 'Диаметр, мм',
             'width' => 'Ширина, мм',
             'depth' => 'Глубина, мм',
+            'size' => 'Размер',
             'lamps' => 'Лампочки',
             'second_code' => 'Запасной код',
         ];

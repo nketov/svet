@@ -16,6 +16,7 @@ echo $form->field($model, 'shop')->dropDownList([
     '1' => Product::shopName(1),
     '2' => Product::shopName(2),
     '3' => Product::shopName(3),
+    '4' => Product::shopName(4),
 ]);
 
 echo $form->field($model, 'excelFile')->fileInput();

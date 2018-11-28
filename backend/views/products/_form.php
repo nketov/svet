@@ -48,6 +48,8 @@ use common\models\Product;
 
     <?= $form->field($model, 'depth')->textInput() ?>
 
+    <?= $form->field($model, 'size')->textInput() ?>
+
 <!--    --><?//= $form->field($model, 'second_code')->textInput(['maxlength' => true]) ?>
 
 </div>

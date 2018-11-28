@@ -59,6 +59,9 @@ class ShopUploader extends Widget
             case Product::MAYTONI_SHOP:
                 $this->uploadMaytoni();
                 break;
+            case Product::ARTGLASS_SHOP:
+                $this->uploadArtglass();
+                break;
         }
 
 
@@ -353,6 +356,70 @@ class ShopUploader extends Widget
     }
 
 
+    private function uploadArtglass()
+    {
+
+        $rows = [];
+        foreach ($this->sheetData as $row) {
+            if (!empty($row['A'])) {
+                $rows[(string)trim($row['A'])] = [
+                    'name' => (string)trim($row['A']),
+                    'price' => (float)trim($row['C'])*(1+$this->markup/100),
+                    'size' => (string)trim($row['B'])
+                ];
+            }
+        }
+
+        $products = Product::find()->shop(Product::ARTGLASS_SHOP)->all();
+
+        foreach ($products as $product) {
+            if (array_key_exists($product->code, $rows)) {
+                if ($product->active) {
+                    $this->updated_count++;
+                } else {
+                    $this->activated_count++;
+                    $product->active = 1;
+                }
+
+                $product->name = (string)$rows[$product->code]['name'];
+                $product->shop = Product::ARTGLASS_SHOP;
+                $product->price = (float)$rows[$product->code]['price'];
+                $product->size = (string)$rows[$product->code]['size'];
+            } else {
+                if ($product->active) {
+                    $product->active = 0;
+                    $this->deactivated_count++;
+                }
+            }
+
+            if ($product->save()) {
+                unset($rows[$product->code]);
+            } else {
+                var_dump($product->errors);
+                var_dump($product);
+                exit();
+            }
+        }
+
+        foreach ($rows as $code => $row) {
+            $newProduct = new Product();
+            $newProduct->code = (string)$code;
+            $newProduct->name = (string)$row['name'];
+            $newProduct->shop = Product::ARTGLASS_SHOP;
+            $newProduct->price = (float)$row['price'];
+            $newProduct->size = (string)$row['size'];
+
+            if ($newProduct->save()) {
+                $this->new_count++;
+            } else {
+                var_dump($newProduct->errors);
+                var_dump($newProduct);
+                exit();
+            }
+        }
+    }
+
+
     private function getFilter()
 
     {
@@ -371,6 +438,10 @@ class ShopUploader extends Widget
 
             case Product::MAYTONI_SHOP:
                 return new XlsFilter(6, ['A', 'B', 'C', 'D', 'H', 'I', 'J', 'K', 'L', 'M']);
+                break;
+
+            case Product::ARTGLASS_SHOP:
+                return new XlsFilter(2, ['A', 'B', 'C']);
                 break;
         }
 
