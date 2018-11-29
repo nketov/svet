@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use app\models\UploadForm;
 use backend\components\ShopUploader;
+use common\models\ActionsContent;
 use common\models\Content;
 use common\models\MainPage;
 use yii\web\Response;
@@ -33,7 +34,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'content', 'upload', 'main-page'],
+                        'actions' => ['logout', 'content', 'upload', 'main-page','actions-content'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -126,11 +127,32 @@ class SiteController extends Controller
         $model = Content::findOne(1);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->render('success', ['message' => '<div class="box"><div class="box-body">Данные успешно сохранены!</div></div>',
+            return $this->render('success', ['message' => '<div class="box"><div class="box-body" style="color: green">Данные успешно сохранены!</div></div>',
                 'title' => 'Содержание сайта']);
         } else {
             return $this->render('content', compact(['model']));
         }
+    }
+
+
+    public function actionActionsContent()
+    {
+
+
+        if (!empty($id = Yii::$app->request->post('ActionsContent')['id'])) {
+            $content = ActionsContent::findOne($id);
+            if ($content->load(Yii::$app->request->post()) && $content->upload()) {
+                return $this->render('success', ['message' => '<div class="box"><div class="box-body" style="color: green">Данные успешно сохранены!</div></div>',
+                    'title' => 'Содержание акции']);
+            }
+        }
+
+        $contents = [];
+        for ($i = 1; $i < 4; $i++) {
+            $contents[$i] = ActionsContent::findOne($i);
+        }
+
+        return $this->render('actions-content', compact('contents'));
     }
 
 

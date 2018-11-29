@@ -37,7 +37,7 @@
                     ['label' => 'Товары', 'icon' => 'shopping-bag', 'url' => ['/products'],],
                     ['label' => 'Товары на главной', 'icon' => 'th', 'url' => ['/main-page'],],
                     ['label' => 'Содержание сайта', 'icon' => 'tv', 'url' => ['/content'],],
-//                    ['label' => 'Содержание акций', 'icon' => 'gift', 'url' => ['/actions-content'],],
+                    ['label' => 'Содержание акций', 'icon' => 'gift', 'url' => ['/actions-content'],],
 //                    ['label' => 'Курсы валют', 'icon' => 'money', 'url' => ['/currency'],],
                     ['label' => 'Загрузка данных', 'icon' => 'upload', 'url' => ['/upload'],],
 //                    ['label' => 'Загрузка изображений', 'icon' => 'upload', 'url' => ['/image-upload'],],

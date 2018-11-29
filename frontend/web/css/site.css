@@ -287,6 +287,18 @@ a{
     background: linear-gradient(to bottom, #CDF, #FFF);
 }
 
+.main-content > .container-contact {
+    grid-column-end: span 2;
+    background: linear-gradient(to bottom, #DFE, #FFF);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.main-content > .container-contact >div{
+    padding: 35px;
+    margin: 0 auto;
+}
+
 .main-content > .main-page {
     grid-column-end: span 2;
     margin: 25px;
@@ -609,6 +621,13 @@ a{
     font-size: 14px;
 }
 
+
+#contact-form{
+    max-width: 550px;
+    margin: 0 auto;
+    text-align: center;
+}
+
 #footer {
     background-color: #070712;
     color: white;
@@ -770,6 +789,12 @@ a{
 }
 
 @media screen and (max-width: 767px) {
+
+    .main-content > .container-contact {
+        grid-template-columns: 1fr;
+    }
+
+
     #footer {
         text-align: center;
     }

@@ -20,7 +20,7 @@ use yii\helpers\Html;
                 <ul>
                     <li><a href="#">О компании</a></li>
                     <li><a href="#">Статьи</a></li>
-                    <li><a href="#">Контакт</a></li>
+                    <li><a href="/contact">Вопросы</a></li>
                 </ul>
             </div>
             <div class="col-sm-4">

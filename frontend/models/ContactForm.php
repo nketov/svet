@@ -12,7 +12,7 @@ class ContactForm extends Model
 {
     public $name;
     public $email;
-    public $subject;
+    public $phone;
     public $body;
     public $verifyCode;
 
@@ -23,11 +23,10 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            // name, email, subject and body are required
-            [['name', 'email', 'subject', 'body'], 'required'],
-            // email has to be a valid email address
+
+            [['name', 'email', 'phone', 'body'], 'required'],
+//            ['phone', 'string', 'length' => 9],
             ['email', 'email'],
-            // verifyCode needs to be entered correctly
             ['verifyCode', 'captcha'],
         ];
     }
@@ -38,7 +37,12 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => 'Имя',
+            'email' => 'E-mail',
+            'phone' => 'Телефон',
+            'body' => 'Вопрос',
+            'verifyCode' => 'Проверочный код',
+
         ];
     }
 
@@ -48,13 +52,18 @@ class ContactForm extends Model
      * @param string $email the target email address
      * @return bool whether the email was sent
      */
-    public function sendEmail($email)
+    public function sendEmail()
     {
-        return Yii::$app->mailer->compose()
-            ->setTo($email)
-            ->setFrom([$this->email => $this->name])
-            ->setSubject($this->subject)
-            ->setTextBody($this->body)
-            ->send();
+
+        $string = $this->phone;
+        $this->phone = '+38 (0'.$string[0].$string[1].') '.$string[2].$string[3].$string[4].' '.$string[5].$string[6].' '.$string[7].$string[8];
+
+        $text = '<p><b>Вопрос  от '. $this->name.'</b></p>';
+        $text .= '<p>E-mail : '. $this->email.'</p>';
+        $text .= '<p>Телефон : '. $this->phone.'</p>';
+        $text .= '<p>Вопрос : '. $this->body.'</p>';
+
+        mail('ketovnv@gmail.com', 'Вопрос  от '. $this->name , $text ,"Content-type:text/html;charset=UTF-8");
+        return true;
     }
 }

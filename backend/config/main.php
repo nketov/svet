@@ -44,7 +44,7 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                '<action:(content|login|upload|main-page)>' => 'site/<action>'
+                '<action:(content|login|upload|main-page|actions-content)>' => 'site/<action>'
             ],
         ],
         'assetManager' => [
