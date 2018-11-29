@@ -14,7 +14,7 @@
             <a href="/login">Вход</a>
             <?php }else{ ?>
                 <a href="/"><i class="fa fa-user"></i>&nbsp;<?= Yii::$app->user->identity->email ?></a>
-                <a href="/site/logout">Выходf
+                <a href="/site/logout">Выход
             <?php } ?>
         </nav>
     </div>
