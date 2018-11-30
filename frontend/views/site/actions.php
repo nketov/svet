@@ -34,10 +34,10 @@ $this->title = 'Акции и скидки';
                         <tr>
                             <td style="padding:10px"><?= $product->name ?></td>
                             <td style="padding:10px"><?= $product->code ?></td>
-                            <td style="padding:10px"><?= $product->price . '&nbsp;грн.' ?></td>
+                            <td style="padding:10px"><?= $product->price . '&nbsp;грн' ?></td>
                             <td style="padding:10px"><?= $action . '&nbsp;%' ?></td>
                             <td style="padding:10px;color: #00a157;text-align: right">
-                                <b><?= $product->getDiscountPrice() . '&nbsp;грн.' ?></b></td>
+                                <b><?= $product->getDiscountPrice() . '&nbsp;грн' ?></b></td>
                             <td style="padding:10px">
                                 <button type="button" class="btn btn-primary btn-sm product-view"
                                         data-id="<?= $product->id ?>" title="Просмотр"><i
