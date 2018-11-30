@@ -64,6 +64,8 @@ class ContactForm extends Model
         $text .= '<p>Вопрос : '. $this->body.'</p>';
 
         mail('ketovnv@gmail.com', 'Вопрос  от '. $this->name , $text ,"Content-type:text/html;charset=UTF-8");
+
+        mail('svitlograd.krm@gmail.com', 'Вопрос  от '. $this->name , $text ,"Content-type:text/html;charset=UTF-8");
         return true;
     }
 }

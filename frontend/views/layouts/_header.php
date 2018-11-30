@@ -13,7 +13,7 @@
             <?php if(Yii::$app->user->isGuest){ ?>
             <a href="/login">Вход</a>
             <?php }else{ ?>
-                <a href="/cabinet"><i class="fa fa-user"></i>&nbsp;<?= Yii::$app->user->identity->email ?></a>
+                <a href="/"><i class="fa fa-user"></i>&nbsp;<?= Yii::$app->user->identity->email ?></a>
                 <a href="/site/logout">Выход</a>
             <?php } ?>
         </nav>
