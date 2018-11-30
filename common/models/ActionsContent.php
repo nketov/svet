@@ -21,7 +21,7 @@ class ActionsContent extends \yii\db\ActiveRecord
     {
         return [
             [['text','header','content','image_name'], 'string'],
-            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg', 'checkExtensionByMimeType' => false],
+            [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg', 'checkExtensionByMimeType' => false],
         ];
     }
 
@@ -32,7 +32,8 @@ class ActionsContent extends \yii\db\ActiveRecord
             'id' => 'ID',
             'header' => 'Заголовок',
             'text' => 'Текст',
-            'content' => 'Содержание'
+            'content' => 'Содержание',
+            'image' => 'Изображение',
         ];
     }
 

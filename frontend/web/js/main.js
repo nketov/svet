@@ -46,6 +46,11 @@ $(document).ready(function () {
         }
     );
 
+    $('.product-view').on('click', function (e) {
+        e.preventDefault();
+        var product = $(this).data('id');
+        location.href = '/product/' + product;;
+    })
 
     var image = document.getElementById('image');
     if (image) {

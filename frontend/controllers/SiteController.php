@@ -2,6 +2,8 @@
 
 namespace frontend\controllers;
 
+use common\models\Actions;
+use common\models\ActionsContent;
 use common\models\Content;
 use common\models\MainPage;
 use common\models\Product;
@@ -132,6 +134,37 @@ class SiteController extends Controller
         $model->password = '';
 
         return $this->render('login', compact('model', 'signupModel','passwordModel'));
+    }
+
+
+
+    public function actionCabinet()
+    {
+        $user = Yii::$app->user->identity;
+
+        if (!empty($phone = Yii::$app->request->post('User')['phone'])) {
+            $user->phone = $phone;
+            $user->save();
+        }
+
+        $actions = Actions::getDiscounts();
+        $lastOrders = \common\models\Order::find()->where(['user_id' => $user->id])->orderBy(['date' => SORT_DESC])->limit(5)->all();
+
+        $currency = !empty(Yii::$app->session->get('currency')) ? Yii::$app->session->get('currency') : 'EUR';
+        $currencySign = Currency::$currencySign[$currency];
+        $currency = ($currency == 'EUR') ? 1 : Currency::getCurrency($currency);
+        return $this->render('cabinet', compact('actions', 'currency', 'currencySign', 'user','lastOrders'));
+    }
+
+
+
+    public function actionActions()
+    {
+
+        $contents=ActionsContent::find()->all();
+        $actions = Actions::getDiscounts();
+
+        return $this->render('actions', compact('actions', 'contents'));
     }
 
     /**

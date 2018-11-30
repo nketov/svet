@@ -51,7 +51,7 @@ return [
                 'product/<id:\d+>' => 'products/view',
                 'category/<category:\d+>' => 'products/category',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '<action:(about|contact|login|signup|view)>' => 'site/<action>'
+                '<action:(about|contact|login|signup|view|cabinet|actions)>' => 'site/<action>'
             ],
         ],
     ],
