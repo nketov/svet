@@ -6,6 +6,7 @@ use common\models\Actions;
 use common\models\ActionsContent;
 use common\models\Content;
 use common\models\MainPage;
+use common\models\Order;
 use common\models\Product;
 use Yii;
 use yii\base\InvalidParamException;
@@ -148,12 +149,9 @@ class SiteController extends Controller
         }
 
         $actions = Actions::getDiscounts();
-        $lastOrders = \common\models\Order::find()->where(['user_id' => $user->id])->orderBy(['date' => SORT_DESC])->limit(5)->all();
+        $lastOrders = Order::find()->where(['user_id' => $user->id])->orderBy(['date' => SORT_DESC])->limit(5)->all();
 
-        $currency = !empty(Yii::$app->session->get('currency')) ? Yii::$app->session->get('currency') : 'EUR';
-        $currencySign = Currency::$currencySign[$currency];
-        $currency = ($currency == 'EUR') ? 1 : Currency::getCurrency($currency);
-        return $this->render('cabinet', compact('actions', 'currency', 'currencySign', 'user','lastOrders'));
+        return $this->render('cabinet', compact('actions', 'user','lastOrders'));
     }
 
 

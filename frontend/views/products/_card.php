@@ -17,8 +17,8 @@ use yii\helpers\StringHelper;
 <?php } ?>
 
 <div class="card-text">
-    <span class="card-text-text"><?= StringHelper::truncate($model->name, 42) ?></span><span
-            class="card-price"><?= $model->price >0 ?  number_format($model->getDiscountPrice(), 2, ',', '&nbsp;') .' грн' : 'Цена не указана' ?></span></p>
+    <span class="card-text-text"><?= StringHelper::truncate($model->name, 42) ?></span>
+    <span class="card-price"><?= $model->price >0 ?  number_format($model->getDiscountPrice(), 2, ',', '&nbsp;') .' грн' : 'Цена не указана' ?></span>
 </div>
 <div class="info_hover">
 

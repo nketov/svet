@@ -7,13 +7,13 @@
             <a href="/">О компании</a>
 <!--            <a href="/">Оплата и доставка</a>-->
             <a href="/actions">Акции и скидки</a>
-            <a href="/">Статьи</a>
+<!--            <a href="/">Статьи</a>-->
             <a href="/contact">Вопросы</a>
             <a href="/catalog">Каталог</a>
             <?php if(Yii::$app->user->isGuest){ ?>
             <a href="/login">Вход</a>
             <?php }else{ ?>
-                <a href="/"><i class="fa fa-user"></i>&nbsp;<?= Yii::$app->user->identity->email ?></a>
+                <a href="/cabinet"><i class="fa fa-user"></i>&nbsp;<?= Yii::$app->user->identity->email ?></a>
                 <a href="/site/logout">Выход</a>
             <?php } ?>
         </nav>

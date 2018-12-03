@@ -50,7 +50,12 @@ $(document).ready(function () {
         e.preventDefault();
         var product = $(this).data('id');
         location.href = '/product/' + product;;
-    })
+    });
+
+    $('.phone-change').on('click', function (e) {
+        e.preventDefault();
+        $('#phone-modal').modal('show');
+    });
 
     var image = document.getElementById('image');
     if (image) {

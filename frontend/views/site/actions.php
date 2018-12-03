@@ -13,7 +13,7 @@ $this->title = 'Акции и скидки';
         <div>
             <h1>Только для Вас:</h1>
             <h2>Специальное предложение</h2>
-            <table class="table table-hover table-responsive table-striped">
+            <table class="table table-hover table-responsive table-striped actions">
                 <thead class="thead-dark">
                 <tr>
                     <th>Товар</th>
@@ -66,7 +66,8 @@ $this->title = 'Акции и скидки';
 
 
 
-        <?php for ($i = 0; $i < 3; $i++) { ?>            <div>
+        <?php for ($i = 0; $i < 3; $i++) { ?>
+            <div>
                 <img src="/images/actions/<?= $contents[$i]->image_name ?>" alt="sliderImg" style="width: 100% "/>
 
                 <h2 class="action-head"><?= $contents[$i]->header ?></h2>

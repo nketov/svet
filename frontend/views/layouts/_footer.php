@@ -26,10 +26,10 @@ use yii\helpers\Html;
             <div class="col-sm-4">
                 <h5>Контакты</h5>
                 <ul class="footer-contacts">
-                    <li><img src="/images/icons/<?=$siteContent->phone_footer_icon ?>" alt="">&nbsp&nbsp<?=$siteContent->phone_footer ?></li>
-                    <li><img src="/images/icons/email.png" alt="">&nbsp&nbspsvitlograd.krm@gmail.com
+                    <li><img src="/images/icons/<?=$siteContent->phone_footer_icon ?>" alt="">&nbsp;&nbsp;<?=$siteContent->phone_footer ?></li>
+                    <li><img src="/images/icons/email.png" alt="">&nbsp;&nbsp;svitlograd.krm@gmail.com
                     </li>
-                    <li><img src="/images/icons/icq.png" alt="">&nbsp&nbsp<?=$siteContent->icq ?></li>
+                    <li><img src="/images/icons/icq.png" alt="">&nbsp;&nbsp;<?=$siteContent->icq ?></li>
                 </ul>
             </div>
         </div>
