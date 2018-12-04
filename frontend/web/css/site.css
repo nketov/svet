@@ -303,7 +303,7 @@ a{
 
 .main-content > .container-cabinet {
     grid-column-end: span 2;
-    background: linear-gradient(to bottom, #DCF, #FFF);
+    background: linear-gradient(to bottom, #DDD, #FFF);
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
