@@ -1,11 +1,11 @@
+
 function topCatalogResize() {
     "use strict";
-    var height = $('.top-catalog div:last').offset().top - 388;
+    let height = $('.top-catalog div:last').offset().top - 388;
     $('.top-catalog').css('height', height);
 }
 
-$(document).ready(function () {
-
+$(function () {
     "use strict";
     topCatalogResize();
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
     $('.product-view').on('click', function (e) {
         e.preventDefault();
         var product = $(this).data('id');
-        location.href = '/product/' + product;;
+        location.href = '/product/' + product;
     });
 
     $('.phone-change').on('click', function (e) {
@@ -72,30 +72,30 @@ $(document).ready(function () {
             var posCalibrateY = 0;
 
             if (x > parentPosInfo.width / 2) {
-                var deltaX = x - parentPosInfo.width / 2;
+                let deltaX = x - parentPosInfo.width / 2;
                 posCalibrateX = alphaWidth * (deltaX / (parentPosInfo.width / 2));
             } else if (x < parentPosInfo.width / 2) {
-                var deltaX = x - parentPosInfo.width / 2;
+                let deltaX = x - parentPosInfo.width / 2;
                 posCalibrateX = alphaWidth * (deltaX / (parentPosInfo.width / 2));
             } else {
                 posCalibrateX = 0;
             }
 
             if (x > parentPosInfo.width / 2) {
-                var deltaX = x - parentPosInfo.width / 2;
+                let deltaX = x - parentPosInfo.width / 2;
                 posCalibrateX = -1 * alphaWidth * (deltaX / (parentPosInfo.width / 2));
             } else if (x < parentPosInfo.width / 2) {
-                var deltaX = x - parentPosInfo.width / 2;
+                let deltaX = x - parentPosInfo.width / 2;
                 posCalibrateX = -1 * alphaWidth * (deltaX / (parentPosInfo.width / 2));
             } else {
                 posCalibrateX = 0;
             }
 
             if (y > parentPosInfo.height / 2) {
-                var deltaY = y - parentPosInfo.height / 2;
+                let deltaY = y - parentPosInfo.height / 2;
                 posCalibrateY = -1 * alphaHeight * (deltaY / (parentPosInfo.height / 2));
             } else if (y < parentPosInfo.height / 2) {
-                var deltaY = y - parentPosInfo.height / 2;
+                let deltaY = y - parentPosInfo.height / 2;
                 posCalibrateY = -1 * alphaHeight * (deltaY / (parentPosInfo.height / 2));
             } else {
                 posCalibrateY = 0;
