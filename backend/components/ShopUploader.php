@@ -212,17 +212,17 @@ class ShopUploader extends Widget
     {
 
         $rows = [];
+
         foreach ($this->sheetData as $row) {
             if (!empty($row['A']) && !empty($row['B']) && !empty($row['C'])) {
                 $rows[(string)trim($row['A'])] = [
                     'name' => (string)(trim($row['B']) . " " . trim($row['C']) . " " . trim($row['D'])),
-                    'color' => (string)trim($row['E']),
-                    'price' => (float)trim($row['I'])*(1+$this->markup/100),
-                    'height' => (int)trim($row['J']),
-                    'diametr' => (int)trim($row['K']),
-                    'width' => (int)trim($row['L']),
-                    'depth' => (int)trim($row['M']),
-                    'lamps' => (string)trim($row['N']),
+                    'price' => (float)trim($row['H'])*(1+$this->markup/100),
+                    'height' => (int)trim($row['I']),
+                    'diametr' => (int)trim($row['J']),
+                    'width' => (int)trim($row['K']),
+                    'depth' => (int)trim($row['L']),
+                    'lamps' => (string)trim($row['M']),
                 ];
             }
         }
@@ -240,20 +240,20 @@ class ShopUploader extends Widget
 
                 $product->name = (string)$rows[$product->code]['name'];
                 $product->shop = Product::FREYA_SHOP;
-                $product->color = (string)$rows[$product->code]['color'];
                 $product->price = (float)$rows[$product->code]['price'];
                 $product->height = (int)$rows[$product->code]['height'];
                 $product->diametr = (int)$rows[$product->code]['diametr'];
                 $product->width = (int)$rows[$product->code]['width'];
                 $product->depth = (int)$rows[$product->code]['depth'];
                 $product->lamps = (string)$rows[$product->code]['lamps'];
+
             } else {
                 if ($product->active) {
                     $product->active = 0;
                     $this->deactivated_count++;
                 }
             }
-
+            $product->color = (int)$product->color;
             if ($product->save()) {
                 unset($rows[$product->code]);
             } else {
@@ -268,7 +268,6 @@ class ShopUploader extends Widget
             $newProduct->code = (string)$code;
             $newProduct->name = (string)$row['name'];
             $newProduct->shop = Product::FREYA_SHOP;
-            $newProduct->color = (string)$row[$product->code]['color'];
             $newProduct->price = (float)$row['price'];
             $newProduct->height = (int)$row['height'];
             $newProduct->diametr = (int)$row['diametr'];
@@ -295,7 +294,6 @@ class ShopUploader extends Widget
             if (!empty($row['A']) && !empty($row['B']) && !empty($row['C'])) {
                 $rows[(string)trim($row['A'])] = [
                     'name' => (string)(trim($row['B']) . " " . trim($row['C'])),
-                    'color' => (string)trim($row['D']),
                     'price' => (float)trim($row['H'])*(1+$this->markup/100),
                     'height' => (int)trim($row['I']),
                     'diametr' => (int)trim($row['J']),
@@ -443,7 +441,7 @@ class ShopUploader extends Widget
                 break;
 
             case Product::FREYA_SHOP:
-                return new XlsFilter(6, ['A', 'B', 'C', 'D', 'E', 'I', 'J', 'K', 'L', 'M', 'N']);
+                return new XlsFilter(5, ['A', 'B', 'C', 'D', 'E', 'H', 'I', 'J', 'K', 'L', 'M']);
                 break;
 
             case Product::MAYTONI_SHOP:
