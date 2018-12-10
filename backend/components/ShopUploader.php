@@ -253,7 +253,7 @@ class ShopUploader extends Widget
                     $this->deactivated_count++;
                 }
             }
-            $product->color = (int)$product->color;
+
             if ($product->save()) {
                 unset($rows[$product->code]);
             } else {
