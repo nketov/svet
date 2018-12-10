@@ -31,7 +31,7 @@ class ShopUploader extends Widget
 
         $inputFileName = Url::to('@backend/web/uploads/prices/') . $this->fileName->name;
 
-        if($this->fileName->name->extension == 'xlsx'){
+        if(explode('.',$this->fileName->name)[1] == 'xlsx'){
             $reader = new Xlsx();
         } else{
             $reader = new Xls();
