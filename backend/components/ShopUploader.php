@@ -4,6 +4,7 @@ namespace backend\components;
 
 use common\models\Product;
 use PhpOffice\PhpSpreadsheet\Reader\Xls;
+use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use yii\base\Widget;
 use yii\helpers\Url;
 
@@ -11,6 +12,7 @@ class ShopUploader extends Widget
 {
 
     public $shop;
+    public $fileName;
     public $markup=0;
     private $sheetData;
 
@@ -26,8 +28,15 @@ class ShopUploader extends Widget
         ini_set('memory_limit', '256M');
         ini_set('max_execution_time', '300');
 
-        $inputFileName = Url::to('@backend/web/uploads/prices/') . Product::shopName($this->shop) . '.xls';
-        $reader = new Xls();
+
+        $inputFileName = Url::to('@backend/web/uploads/prices/') . $this->fileName->name;
+
+        if($this->fileName->name->extension == 'xlsx'){
+            $reader = new Xlsx();
+        } else{
+            $reader = new Xls();
+        }
+
         $reader->setReadDataOnly(true);
         $reader->setReadFilter($this->getFilter());
 

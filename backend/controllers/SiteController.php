@@ -167,7 +167,7 @@ class SiteController extends Controller
             $model->excelFile = UploadedFile::getInstance($model, 'excelFile');
 
             if ($model->upload()) {
-                return ShopUploader::widget(['shop' => $model->shop, 'markup' => $model->markup]);
+                return ShopUploader::widget(['shop' => $model->shop, 'markup' => $model->markup, 'fileName' => $model->excelFile]);
             }
         }
 
