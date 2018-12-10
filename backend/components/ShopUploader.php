@@ -12,7 +12,7 @@ class ShopUploader extends Widget
 {
 
     public $shop;
-    public $fileName;
+    public $extension;
     public $markup=0;
     private $sheetData;
 
@@ -29,9 +29,10 @@ class ShopUploader extends Widget
         ini_set('max_execution_time', '300');
 
 
-        $inputFileName = Url::to('@backend/web/uploads/prices/') . $this->fileName->name;
 
-        if(explode('.',$this->fileName->name)[1] == 'xlsx'){
+        $inputFileName = Url::to('@backend/web/uploads/prices/') .Product::shopName($this->shop) . '.'.$this->extension;
+
+        if($this->extension == 'xlsx'){
             $reader = new Xlsx();
         } else{
             $reader = new Xls();
