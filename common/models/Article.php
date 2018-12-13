@@ -2,39 +2,47 @@
 
 namespace common\models;
 
+use yii\helpers\Url;
 use yii\web\UploadedFile;
 use Yii;
-use yii\helpers\Url;
 
-class ActionsContent extends \yii\db\ActiveRecord
+/**
+ * This is the model class for table "article".
+ *
+ * @property int $id
+ * @property string $header
+ * @property string $content
+ * @property string $image_name
+ */
+class Article extends \yii\db\ActiveRecord
 {
 
     public $image;
-
+    /**
+     * {@inheritdoc}
+     */
     public static function tableName()
     {
-        return 'actions_content';
+        return 'article';
     }
 
-
+    /**
+     * {@inheritdoc}
+     */
     public function rules()
     {
         return [
-            [['text','header','content','image_name'], 'string'],
+            [['header','content','image_name'], 'string'],
             [['image'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg,jpeg', 'checkExtensionByMimeType' => false],
         ];
     }
 
-
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'header' => 'Заголовок',
-            'text' => 'Текст',
             'content' => 'Содержание',
             'image' => 'Изображение',
-
         ];
     }
 
@@ -43,8 +51,8 @@ class ActionsContent extends \yii\db\ActiveRecord
         if ($this->validate()) {
             $this->image = UploadedFile::getInstance($this, 'image');
             if($this->image) {
-                $this->image_name = 'action_' . $this->id . '.' . $this->image->extension;
-                $this->image->saveAs(Url::to('@frontend/web/images/actions/') . $this->image_name);
+                $this->image_name = 'article_' . $this->id . '.' . $this->image->extension;
+                $this->image->saveAs(Url::to('@frontend/web/images/articles/') . $this->image_name);
             }
             $this->save();
             return true;
@@ -52,4 +60,5 @@ class ActionsContent extends \yii\db\ActiveRecord
             return false;
         }
     }
+
 }

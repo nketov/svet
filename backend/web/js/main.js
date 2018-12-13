@@ -102,6 +102,13 @@ $(document).ready(function () {
         }
     );
 
+    $('body').on('click', '#articles-table tbody tr td:not(:last-child)',
+        function () {
+            var action_id = $(this).closest('tr').data('key');
+            location.href = '/admin/article/update?id=' + action_id;
+        }
+    );
+
     checkDeactivated();
 
     $('body').on(
