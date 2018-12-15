@@ -90,6 +90,17 @@ class Product extends \yii\db\ActiveRecord
         '11' => 'Стекло-зеркало-металл',
     ];
 
+    private static $_linksPattern = [
+
+
+        self::SVET_SHOP => 'https://drive.google.com/file/d/1FEJTPIO8xEY6tY8nY1B2uTqnxId7X6JB/view?usp=sharing',
+        self::EGLO_SHOP => 'https://drive.google.com/file/d/1B0TAQ8ruOF7e1YrPW7wmg_m7CusoZ3W_/view?usp=sharing - EGLO',
+        self::FREYA_SHOP => 'https://drive.google.com/file/d/1m86Zb4irTz_GEfcrEc-crltWVyvINQQX/view?usp=sharing',
+        self::MAYTONI_SHOP => 'https://drive.google.com/file/d/1f386IZZ4WFIQplpfFVEiSIgVY_Thg71M/view?usp=sharing',
+        self::ARTGLASS_SHOP => 'https://drive.google.com/file/d/1gU4IolT7YQUxrx3hPXTvigSmAXZAwMGh/view?usp=sharing',
+
+    ];
+
     /**
      * {@inheritdoc}
      */
@@ -163,6 +174,11 @@ class Product extends \yii\db\ActiveRecord
     public static function materialsNamesList()
     {
         return self::$_materialName;
+    }
+
+    public static function linksPatternList()
+    {
+        return self::$_linksPattern;
     }
 
     public static function materialName($material_id)

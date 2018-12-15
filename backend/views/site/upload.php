@@ -8,7 +8,7 @@ $form = ActiveForm::begin(['id' => 'excel-upload', 'options' => ['enctype' => 'm
 
 echo '<div class="box" style="width: 662px"><div class="box-body uploader-panel">';
 
-$this->title = 'Загрузка товаров для магазинов из файла ".xls"';
+$this->title = 'Загрузка товаров для магазинов из файла ".xls, .xlsx"';
 
 echo $form->field($model, 'shop')->dropDownList([
     '' => 'Выберите магазин',
@@ -32,5 +32,21 @@ echo Button::widget([
 
 
 echo '</div></div>';
+
+
+echo '<div class="box" style="width: 662px"><div class="box-body uploader-panel">';
+
+;
+
+echo '<b>Шаблоны загружаемых файлов ".xls, .xlsx":</b></br>';
+
+foreach (Product::linksPatternList() as $key=>$link)
+echo Html::a(Product::shopName($key), $link).'</br>';
+
+
+echo '</div></div>';
+
+
+
 
 ActiveForm::end() ?>
