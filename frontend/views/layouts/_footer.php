@@ -40,9 +40,9 @@ use yii\helpers\Html;
         </iframe>
     </div>
     <div class="social-networks">
-        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-        <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+        <a href="https://twitter.com/share?url=http://svitlograd.in.ua&amp;text=<?= str_replace("|", "",Html::encode($this->title)) ?>&amp;hashtags=svitlograd" class="twitter"><i class="fa fa-twitter"></i></a>
+        <a href="https://www.facebook.com/sharer.php?u=http://svitlograd.in.ua&amp;t=<?= Html::encode($this->title) ?>"  class="facebook"><i class="fa fa-facebook"></i></a>
+        <a href="https://plus.google.com/share?url=http://svitlograd.in.ua" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="google"><i class="fa fa-google-plus"></i></a>
     </div>
     <div class="footer-copyright">
         <p>© 2018 Kramatorsk </p>
