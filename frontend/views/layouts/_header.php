@@ -7,7 +7,7 @@
             <a href="/">О компании</a>
 <!--            <a href="/">Оплата и доставка</a>-->
             <a href="/actions">Акции и скидки</a>
-<!--            <a href="/">Статьи</a>-->
+            <a href="/articles">Статьи</a>
             <a href="/contact">Вопросы</a>
             <a href="/catalog">Каталог</a>
             <?php if(Yii::$app->user->isGuest){ ?>

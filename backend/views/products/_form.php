@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\Product;
+use dosamigos\tinymce\TinyMce;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
@@ -55,7 +56,18 @@ use common\models\Product;
 </div>
 
 <div class="form-footer">
-    <?= $form->field($model, 'description')->textarea(['rows' => 10]) ?>
+    <?= $form->field($model, 'description')->widget(TinyMce::className(), [
+        'options' => ['rows' => 10],
+        'language' => 'ru',
+        'clientOptions' => [
+            'plugins' => [
+                "advlist autolink lists link charmap print preview anchor",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table contextmenu paste"
+            ],
+            'toolbar' => "undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+        ]
+    ]) ?>
 
     <div class="form-group" style="text-align: center">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-lg btn-primary',]) ?>

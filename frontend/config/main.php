@@ -49,9 +49,10 @@ return [
                 '' => '/',
                 'catalog' => 'products/category',
                 'product/<id:\d+>' => 'products/view',
+                'article/<id:\d+>' => 'site/article-view',
                 'category/<category:\d+>' => 'products/category',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '<action:(about|contact|login|signup|view|cabinet|actions)>' => 'site/<action>'
+                '<action:(about|contact|login|signup|view|cabinet|actions|articles)>' => 'site/<action>'
             ],
         ],
     ],

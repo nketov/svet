@@ -4,6 +4,8 @@ namespace frontend\controllers;
 
 use common\models\Actions;
 use common\models\ActionsContent;
+use common\models\Article;
+use common\models\ArticleSearch;
 use common\models\Content;
 use common\models\MainPage;
 use common\models\Order;
@@ -163,6 +165,23 @@ class SiteController extends Controller
         $actions = Actions::getDiscounts();
 
         return $this->render('actions', compact('actions', 'contents'));
+    }
+
+
+    public function actionArticles()
+    {
+
+        $searchModel = new ArticleSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('articles',  compact('products', 'searchModel', 'dataProvider'));
+    }
+
+    public function actionArticleView($id)
+    {
+        return $this->render('article-view', [
+            'model' => Article::findOne($id),
+        ]);
     }
 
     /**
