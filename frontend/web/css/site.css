@@ -299,6 +299,7 @@ a{
      background: linear-gradient(to bottom, #FFE, #FFF);
      display: grid;
      grid-template-columns: 1fr 1fr 1fr;
+    padding-top: 30px;
 }
 
 .main-content > .container-articles,.main-content > .container-article-view {
@@ -327,7 +328,7 @@ a{
 }
 
 
-.main-content > .container-actions >div:first-child{
+.main-content > .container-actions >.actions-first{
     grid-column-end: span 3;
 }
 
@@ -870,7 +871,7 @@ a{
 
 
 
-    .main-content > .container-actions >div:first-child{
+    .main-content > .container-actions >.actions-first{
         grid-column-end: span 1;
     }
 }

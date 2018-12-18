@@ -10,7 +10,7 @@ $this->title = 'Акции и скидки';
 
 <div class="container-actions">
     <? if (!Yii::$app->user->isGuest) { ?>
-        <div>
+        <div class="actions-first">
             <h1>Только для Вас:</h1>
             <h2>Специальное предложение</h2>
             <table class="table table-hover table-responsive table-striped actions">
@@ -57,7 +57,7 @@ $this->title = 'Акции и скидки';
 
 
     <?php } else { ?>
-        <div>
+        <div class="actions-first">
             <h3>Регистрируйтесь <a href="/login"><i class="fa fa-user-plus" aria-hidden="true"></i></a> для того, чтобы
                 получить персональное предложение!</h3>
             <p></p>

@@ -83,10 +83,11 @@ class SiteController extends Controller
     {
 
         $models=MainPage::find()->with(['product'])->all();
+        $contents=ActionsContent::find()->all();
 
         $this->view->title = Content::findOne(1)->title;
 
-        return $this->render('index', compact('models'));
+        return $this->render('index', compact('models','contents'));
     }
 
 

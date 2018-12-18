@@ -321,19 +321,19 @@ margin: 25px;
 }
 
 @media screen and (max-width: 1400px) {
+    #products-table tr > *:nth-child(5) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1225px) {
+    #products-table tr > *:nth-child(4),#orders-table tr > *:nth-child(1) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1120px) {
     #products-table tr > *:nth-child(7) {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 1190px) {
-    #products-table tr > *:nth-child(5),#orders-table tr > *:nth-child(1) {
-        display: none;
-    }
-}
-
-@media screen and (max-width: 1100px) {
-    #products-table tr > *:nth-child(4) {
         display: none;
     }
 }

@@ -109,7 +109,7 @@ class ProductsController extends Controller
         $shop_text= '<p>Пользователь  <b>'.Yii::$app->user->identity->email.'</b> сделал заказ. Содержание заказа : </p>'.$order_content;
         mail('ketovnv@gmail.com', 'Заказ № '. $order->id , $shop_text ,"Content-type:text/html;charset=UTF-8");
 
-        mail('svitlograd.krm@gmail.com', 'Заказ № '. $order->id , $shop_text ,"Content-type:text/html;charset=UTF-8");
+//        mail('svitlograd.krm@gmail.com', 'Заказ № '. $order->id , $shop_text ,"Content-type:text/html;charset=UTF-8");
 
         $cart->resetCart();
         Yii::$app->session->setFlash('success', 'Ваш заказ отправлен!');
