@@ -57,6 +57,15 @@ $(function () {
         $('#phone-modal').modal('show');
     });
 
+    $('.cd-cart footer .btn-cart').on('click', function (e) {
+
+        console.log($(this).data('guest'));
+        if($(this).data('guest') === 1) {
+            e.preventDefault();
+            $('#order-phone-modal').modal('show');
+        }
+    });
+
     var image = document.getElementById('image');
     if (image) {
         image.addEventListener('mousemove', function (e) {

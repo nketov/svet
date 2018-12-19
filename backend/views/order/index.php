@@ -57,7 +57,7 @@ $this->title = 'Заказы';
                     ['attribute' => 'user_id',
                         'headerOptions' => ['style' => 'min-width:80px, text-align:right'],
                         'value' => function ($data) {
-                            return $data->user->email;
+                            return $data->user->email ?? "Без регистрации";
                         },
                     ],
                     ['attribute' => 'order_content',
