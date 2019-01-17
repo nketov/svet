@@ -18,7 +18,7 @@ use yii\helpers\Html;
             <div class="col-sm-4">
                 <h5>О нас</h5>
                 <ul>
-                    <li><a href="#">О компании</a></li>
+                    <li><a href="/about">О компании</a></li>
                     <li><a href="/actions">Акции и скидки</a></li>
                     <li><a href="/contact">Вопросы</a></li>
                 </ul>

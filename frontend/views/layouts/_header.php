@@ -4,7 +4,7 @@
     <div class="header-panel">
         <div class="logo"><img src="/images/main/logo_64.png" alt=""><span>&nbsp;Светлоград</span></div>
         <nav class="nav-grid">
-            <a href="/">О компании</a>
+            <a href="/about">О компании</a>
 <!--            <a href="/">Оплата и доставка</a>-->
             <a href="/actions">Акции и скидки</a>
             <a href="/articles">Статьи</a>
