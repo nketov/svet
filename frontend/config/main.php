@@ -48,6 +48,7 @@ return [
             'rules' => [
                 '' => '/',
                 'catalog' => 'products/category',
+                'search' => 'products/text-search',
                 'product/<id:\d+>' => 'products/view',
                 'article/<id:\d+>' => 'site/article-view',
                 'category/<category:\d+>' => 'products/category',
