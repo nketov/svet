@@ -28,8 +28,8 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'images_count'], 'integer'],
-            [['code', 'name', 'description', 'image_1', 'image_2', 'image_3', 'image_4', 'image_5', 'color', 'material', 'lamps', 'second_code'], 'safe'],
+            [['id', 'shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'length','images_count'], 'integer'],
+            [['code', 'name', 'description', 'image_1', 'image_2', 'image_3', 'image_4', 'image_5', 'color', 'material', 'color_base', 'material_base', 'lamps', 'second_code'], 'safe'],
             [['price'], 'number'],
             [['prices', 'withoutPricesShow', 'withoutImageShow'], 'safe'],
         ];
@@ -58,12 +58,15 @@ class ProductSearch extends Product
             'images_count' => 'Фотографии',
             'withoutPricesShow' => 'Показывать товары без цены',
             'withoutImageShow' => 'Показывать товары без фото',
-            'color' => 'Цвет',
-            'material' => 'Материал',
+            'color' => 'Цвет абажура',
+            'color_base' => 'Цвет основания',
+            'material' => 'Материал абажура',
+            'material_base' => 'Материал основания',
             'height' => 'Высота, мм',
             'diametr' => 'Диаметр, мм',
             'width' => 'Ширина, мм',
             'depth' => 'Глубина, мм',
+            'length' => 'Длина, мм',
             'lamps' => 'Лампочки',
 
         ];
@@ -154,11 +157,14 @@ class ProductSearch extends Product
             'shop' => $this->shop,
             'material' => $this->material,
             'color' => $this->color,
+            'material_base' => $this->material_base,
+            'color_base' => $this->color_base,
             'price' => $this->price,
             'height' => $this->height,
             'diametr' => $this->diametr,
             'width' => $this->width,
             'depth' => $this->depth,
+            'length' => $this->length,
         ]);
 
 

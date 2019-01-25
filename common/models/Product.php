@@ -88,6 +88,8 @@ class Product extends \yii\db\ActiveRecord
         '9' => 'Сталь-акрил',
         '10' => 'Стекло',
         '11' => 'Стекло-зеркало-металл',
+        '12' => 'Сталь',
+        '13' => 'Ткань'
     ];
 
     private static $_linksPattern = [
@@ -107,7 +109,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'images_count','color', 'material'], 'integer'],
+            [['shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'length','images_count','color', 'material','color_base', 'material_base'], 'integer'],
             [['price'], 'number'],
             [['description'], 'string'],
             [['code', 'second_code'], 'string', 'max' => 50],
@@ -139,12 +141,15 @@ class Product extends \yii\db\ActiveRecord
             'image_3' => 'Фото 3',
             'image_4' => 'Фото 4',
             'image_5' => 'Фото 5',
-            'color' => 'Цвет',
-            'material' => 'Материал',
+            'color' => 'Цвет абажура',
+            'color_base' => 'Цвет основания',
+            'material' => 'Материал абажура',
+            'material_base' => 'Материал основания',
             'height' => 'Высота, мм',
             'diametr' => 'Диаметр, мм',
             'width' => 'Ширина, мм',
             'depth' => 'Глубина, мм',
+            'length' => 'Длина, мм',
             'size' => 'Размер',
             'lamps' => 'Лампочки',
             'second_code' => 'Запасной код',

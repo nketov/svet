@@ -39,6 +39,10 @@ use dosamigos\tinymce\TinyMce;
 
     <?= $form->field($model, 'material')->dropDownList(Product::materialsNamesList(),['prompt' => 'Не указан']) ?>
 
+    <?= $form->field($model, 'color_base')->dropDownList(Product::colorsNamesList(),['prompt' => 'Не указан']) ?>
+
+    <?= $form->field($model, 'material_base')->dropDownList(Product::materialsNamesList(),['prompt' => 'Не указан']) ?>
+
     <?= $form->field($model, 'lamps')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'height')->textInput() ?>
@@ -48,6 +52,8 @@ use dosamigos\tinymce\TinyMce;
     <?= $form->field($model, 'width')->textInput() ?>
 
     <?= $form->field($model, 'depth')->textInput() ?>
+
+    <?= $form->field($model, 'length')->textInput() ?>
 
     <?= $form->field($model, 'size')->textInput() ?>
 

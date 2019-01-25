@@ -47,15 +47,29 @@ $this->title = $model->name;
 
         <?php if (!empty($model->material)) { ?>
             <div class="string">
-                <div class="spec_name">Материал:&nbsp;</div>
+                <div class="spec_name">Материал абажура:&nbsp;</div>
                 <div class="spec_value"><?= Product::materialName($model->material) ?></div>
             </div>
         <?php } ?>
 
         <?php if (!empty($model->color)) { ?>
             <div class="string">
-                <div class="spec_name">Цвет:&nbsp;</div>
+                <div class="spec_name">Цвет абажура:&nbsp;</div>
                 <div class="spec_value"><?= Product::colorName($model->color) ?></div>
+            </div>
+        <?php } ?>
+
+        <?php if (!empty($model->material_base)) { ?>
+            <div class="string">
+                <div class="spec_name">Материал основания:&nbsp;</div>
+                <div class="spec_value"><?= Product::materialName($model->material_base) ?></div>
+            </div>
+        <?php } ?>
+
+        <?php if (!empty($model->color_base)) { ?>
+            <div class="string">
+                <div class="spec_name">Цвет основания:&nbsp;</div>
+                <div class="spec_value"><?= Product::colorName($model->color_base) ?></div>
             </div>
         <?php } ?>
 
@@ -91,6 +105,13 @@ $this->title = $model->name;
             <div class="string">
                 <div class="spec_name">Глубина:&nbsp;</div>
                 <div class="spec_value"><?= $model->depth ?>&nbsp;мм</div>
+            </div>
+        <?php } ?>
+
+        <?php if (!empty($model->length)) { ?>
+            <div class="string">
+                <div class="spec_name">Длина:&nbsp;</div>
+                <div class="spec_value"><?= $model->length ?>&nbsp;мм</div>
             </div>
         <?php } ?>
 

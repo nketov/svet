@@ -45,6 +45,11 @@ $form = ActiveForm::begin([
 
 <?= $form->field($searchModel, 'material')->dropDownList(Product::materialsNamesList(),['prompt' => 'Любой']) ?>
 
+<?= $form->field($searchModel, 'color_base')->dropDownList(Product::colorsNamesList(),['prompt' => 'Любой']) ?>
+
+<?= $form->field($searchModel, 'material_base')->dropDownList(Product::materialsNamesList(),['prompt' => 'Любой']) ?>
+
+
 <?= $form->field($searchModel, 'withoutImageShow')->checkbox(); ?>
 
 <?php ActiveForm::end();
