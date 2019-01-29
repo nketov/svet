@@ -44,6 +44,7 @@
                     ['label' => 'Заказы', 'icon' => 'shopping-basket', 'url' => ['/order'],],
                     ['label' => 'Клиенты', 'icon' => 'user', 'url' => ['/user'],],
                     ['label' => 'Акции', 'icon' => 'gift', 'url' => ['/actions'],],//
+                    ['label' => 'Коллекции', 'icon' => 'clone', 'url' => ['/collections'],]//
 
 
 //                    [

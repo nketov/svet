@@ -28,7 +28,7 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'length','images_count'], 'integer'],
+            [['id', 'shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'length','images_count', 'collection'], 'integer'],
             [['code', 'name', 'description', 'image_1', 'image_2', 'image_3', 'image_4', 'image_5', 'color', 'material', 'color_base', 'material_base', 'lamps', 'second_code'], 'safe'],
             [['price'], 'number'],
             [['prices', 'withoutPricesShow', 'withoutImageShow'], 'safe'],
@@ -50,6 +50,7 @@ class ProductSearch extends Product
             'id' => 'ID',
             'code' => 'Код товара',
             'shop' => 'Магазин',
+            'collection' => 'Коллекция',
             'active' => 'Состояние',
             'category' => 'Категория',
             'name' => 'Наименование',
@@ -100,8 +101,10 @@ class ProductSearch extends Product
 
         $this->load($params);
 
-
-        if (isset($params['category'])) $this->setAttribute('category', $params['category']);
+        if (!empty($this->getAttribute('collection')))
+            $this->setAttribute('shop', '');
+        if (isset($params['category']))
+            $this->setAttribute('category', $params['category']);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -155,6 +158,7 @@ class ProductSearch extends Product
 
         $query->andFilterWhere([
             'shop' => $this->shop,
+            'collection' => $this->collection,
             'material' => $this->material,
             'color' => $this->color,
             'material_base' => $this->material_base,

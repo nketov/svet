@@ -78,18 +78,47 @@ class Product extends \yii\db\ActiveRecord
 
     private static $_materialName = [
         '1' => 'Дерево',
-        '2' => 'Дерево-металл',
+        '2' => 'Сталь, дерево',
         '3' => 'Керамика',
         '4' => 'Латунь',
-        '5' => 'Металл',
-        '6' => 'Металл-керамика',
+        '5' => 'Алюминий',
+        '6' => 'Сталь, керамика',
         '7' => 'Металл-стекло',
-        '8' => 'Полирезина',
-        '9' => 'Сталь-акрил',
+        '8' => 'Пластик с эффектом хрусталя',
+        '9' => 'Сталь, стекло',
         '10' => 'Стекло',
-        '11' => 'Стекло-зеркало-металл',
+        '11' => 'Сталь, зеркало',
         '12' => 'Сталь',
-        '13' => 'Ткань'
+        '13' => 'Ткань',
+        '14' => 'Пластик',
+        '15' => 'Стекло, хрусталь',
+        '16' => 'Ткань, хрусталь',
+        '17' => 'Пластик, хрусталь',
+        '18' => 'Сталь, бетон',
+        '19' => 'Сталь, пластик',
+        '20' => 'Стекло с эффектом потертости',
+        '21' => 'Бетон, дерево',
+        '22' => 'Ткань лён, пластик',
+        '23' => 'Сталь, бетон, дерево',
+        '24' => 'Ткань лён',
+        '25' => 'Фольга',
+        '26' => 'Нержавеющая сталь',
+        '27' => 'Ткань, стекло',
+        '28' => 'Дерево, стекло',
+        '29' => 'Алюминий, пластик',
+        '30' => 'Сталь, алюминий',
+        '31' => 'Хрусталь',
+        '32' => 'Сталь, хрусталь',
+        '33' => 'Стекло, алюминий',
+        '34' => 'Стекло, сталь, хрусталь',
+        '35' => 'Сталь, алюминий, хрусталь',
+        '36' => 'Матовое стекло, зеркало',
+        '37' => 'Сталь, пластик, хрусталь',
+        '38' => 'Ткань, фольга, пластик',
+        '39' => 'Алюминий, сталь',
+        '40' => 'Сталь, алюминий, хрусталь',
+        '41' => 'Сталь, алюминий, хрусталь',
+
     ];
 
     private static $_linksPattern = [
@@ -109,7 +138,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'length','images_count','color', 'material','color_base', 'material_base'], 'integer'],
+            [['shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'length','images_count','color', 'material','color_base', 'material_base', 'collection'], 'integer'],
             [['price'], 'number'],
             [['description'], 'string'],
             [['code', 'second_code'], 'string', 'max' => 50],
@@ -133,6 +162,7 @@ class Product extends \yii\db\ActiveRecord
             'active' => 'Состояние',
             'category' => 'Категория',
             'name' => 'Наименование',
+            'collection' => 'Коллекция',
             'price' => 'Цена',
             'description' => 'Описание',
             'images_count' => 'Фотографии',
@@ -199,6 +229,16 @@ class Product extends \yii\db\ActiveRecord
     public static function colorName($color_id)
     {
         return self::colorsNamesList()[$color_id];
+    }
+
+    public static function collectionsNamesList()
+    {
+        return ArrayHelper::map(Collection::find()->all(),'id','name');
+    }
+
+    public static function collectionName($collection_id)
+    {
+        return self::collectionsNamesList()[$collection_id];
     }
 
     public static function getStatuses()

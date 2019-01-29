@@ -18,6 +18,8 @@ use dosamigos\tinymce\TinyMce;
 
     <?= $form->field($model, 'shop')->dropDownList(Product::shopNamesList()); ?>
 
+    <?= $form->field($model, 'collection')->dropDownList(Product::collectionsNamesList(),['prompt' => 'Не указана']) ?>
+
     <?= $form->field($model, 'active')->dropDownList(Product::getStatuses()) ?>
 
     <?= $form->field($model, 'category')->dropDownList(Product::categoryNamesList()) ?>

@@ -102,6 +102,13 @@ $(document).ready(function () {
         }
     );
 
+    $('body').on('click', '#collections-table tbody tr td:not(:last-child)',
+        function () {
+            var collection_id = $(this).closest('tr').data('key');
+            location.href = '/admin/collections/update?id=' + collection_id;
+        }
+    );
+
     $('body').on('click', '#articles-table tbody tr td:not(:last-child)',
         function () {
             var action_id = $(this).closest('tr').data('key');

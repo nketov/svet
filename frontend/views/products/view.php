@@ -40,6 +40,13 @@ $this->title = $model->name;
             <div class="spec_value"><?= $model->code ?></div>
         </div>
 
+        <?php if (!empty($model->collection)) { ?>
+            <div class="string">
+                <div class="spec_name">Коллекция:&nbsp;</div>
+                <div class="spec_value"><?= Product::collectionName($model->collection) ?></div>
+            </div>
+        <?php } ?>
+
         <div class="string">
             <div class="spec_name">Категория товара:&nbsp;</div>
             <div class="spec_value"><?= Product::categoryName($model->category) ?></div>
