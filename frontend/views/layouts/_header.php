@@ -26,13 +26,8 @@
             </div>
         </nav>
     </div>
-    <div class="header-text">Продаём светильники <br> европейского качества</div>
+    <?= $this->render('_top_catalog.php') ?>
 </header>
-<div class="hamburger">
-    <span class="bar bar1"></span>
-    <span class="bar bar2"></span>
-    <span class="bar bar3"></span>
-</div>
 
 
 

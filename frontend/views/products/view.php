@@ -52,6 +52,13 @@ $this->title = $model->name;
             <div class="spec_value"><?= Product::categoryName($model->category) ?></div>
         </div>
 
+        <?php if (!empty($model->sub_category)) { ?>
+        <div class="string">
+            <div class="spec_name">Подкатегория:&nbsp;</div>
+            <div class="spec_value"><?= $model->subCategory->name ?></div>
+        </div>
+        <?php } ?>
+
         <?php if (!empty($model->material)) { ?>
             <div class="string">
                 <div class="spec_name">Материал абажура:&nbsp;</div>

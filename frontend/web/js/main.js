@@ -1,30 +1,32 @@
-
-function topCatalogResize() {
-    "use strict";
-    let height = $('.top-catalog div:last').offset().top - 388;
-    $('.top-catalog').css('height', height);
-}
-
 $(function () {
     "use strict";
-    topCatalogResize();
 
-    $('.hamburger').mouseover(function () {
-        $('.top-catalog').css('opacity', '0.99');
-        $('.top-catalog').css('z-index', '35');
-    });
-    $('.main-content,.header-img').mouseover(function () {
-        $('.top-catalog').css('opacity', '0');
-        $('.top-catalog').css('z-index', '-1');
+
+    $('.top-catalog > div').hover(function () {
+        if ($('.sub-menu a', this).length < 1) return;
+        clearTimeout($.data(this, 'timer'));
+        $('.sub-menu', this).stop(true, true).slideDown(350);
+    }, function () {
+        $.data(this, 'timer', setTimeout($.proxy(function () {
+            $('.sub-menu', this).stop(true, true).slideUp(350);
+        }, this), 150));
     });
 
+    $('.top-catalog > div').on('taphold',function () {
+        if ($('.sub-menu a', this).length < 1) return;
+        clearTimeout($.data(this, 'timer'));
+        $('.sub-menu', this).stop(true, true).slideDown(350);
+    }, function () {
+        $.data(this, 'timer', setTimeout($.proxy(function () {
+            $('.sub-menu', this).stop(true, true).slideUp(350);
+        }, this), 150));
+    });
 
     $('body').on('change', 'input#prices', function () {
         var prices = ($(this).val()).split(',');
         $('.bage-min').text(prices[0] + ' грн');
         $('.bage-max').text(prices[1] + ' грн');
     });
-
 
     $('body').on('change', '#left-filter-form input:not(#prices),#left-filter-form select', function () {
         $(this).closest('form').submit();
@@ -60,7 +62,7 @@ $(function () {
     $('.cd-cart footer .btn-cart').on('click', function (e) {
 
         console.log($(this).data('guest'));
-        if($(this).data('guest') === 1) {
+        if ($(this).data('guest') === 1) {
             e.preventDefault();
             $('#order-phone-modal').modal('show');
         }
@@ -119,16 +121,16 @@ $(function () {
 
     }
 
-    $("#pjax_form").on("pjax:end", function() {
-        $.pjax.reload({container:"#pjax_list"});
+    $("#pjax_form").on("pjax:end", function () {
+        $.pjax.reload({container: "#pjax_list"});
     });
 
-    $('.form-footer-text.toggle').click(function(e){
+    $('.form-footer-text.toggle').click(function (e) {
         e.preventDefault();
         $('.login-form:not("#request-password-reset-form")').animate({height: "toggle", opacity: "toggle"}, 'slow');
     });
 
-    $('.form-footer-text.reset').click(function(e){
+    $('.form-footer-text.reset').click(function (e) {
         e.preventDefault();
         $('#request-password-reset-form').animate({height: "toggle", opacity: "toggle"}, 'slow');
         $(this).closest('form').animate({height: "toggle", opacity: "toggle"}, 'slow');
@@ -137,7 +139,6 @@ $(function () {
     $(window).resize(function () {
         topCatalogResize();
     });
-
 
 
 });

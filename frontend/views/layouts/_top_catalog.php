@@ -38,9 +38,16 @@ use yii\helpers\Url;
 
         <span><?= Html::a(Product::categoryName(
                 Product::CATEGORY_LUSTER),
-                Url::toRoute(['/category/'.Product::CATEGORY_LUSTER]),
+                Url::toRoute(['/category/' . Product::CATEGORY_LUSTER]),
                 ['title' => Product::categoryName(Product::CATEGORY_LUSTER)])
-            ?></span>
+            ?>
+            <div class="sub-menu">
+            <?php foreach (Product::getCategorySubs(Product::CATEGORY_LUSTER) as $id => $name) echo
+                Html::a($name,
+                    Url::toRoute(['/category/' . Product::CATEGORY_LUSTER . '/sub/' . $id]),
+                    ['title' => $name]) ?>
+            </div>
+        </span>
     </div>
 
     <div>
@@ -61,9 +68,16 @@ use yii\helpers\Url;
 </svg>
         <span><?= Html::a(Product::categoryName(
                 Product::CATEGORY_WALL_LAMP),
-                Url::toRoute(['/category/'. Product::CATEGORY_WALL_LAMP]),
+                Url::toRoute(['/category/' . Product::CATEGORY_WALL_LAMP]),
                 ['title' => Product::categoryName(Product::CATEGORY_WALL_LAMP)])
-            ?></span>
+            ?>
+            <div class="sub-menu">
+            <?php foreach (Product::getCategorySubs(Product::CATEGORY_WALL_LAMP) as $id => $name) echo
+            Html::a($name,
+                Url::toRoute(['/category/' . Product::CATEGORY_WALL_LAMP . '/sub/' . $id]),
+                ['title' => $name]) ?>
+            </div>
+        </span>
     </div>
 
     <div>
@@ -85,11 +99,18 @@ use yii\helpers\Url;
 </svg>
         <span><?= Html::a(Product::categoryName(
                 Product::CATEGORY_TABLE_LAMP),
-                Url::toRoute(['/category/'. Product::CATEGORY_TABLE_LAMP]),
+                Url::toRoute(['/category/' . Product::CATEGORY_TABLE_LAMP]),
                 ['title' => Product::categoryName(Product::CATEGORY_TABLE_LAMP)])
-            ?></span>
-    </div>
+            ?>
+            <div class="sub-menu">
+            <?php foreach (Product::getCategorySubs(Product::CATEGORY_TABLE_LAMP) as $id => $name) echo
+            Html::a($name,
+                Url::toRoute(['/category/' . Product::CATEGORY_TABLE_LAMP . '/sub/' . $id]),
+                ['title' => $name]) ?>
+            </div>
 
+        </span>
+    </div>
 
     <div>
         <svg version="1.1" id="Layer_4" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -124,9 +145,16 @@ use yii\helpers\Url;
 </svg>
         <span><?= Html::a(Product::categoryName(
                 Product::CATEGORY_MOUNT_LAMP),
-                Url::toRoute(['/category/'. Product::CATEGORY_MOUNT_LAMP]),
+                Url::toRoute(['/category/' . Product::CATEGORY_MOUNT_LAMP]),
                 ['title' => Product::categoryName(Product::CATEGORY_MOUNT_LAMP)])
-            ?></span>
+            ?>
+            <div class="sub-menu">
+            <?php foreach (Product::getCategorySubs(Product::CATEGORY_MOUNT_LAMP) as $id => $name) echo
+            Html::a($name,
+                Url::toRoute(['/category/' . Product::CATEGORY_MOUNT_LAMP . '/sub/' . $id]),
+                ['title' => $name]) ?>
+            </div>
+        </span>
     </div>
 
     <div>
@@ -145,9 +173,16 @@ use yii\helpers\Url;
 </svg>
         <span><?= Html::a(Product::categoryName(
                 Product::CATEGORY_FLOOR_LAMP),
-                Url::toRoute(['/category/'. Product::CATEGORY_FLOOR_LAMP]),
+                Url::toRoute(['/category/' . Product::CATEGORY_FLOOR_LAMP]),
                 ['title' => Product::categoryName(Product::CATEGORY_FLOOR_LAMP)])
-            ?></span>
+            ?>
+            <div class="sub-menu">
+            <?php foreach (Product::getCategorySubs(Product::CATEGORY_FLOOR_LAMP) as $id => $name) echo
+            Html::a($name,
+                Url::toRoute(['/category/' . Product::CATEGORY_FLOOR_LAMP . '/sub/' . $id]),
+                ['title' => $name]) ?>
+            </div>
+        </span>
     </div>
 
     <div>
@@ -186,9 +221,16 @@ use yii\helpers\Url;
 </svg>
         <span><?= Html::a(Product::categoryName(
                 Product::CATEGORY_SPOOT_LIGHT),
-                Url::toRoute(['/category/'. Product::CATEGORY_SPOOT_LIGHT]),
+                Url::toRoute(['/category/' . Product::CATEGORY_SPOOT_LIGHT]),
                 ['title' => Product::categoryName(Product::CATEGORY_SPOOT_LIGHT)])
-            ?></span>
+            ?>
+            <div class="sub-menu">
+            <?php foreach (Product::getCategorySubs(Product::CATEGORY_SPOOT_LIGHT) as $id => $name) echo
+            Html::a($name,
+                Url::toRoute(['/category/' . Product::CATEGORY_SPOOT_LIGHT . '/sub/' . $id]),
+                ['title' => $name]) ?>
+            </div>
+        </span>
     </div>
 
 
@@ -226,9 +268,16 @@ use yii\helpers\Url;
 </svg>
         <span><?= Html::a(Product::categoryName(
                 Product::CATEGORY_OTHER),
-                Url::toRoute(['/category/'. Product::CATEGORY_OTHER]),
+                Url::toRoute(['/category/' . Product::CATEGORY_OTHER]),
                 ['title' => Product::categoryName(Product::CATEGORY_OTHER)])
-            ?></span>
+            ?>
+            <div class="sub-menu">
+            <?php foreach (Product::getCategorySubs(Product::CATEGORY_OTHER) as $id => $name) echo
+            Html::a($name,
+                Url::toRoute(['/category/' . Product::CATEGORY_OTHER . '/sub/' . $id]),
+                ['title' => $name]) ?>
+            </div>
+        </span>
     </div>
 
 </nav>

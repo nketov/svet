@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use app\models\ImageUploadForm;
+use common\models\SubCategory;
 use Yii;
 use common\models\Product;
 use common\models\ProductSearch;
@@ -10,6 +11,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 use yii\web\UploadedFile;
 
 /**
@@ -48,8 +50,8 @@ class ProductsController extends Controller
     public function actionIndex()
     {
         $searchModel = new ProductSearch();
-        $searchModel->withoutImageShow= 1;
-        $searchModel->withoutPricesShow= 1;
+        $searchModel->withoutImageShow = 1;
+        $searchModel->withoutPricesShow = 1;
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -139,12 +141,12 @@ class ProductsController extends Controller
             }
         }
 
-        if (!mb_strpos( Yii::$app->request->referrer ,'image-upload')) {
+        if (!mb_strpos(Yii::$app->request->referrer, 'image-upload')) {
             Yii::$app->user->returnUrl = Yii::$app->request->referrer;
         }
 
 
-        if (!empty($delete_key=Yii::$app->request->get()['delete_key'])){
+        if (!empty($delete_key = Yii::$app->request->get()['delete_key'])) {
             $model->$delete_key = '';
             $model->save();
         }
@@ -193,6 +195,20 @@ class ProductsController extends Controller
             $model->save();
             return true;
         }
+    }
+
+
+    public function actionSubCategories()
+    {
+        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $data = \Yii::$app->request->post()['depdrop_all_params'];
+
+        $list = SubCategory::find()
+            ->select(['id', 'name'])
+            ->where(['category_id' => $data['cat-id']])
+            ->asArray()->all();
+
+        return ['output' => $list, 'selected' => \Yii::$app->request->get('selected')];
     }
 
 

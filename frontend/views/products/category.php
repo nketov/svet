@@ -7,6 +7,12 @@ use yii\widgets\Pjax;
 if (isset($searchModel->category)) {
     $this->title = Product::categoryName($searchModel->category);
     $formTarget = '/category/' . (int)$searchModel->category;
+    if (isset($searchModel->sub_category)) {
+        $this->title .=  ' : '.$searchModel->subCategory->name;
+
+    }
+
+
 } else {
     $this->title = 'Все категории';
     $formTarget = '/catalog';

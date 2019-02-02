@@ -138,7 +138,7 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['shop', 'active', 'category', 'height', 'diametr', 'width', 'depth', 'length','images_count','color', 'material','color_base', 'material_base', 'collection'], 'integer'],
+            [['shop', 'active', 'category','sub_category', 'height', 'diametr', 'width', 'depth', 'length','images_count','color', 'material','color_base', 'material_base', 'collection','sub_category'], 'integer'],
             [['price'], 'number'],
             [['description'], 'string'],
             [['code', 'second_code'], 'string', 'max' => 50],
@@ -161,6 +161,7 @@ class Product extends \yii\db\ActiveRecord
             'shop' => 'Магазин',
             'active' => 'Состояние',
             'category' => 'Категория',
+            'sub_category' => 'Подкатегория',
             'name' => 'Наименование',
             'collection' => 'Коллекция',
             'price' => 'Цена',
@@ -251,6 +252,14 @@ class Product extends \yii\db\ActiveRecord
         ];
     }
 
+    public function getSubCategory() {
+        return $this->hasOne(SubCategory::className(), ['id' => 'sub_category']);
+    }
+
+    public function getCategorySubs($category)
+    {
+        return ArrayHelper::map(SubCategory::find()->where(['category_id' => $category ])->all(),'id','name');
+    }
 
     public function getImages()
     {

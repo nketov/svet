@@ -105,6 +105,8 @@ class ProductSearch extends Product
             $this->setAttribute('shop', '');
         if (isset($params['category']))
             $this->setAttribute('category', $params['category']);
+        if (isset($params['sub']))
+            $this->setAttribute('sub_category', $params['sub']);
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -117,6 +119,7 @@ class ProductSearch extends Product
             'id' => $this->id,
             'active' => $this->active,
             'category' => $this->category,
+            'sub_category' => $this->sub_category,
         ]);
 
 
