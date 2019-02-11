@@ -5,8 +5,13 @@ namespace backend\controllers;
 use app\models\UploadForm;
 use backend\components\ShopUploader;
 use common\models\ActionsContent;
+use common\models\Color;
 use common\models\Content;
 use common\models\MainPage;
+use common\models\Material;
+use common\models\Product;
+use yii\db\IntegrityException;
+use yii\helpers\Html;
 use yii\web\Response;
 use yii\web\UploadedFile;
 use Yii;
@@ -34,7 +39,7 @@ class SiteController extends Controller
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'content', 'upload', 'main-page','actions-content'],
+                        'actions' => ['logout', 'content', 'upload', 'main-page', 'actions-content', 'colors', 'materials'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -174,6 +179,73 @@ class SiteController extends Controller
         return $this->render('upload', ['model' => $model]);
     }
 
+
+    public function actionColors()
+    {
+
+        if ($post = Yii::$app->request->post()) {
+            foreach ($post as $key => $val) {
+                $expl = explode('_', $key);
+                if ($expl[0] == 'color') {
+                    $model=Color::findOne($expl[1]);
+                    $model->name = trim($val);
+                    $model->save();
+                }
+            }
+
+            if (!empty($new=trim($post['new_color']))){
+              $model=new Color();
+              $model->name= $new;
+              try {
+                  $model->save();
+              } catch (IntegrityException $e){
+                  echo 'Цвет "'. $new.'" уже существует. Укажите новый цвет <br>';
+                  echo Html::a('Назад', '/admin/colors');
+                  exit;
+                }
+            }
+
+        }
+
+        $colors = Product::colorsNamesList();
+
+        return $this->render('colors', ['colors' => $colors]);
+
+    }
+
+    public function actionMaterials()
+    {
+
+
+        if ($post = Yii::$app->request->post()) {
+            foreach ($post as $key => $val) {
+                $expl = explode('_', $key);
+                if ($expl[0] == 'material') {
+                    $model=Material::findOne($expl[1]);
+                    $model->name = trim($val);
+                    $model->save();
+                }
+            }
+
+            if (!empty($new=trim($post['new_material']))){
+                $model=new Material();
+                $model->name= $new;
+                try {
+                    $model->save();
+                } catch (IntegrityException $e){
+                    echo 'Материал "'. $new.'" уже существует. Укажите новый материал <br>';
+                    echo Html::a('Назад', '/admin/materials');
+                    exit;
+                }
+            }
+
+        }
+
+        $materials = Product::materialsNamesList();
+
+        return $this->render('materials', ['materials' => $materials]);
+
+    }
 
     /**
      * Logout action.

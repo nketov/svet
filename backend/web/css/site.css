@@ -41,7 +41,7 @@ html, body {
     color: black;
 }
 
-#products-table, #form-product-update, #orders-table, #order-view, #users-table,#actions-table {
+#products-table, #form-product-update, #orders-table, #order-view, #users-table,#actions-table,#form-colors, #form-materials  {
     color: #222;
     width: calc(99vw - 265px);
     overflow: hidden;
@@ -98,7 +98,7 @@ table .summary {
 margin: 25px;
 }
 
-#form-product-update .form-grid {
+#form-product-update .form-grid, #form-colors .form-grid, #form-materials .form-grid {
     padding: 10px 25px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
@@ -109,7 +109,7 @@ margin: 25px;
     font-size: 1rem;
 }
 
-#form-product-update .form-footer {
+#form-product-update .form-footer, #form-colors .form-footer {
     display: grid;
     grid-auto-flow: row;
     justify-content: center;

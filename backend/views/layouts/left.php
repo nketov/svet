@@ -44,7 +44,9 @@
                     ['label' => 'Заказы', 'icon' => 'shopping-basket', 'url' => ['/order'],],
                     ['label' => 'Клиенты', 'icon' => 'user', 'url' => ['/user'],],
                     ['label' => 'Акции', 'icon' => 'gift', 'url' => ['/actions'],],//
-                    ['label' => 'Коллекции', 'icon' => 'clone', 'url' => ['/collections'],]//
+                    ['label' => 'Коллекции', 'icon' => 'clone', 'url' => ['/collections'],],//
+                    ['label' => 'Цвета', 'icon' => 'paint-brush', 'url' => ['/colors'],],//
+                    ['label' => 'Материалы', 'icon' => 'diamond', 'url' => ['/materials'],]//
 
 
 //                    [
