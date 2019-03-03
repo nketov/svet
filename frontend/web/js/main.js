@@ -137,7 +137,7 @@ $(function () {
     });
 
     $(window).resize(function () {
-        topCatalogResize();
+        // topCatalogResize();
     });
 
 
