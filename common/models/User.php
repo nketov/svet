@@ -54,7 +54,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['phone', 'string', 'length' => 9, 'message' => 'Неверный номер'],
+            ['phone', 'string', 'length' => 9, 'message' => 'Невірний номер'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
         ];
@@ -66,7 +66,7 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             'email' => 'E-mail',
             'phone' => 'Телефон',
-            'created_at' => 'Зарегистрирован',
+            'created_at' => 'Зареєстрований',
         ];
     }
     

@@ -38,7 +38,7 @@ class Collection extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Название',
+            'name' => 'Назва',
         ];
     }
 }

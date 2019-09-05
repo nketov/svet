@@ -72,6 +72,9 @@ class ShopUploader extends Widget
             case Product::ARTGLASS_SHOP:
                 $this->uploadArtglass();
                 break;
+            case Product::UNIVERSAL_SHOP:
+                $this->uploadUniversal();
+                break;
         }
 
 
@@ -427,6 +430,69 @@ class ShopUploader extends Widget
         }
     }
 
+    private function uploadUniversal()
+    {
+
+        $rows = [];
+
+        foreach ($this->sheetData as $row) {
+            if (!empty($row['A'])) {
+                $rows['u_'.(string)trim($row['A'])] = [
+                    'name' => (string)trim($row['B']),
+                    'price' => (float)trim($row['C'])*(1+$this->markup/100),
+                ];
+            }
+        }
+
+        $products = Product::find()->shop(Product::UNIVERSAL_SHOP)->all();
+
+        foreach ($products as $product) {
+            if (array_key_exists($product->code, $rows)) {
+                if ($product->active) {
+                    $this->updated_count++;
+                } else {
+                    $this->activated_count++;
+                    $product->active = 1;
+                }
+
+                $product->name = (string)$rows[$product->code]['name'];
+                $product->shop = Product::UNIVERSAL_SHOP;
+                $product->price = (float)$rows[$product->code]['price'];
+            } else {
+                if ($product->active) {
+                    $product->active = 0;
+                    $this->deactivated_count++;
+                }
+            }
+
+            if ($product->save()) {
+                unset($rows[$product->code]);
+            } else {
+                var_dump($product->errors);
+                var_dump($product);
+                exit();
+            }
+        }
+
+        foreach ($rows as $code => $row) {
+            $newProduct = new Product();
+            $newProduct->code = (string)$code;
+            $newProduct->name = (string)$row['name'];
+            $newProduct->shop = Product::UNIVERSAL_SHOP;
+            $newProduct->price = (float)$row['price'];
+
+
+            if ($newProduct->save()) {
+                $this->new_count++;
+            } else {
+                var_dump($newProduct->errors);
+                var_dump($newProduct);
+                exit();
+            }
+        }
+    }
+
+
 
     private function getFilter()
 
@@ -449,6 +515,10 @@ class ShopUploader extends Widget
                 break;
 
             case Product::ARTGLASS_SHOP:
+                return new XlsFilter(2, ['A', 'B', 'C']);
+                break;
+
+            case Product::UNIVERSAL_SHOP:
                 return new XlsFilter(2, ['A', 'B', 'C']);
                 break;
         }

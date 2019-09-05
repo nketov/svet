@@ -60,9 +60,9 @@ class Order extends \yii\db\ActiveRecord
     public static function getStatuses()
     {
         return [
-            0 => 'Новый',
-            1 => 'В работе',
-            2 => 'Закрыт'        
+            0 => 'Новий',
+            1 => 'В роботі',
+            2 => 'Закритий'        
            ];
     }
 

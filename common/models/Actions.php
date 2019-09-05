@@ -40,9 +40,9 @@ class Actions extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'Клиент',
+            'user_id' => 'Клієнт',
             'product_id' => 'Товар',
-            'percent' => 'Скидка, %',
+            'percent' => 'Знижка, %',
         ];
     }
 

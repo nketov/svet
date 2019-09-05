@@ -91,6 +91,7 @@ class ProductsController extends Controller
     {
 
 
+
         $cart = new Cart();
         $order = new Order();
 
@@ -108,6 +109,10 @@ class ProductsController extends Controller
 
         $order->summ = $cart->getSumm();
         $products = $cart->getCart();
+
+        if(!$products) exit;
+
+
         $order_content = '';
         $count = 1;
         foreach ($products as $id => $array) {
@@ -133,12 +138,12 @@ class ProductsController extends Controller
             mail(Yii::$app->user->identity->email, 'Заказ № ' . $order->id, $user_text, "Content-type:text/html;charset=UTF-8");
         }
 
-        mail('ketovnv@gmail.com', 'Заказ № ' . $order->id, $shop_text, "Content-type:text/html;charset=UTF-8");
+        mail('kawasakiblacknight@gmail.com', 'Заказ № ' . $order->id, $shop_text, "Content-type:text/html;charset=UTF-8");
 
         mail('svitlograd.krm@gmail.com', 'Заказ № '. $order->id , $shop_text ,"Content-type:text/html;charset=UTF-8");
 
         $cart->resetCart();
-        Yii::$app->session->setFlash('success', 'Ваш заказ отправлен!');
+        Yii::$app->session->setFlash('success', 'Ваше замовлення прийняте!');
         $this->redirect(Url::to(['/']));
 
     }
